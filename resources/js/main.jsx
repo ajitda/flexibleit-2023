@@ -6,6 +6,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Blogs from "./pages/blogs/Blogs";
 import BlogCreate from "./pages/blogs/BlogCreate";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
    path: "/blogs/contacts",
    element: <Contact />,
  },
+ {
+  path: "/home3",
+  element: <Home />,
+},
 ]);
 
 // ReactDOM.createRoot(document.getElementById("root")).render(

@@ -32,3 +32,11 @@ Route::group([ 'prefix' => 'blogs'], function () {
         return view('blog');
     })->where('any','.*');
 });
+
+Route::get('/home2', function () {
+    return view('home2');
+});
+
+Route::get('/home3', function () {
+    return view('blog');
+});
