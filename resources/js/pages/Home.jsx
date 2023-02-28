@@ -5,19 +5,18 @@ const Home = () => {
     // <-- Body Start -->
     <div >
          {/* <!-- Spinner Start --> */}
-         <div id="spinner" className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+         {/* <div id="spinner" className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div className="spinner-grow text-primary w-6 h-6" role="status">
                 <span className="sr-only">Loading...</span>
             </div>
-        </div> 
+        </div>  */}
         {/* <!-- Spinner End --> */}
 
         {/* <!-- Navbar & Hero Start --> */}
          <div className="container-xxl position-relative p-0">
             <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" className="navbar-brand p-0">
-                    <h1 className="m-0"><i className="fa fa-search me-2"></i>Flexible<span className="fs-5">IT</span></h1>
-                     {/* <img src="img/logo.png" alt="Logo"> */}
+                     <img className='h-6' src="img/logo-1.png" alt="" />
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="fa fa-bars"></span>
@@ -53,7 +52,7 @@ const Home = () => {
                             <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
                         </div>
                         <div className="col-lg-6 text-center text-lg-start">
-                            {/* <img className="img-fluid" src="img/hero.png" alt=""> */}
+                            <img className="img-fluid" src="img/hero.png" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -136,7 +135,7 @@ const Home = () => {
         {/* <!-- Newsletter End --> */}
 
         {/* <!-- Service Start --> */}
-        <div className="container-xxl py-5">
+        <div className="container-xxl py-5 mt-37">
             <div className="container px-lg-5">
                 <div className="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 className="position-relative d-inline text-primary ps-4">Our Services</h6>
@@ -356,7 +355,7 @@ const Home = () => {
         {/* <!-- Testimonial End --> */}
 
         {/* <!-- Footer Start --> */}
-        <footer className="page-footer bg-image bg-dark" > 
+        <footer className="page-footer footer-img bg-image bg-dark" style={{backgroundImage:"url('/img/footer.png')"}} > 
         {/* style="background-image: url('img/world_pattern.svg');" */}
             <div className="container">
               <div className="row mb-5">
