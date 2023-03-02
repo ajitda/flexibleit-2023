@@ -1,6 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import {BsCheckLg,BsFacebook,BsTwitter,BsInstagram,BsLinkedin } from 'react-icons/bs'
+import {FaCentercode, FaTelegramPlane} from "react-icons/fa"
 
 const Home = () => {
+    const [scrolling, setScrolling] = useState(false);
+
+  const handleScroll = () => {
+    if (window.pageYOffset >= 168) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.addEventListener("scroll", handleScroll);
+})
+
   return (
     // <-- Body Start -->
     <div >
@@ -13,14 +29,14 @@ const Home = () => {
         {/* <!-- Spinner End --> */}
 
         {/* <!-- Navbar & Hero Start --> */}
-         <div className="container-xxl position-relative p-0">
-            <nav className="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+         <div className="container-xxl p-0">
+            <nav className={` navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 shadow-sm fixed top-0 ${scrolling ? "bg-white sticky-top" : ""}`}>
                 <a href="" className="navbar-brand p-0">
                      <img className='h-6' src="img/logo-1.png" alt="" />
                 </a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span className="fa fa-bars"></span>
-                </button>
+                </button> */}
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <div className="navbar-nav ms-auto py-0">
                         <a href="index.html" className="nav-item nav-link active">Home</a>
@@ -46,7 +62,7 @@ const Home = () => {
                 <div className="container my-5 py-5 px-lg-5">
                     <div className="row g-5 py-5">
                         <div className="col-lg-6 text-center text-lg-start">
-                            <h1 className="text-white mb-4 animated zoomIn">All in one SEO tool need to grow your business rapidly</h1>
+                            <h1 className="text-white mb-4 animated zoomIn">All in one Digital Solution need to grow your business rapidly</h1>
                             <p className="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
                             <a href="" className="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Free Quote</a>
                             <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
@@ -85,25 +101,25 @@ const Home = () => {
                     <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div className="section-title position-relative mb-4 pb-2">
                             <h6 className="position-relative text-primary ps-4">About Us</h6>
-                            <h2 className="mt-2">The best SEO solution with 10 years of experience</h2>
+                            <h2 className="mt-2">The best Digital solution with 10 years of experience</h2>
                         </div>
                         <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
                         <div className="row g-3">
                             <div className="col-sm-6">
-                                <h6 className="mb-3"><i className="fa fa-check text-primary me-2"></i>Award Winning</h6>
-                                <h6 className="mb-0"><i className="fa fa-check text-primary me-2"></i>Professional Staff</h6>
+                                <h6 className="mb-3"><BsCheckLg /> Award Winning</h6>
+                                <h6 className="mb-0"><i className="text-primary me-2"></i> <BsCheckLg /> Professional Staff</h6>
                             </div>
                             <div className="col-sm-6">
-                                <h6 className="mb-3"><i className="fa fa-check text-primary me-2"></i>24/7 Support</h6>
-                                <h6 className="mb-0"><i className="fa fa-check text-primary me-2"></i>Fair Prices</h6>
+                                <h6 className="mb-3"><i className="text-primary me-2"></i> <BsCheckLg /> 24/7 Support</h6>
+                                <h6 className="mb-0"><i className="text-primary me-2"></i> <BsCheckLg /> Fair Prices</h6>
                             </div>
                         </div>
                         <div className="d-flex align-items-center mt-4">
                             <a className="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""><i className="fab fa-facebook-f"></i></a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""><i className="fab fa-twitter"></i></a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""><i className="fab fa-instagram"></i></a>
-                            <a className="btn btn-outline-primary btn-square" href=""><i className="fab fa-linkedin-in"></i></a>
+                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsFacebook/> </a>
+                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsTwitter/> </a>
+                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsInstagram/> </a>
+                            <a className="btn btn-outline-primary btn-square" href=""> <BsLinkedin/> </a>
                         </div>
                     </div>
                     <div className="col-lg-6">
@@ -123,7 +139,7 @@ const Home = () => {
                         <small className="text-white">Diam elitr est dolore at sanctus nonumy.</small>
                         <div className="position-relative w-100 mt-3">
                             <input className="form-control border-0 rounded-pill w-100 ps-4 pe-5 h-12" type="text" placeholder="Enter Your Email"/>
-                            <button type="button" className="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i className="fa fa-paper-plane text-primary fs-4"></i></button>
+                            <button type="button" className="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><FaTelegramPlane size={26}/></button>
                         </div>
                     </div>
                     <div className="col-md-6 text-center mb-n5 d-none d-md-block">
