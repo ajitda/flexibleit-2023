@@ -2,20 +2,20 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-
-// @import "tailwindcss/base";
-
-// @import "tailwindcss/components";
-
-// @import "tailwindcss/utilities";
-
 // Variables
 @import 'variables';
 
 // Bootstrap
 
 
-@import 'bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/bootstrap';
 
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
 
 @import "./pages/home";
+
+@import "./pages/custom/home.scss"

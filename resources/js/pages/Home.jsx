@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import {BsCheckLg,BsFacebook,BsTwitter,BsInstagram,BsLinkedin } from 'react-icons/bs'
 import {FaCentercode, FaTelegramPlane} from "react-icons/fa"
+import { GiShoppingCart } from "react-icons/gi"
+import { TiHtml5 } from "react-icons/ti"
+import { MdManageAccounts, MdSupportAgent } from "react-icons/md "
+import { RiReactjsFill } from "react-icons/ri"
+import { TbBugOff } from "react-icons/tb"
+import Button from '../components/UI/Button'
 
 const Home = () => {
     const [scrolling, setScrolling] = useState(false);
@@ -29,46 +35,60 @@ const Home = () => {
         {/* <!-- Spinner End --> */}
 
         {/* <!-- Navbar & Hero Start --> */}
-         <div className="container-xxl p-0">
-            <nav className={` navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0 shadow-sm fixed top-0 ${scrolling ? "bg-white sticky-top" : ""}`}>
-                <a href="" className="navbar-brand p-0">
-                     <img className='h-6' src="img/logo-1.png" alt="" />
-                </a>
-                {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span className="fa fa-bars"></span>
-                </button> */}
-                <div className="collapse navbar-collapse" id="navbarCollapse">
-                    <div className="navbar-nav ms-auto py-0">
-                        <a href="index.html" className="nav-item nav-link active">Home</a>
-                        <a href="about.html" className="nav-item nav-link">About</a>
-                        <a href="service.html" className="nav-item nav-link">Service</a>
-                        <a href="project.html" className="nav-item nav-link">Project</a>
-                        <div className="nav-item dropdown">
-                            <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div className="dropdown-menu m-0">
-                                <a href="team.html" className="dropdown-item">Our Team</a>
-                                <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                                <a href="404.html" className="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" className="nav-item nav-link">Contact</a>
-                    </div>
-                    <button type="button" className="btn text-secondary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fa fa-search"></i></button>
-                    <a href="https://htmlcodex.com/startup-company-website-template" className="btn btn-secondary text-light rounded-pill py-2 px-4 ms-3">Pro Version</a>
-                </div>
-            </nav>
+         <div className="container-xxl p-0">           
+        <nav class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+        <div class="container flex flex-wrap items-center justify-between mx-auto">
+        <a href="https://flexibleit.net/" class="flex items-center">
+        <img src="./img/logo-1.png" class="h-6 mr-3 sm:h-9" alt="Flexible IT Logo"/>
+  </a>
+        <div class="flex md:order-2">
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get started</button>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+    </button>
+  </div>
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+    <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
 
-            <div className="container-xxl py-5 bg-primary hero-header mb-5">
-                <div className="container my-5 py-5 px-lg-5">
-                    <div className="row g-5 py-5">
-                        <div className="col-lg-6 text-center text-lg-start">
+
+            <div className=" py-5 bg-blue-900 mb-5">
+                <div className=" my-5 py-5 lg:px-5">
+                    <div className="g-5 py-5 flex flex-wrap">
+                        <div className="lg:w-1/2 text-center">
                             <h1 className="text-white mb-4 animated zoomIn">All in one Digital Solution need to grow your business rapidly</h1>
-                            <p className="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
-                            <a href="" className="btn btn-light py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">Free Quote</a>
-                            <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a>
+                            <p className="text-white pb-3 animated zoomIn ">Welcome to Flexible IT, your trusted partner for cutting-edge software solutions. We are a leading software development company dedicated to providing our clients with innovative and reliable digital solutions to help them achieve their business goals.
+
+With 10 years of experience in the industry, our team of expert developers and designers specialize in creating customized software applications tailored to the specific needs of our clients. From web and mobile applications to enterprise software solutions, we offer a comprehensive range of services to help businesses streamline their operations and stay ahead of the competition.
+
+At Flexible IT, we pride ourselves on delivering exceptional software products that meet the highest standards of quality and performance. Our solutions are designed to be user-friendly, scalable, and secure, ensuring that our clients get the most out of their investment.
+
+So, whether you're a startup or a well-established business, we're here to help you take your digital journey to the next level. Contact us today to learn more about our services and how we can help you achieve your business objectives.</p>
+                            {/* <a href="" className="button btn-light py-sm-3 px-sm-5 rounded-pill ">Free Tools</a> */}
+                            <div className='mt-5'>
+                            <Button text="Free Tools" link="" className='bg-white mr-3 pt-4 animated slideInLeft'/>
+                            <Button text="Contact Us" link="" className='border hover:bg-white pt-4' />
+                            </div>
+                            {/* <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a> */}
                         </div>
-                        <div className="col-lg-6 text-center text-lg-start">
-                            <img className="img-fluid" src="img/hero.png" alt=""/>
+                        <div className="col-lg-6 lg:w-1/2 text-center text-lg-start">
+                            <img className="img-fluid" src="/img/hero.png" alt=""/>
                         </div>
                     </div>
                 </div>
@@ -103,7 +123,7 @@ const Home = () => {
                             <h6 className="position-relative text-primary ps-4">About Us</h6>
                             <h2 className="mt-2">The best Digital solution with 10 years of experience</h2>
                         </div>
-                        <p className="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
+                        <p className="mb-4">We pride ourselves on delivering exceptional software products that meet the highest standards of quality and performance. Our solutions are designed to be user-friendly, scalable, and secure, ensuring that our clients get the most out of their investment.</p>
                         <div className="row g-3">
                             <div className="col-sm-6">
                                 <h6 className="mb-3"><BsCheckLg /> Award Winning</h6>
@@ -161,60 +181,60 @@ const Home = () => {
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                            <GiShoppingCart/>
                             </div>
-                            <h5 className="mb-3">SEO Optimization</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-3">Ecommerce Solutions</h5>
+                            <p>We offer ecommerce solutions for businesses looking to sell their products online. Our team of experts can help you set up your online store and integrate it with your existing systems.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                                <TiHtml5/>
                             </div>
-                            <h5 className="mb-3">Web Design</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-3">Web Design & Development</h5>
+                            <p>We create custom websites and web applications that are tailored to your specific business needs. Our designers and developers work together to ensure a seamless user experience that is both functional and visually appealing.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                                <MdManageAccounts/>
                             </div>
-                            <h5 className="mb-3">Social Media Marketing</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-2">Accounting & POS Software</h5>
+                            <p className='text-xl'>We provide accounting software solutions to help you manage your finances more efficiently. Our software is easy to use and integrate with your existing systems. Our point-of-sale software solutions make it easy for businesses to manage sales and transactions. Our software is fast, reliable, and easy to use.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                            <RiReactjsFill/>
                             </div>
-                            <h5 className="mb-3">Email Marketing</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-3">Automation Software</h5>
+                            <p>We develop automation software to streamline your business processes and save you time and money. Our solutions are custom-built to meet the unique requirements of your business.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                                <TbBugOff/>
                             </div>
-                            <h5 className="mb-3">PPC Advertising</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-3">Bug Fixing Services & Data Migration</h5>
+                            <p>Our team of experienced developers can help you fix any bugs in your website or web application. We provide fast and efficient solutions to get your site back up and running smoothly.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <i className="fa fa-home fa-2x"></i>
+                            <MdSupportAgent/>
                             </div>
-                            <h5 className="mb-3">App Development</h5>
-                            <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                            <h5 className="mb-3">Support & Maintenance</h5>
+                            <p>We offer ongoing support and maintenance services to keep your website or web application running smoothly. Our team is available to help you with any issues you may encounter.</p>
                             <a className="btn px-3 mt-auto mx-auto" href="">Read More</a>
                         </div>
                     </div>
@@ -376,8 +396,8 @@ const Home = () => {
             <div className="container">
               <div className="row mb-5">
                 <div className="col-lg-3 py-3">
-                  <h3>SEOGram</h3>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero amet, repellendus eius blanditiis in iusto eligendi iure.</p>
+                  <h3 className='text-white'>Flexible IT</h3>
+                  <p className='text-white'>Building your digital presence with precision and creativity.</p>
         
                   <div className="social-media-button">
                     <a href="#"><span className="mai-logo-facebook-f"></span></a>
@@ -413,7 +433,7 @@ const Home = () => {
                 </div>
               </div>
         
-              <p className="text-center pb-2" id="copyright">Copyright &copy; 2019. This template design and develop by <a href="https://flexibleit.net/" target="_blank">Flexible IT</a></p>
+              <p className="text-center pb-2 text-white" id="copyright">Copyright &copy; 2019. This template design and develop by <a href="https://flexibleit.net/" target="_blank">Flexible IT</a></p>
             </div>
           </footer>
         {/* <!-- Footer End --> */}
