@@ -67,10 +67,10 @@ const Home = () => {
   </div>
 </nav>
 
-
+            {/* <-- Hero Section Start --> */}
             <div className=" py-5 bg-blue-900 mb-5">
                 <div className=" my-5 py-5 lg:px-5">
-                    <div className="g-5 py-5 flex flex-wrap">
+                    <div className="g-5 py-5 flex flex-wrap items-center justify-between mx-auto">
                         <div className="lg:w-1/2 text-center">
                             <h1 className="text-white mb-4 animated zoomIn">All in one Digital Solution need to grow your business rapidly</h1>
                             <p className="text-white pb-3 animated zoomIn ">Welcome to Flexible IT, your trusted partner for cutting-edge software solutions. We are a leading software development company dedicated to providing our clients with innovative and reliable digital solutions to help them achieve their business goals.
@@ -87,12 +87,13 @@ So, whether you're a startup or a well-established business, we're here to help 
                             </div>
                             {/* <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a> */}
                         </div>
-                        <div className="col-lg-6 lg:w-1/2 text-center text-lg-start">
+                        <div className="col-lg-6 lg:w-1/2 text-center lg:text-start">
                             <img className="img-fluid" src="/img/hero.png" alt=""/>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <-- Hero Section End --> */}
         </div>
         {/* <!-- Navbar & Hero End --> */}
 
@@ -100,61 +101,66 @@ So, whether you're a startup or a well-established business, we're here to help 
         <div className="modal fade" id="searchModal" tabindex="-1">
             <div className="modal-dialog modal-fullscreen">
                 <div className="modal-content bg-gray-500">
-                    <div className="modal-header border-0">
+                    {/* <div className="modal-header border-0">
                         <button type="button" className="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body d-flex align-items-center justify-content-center">
-                        <div  className='input-group w-max'>
-                            <input type="text" className="form-control bg-transparent border-light p-3" placeholder="Type search keyword" />
-                            <button className="btn btn-light px-4"><i className="bi bi-search"></i></button>
+                    </div> */}
+                    <div className="modal-body flex">
+                        <div  className='input-group flex mx-auto w-max'>
+                            <input type="text" className="form-control bg-transparent text-sm w-full 
+                              mr-3 py-5 px-4 h-2 border 
+                              border-gray-200 rounded mb-2" placeholder="Type search keyword" />
+                            <Button text="Search" link="" className='border hover:bg-white px-4' />
+                            {/* <button className="btn btn-light px-4"><i className="bi bi-search"></i></button> */}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        {/* <!-- Full Screen Search Start --> */}
+        {/* <!-- Full Screen Search End --> */}
 
         {/* <!-- About Start --> */}
+    
         <div className="container-xxl py-5">
-            <div className="container px-lg-5">
-                <div className="row g-5">
-                    <div className="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div className="container lg:px-5">
+                <div className="row g-5 flex flex-wrap items-center justify-between mx-auto">
+                    <div className="col-lg-6 lg:w-1/2 wow fadeInUp" data-wow-delay="0.1s">
                         <div className="section-title position-relative mb-4 pb-2">
-                            <h6 className="position-relative text-primary ps-4">About Us</h6>
+                            <h6 className="position-relative text-sky-900 px-4">About Us</h6>
                             <h2 className="mt-2">The best Digital solution with 10 years of experience</h2>
                         </div>
                         <p className="mb-4">We pride ourselves on delivering exceptional software products that meet the highest standards of quality and performance. Our solutions are designed to be user-friendly, scalable, and secure, ensuring that our clients get the most out of their investment.</p>
-                        <div className="row g-3">
-                            <div className="col-sm-6">
-                                <h6 className="mb-3"><BsCheckLg /> Award Winning</h6>
-                                <h6 className="mb-0"><i className="text-primary me-2"></i> <BsCheckLg /> Professional Staff</h6>
+                        <div className="row g-3 flex">
+                            <div className="sm:w-1/2">
+                                <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2'/> Award Winning</h6>
+                                <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2'/> Professional Staff</h6>
                             </div>
-                            <div className="col-sm-6">
-                                <h6 className="mb-3"><i className="text-primary me-2"></i> <BsCheckLg /> 24/7 Support</h6>
-                                <h6 className="mb-0"><i className="text-primary me-2"></i> <BsCheckLg /> Fair Prices</h6>
+                            <div className="sm:w-1/2">
+                                <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2'/> 24/7 Support</h6>
+                                <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2'/> Fair Prices</h6>
                             </div>
                         </div>
-                        <div className="d-flex align-items-center mt-4">
-                            <a className="btn btn-primary rounded-pill px-4 me-3" href="">Read More</a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsFacebook/> </a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsTwitter/> </a>
-                            <a className="btn btn-outline-primary btn-square me-3" href=""> <BsInstagram/> </a>
-                            <a className="btn btn-outline-primary btn-square" href=""> <BsLinkedin/> </a>
+                        <div className="flex items-center mt-4 ">
+                            {/* <a className="btn btn-primary rounded-pill px-4 ml-3" href="">Read More</a> */}
+                            <Button text="Read More" link="" className='border bg-sky-500 text-white hover:bg-sky-900 pt-4'/>
+                            <a className="ml-3" href=""> <BsFacebook className='w-9 h-7'/></a>
+                            <a className="ml-3" href=""> <BsTwitter className='w-9 h-7'/></a>
+                            <a className="ml-3" href=""> <BsInstagram className='w-9 h-7'/></a>
+                            <a className="ml-3" href=""> <BsLinkedin className='w-9 h-7'/></a>
                         </div>
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 lg:w-1/2">
                         <img className="img-fluid wow zoomIn" data-wow-delay="0.5s" src="img/about.jpg"/>
                     </div>
                 </div>
             </div>
         </div>
-        {/* <!-- About Start --> */}
+        {/* <!-- About End --> */}
 
         {/* <!-- Newsletter Start --> */}
-        <div className="container-xxl bg-primary newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div className="container px-lg-5">
-                <div className="row align-items-center h-36">
-                    <div className="col-12 col-md-6">
+        <div className="container-xxl bg-sky-900 newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div className="container lg:px-5">
+                <div className="row flex items-center h-36">
+                    <div className="col-12 md:w-1/2">
                         <h3 className="text-white">Ready to get started</h3>
                         <small className="text-white">Diam elitr est dolore at sanctus nonumy.</small>
                         <div className="position-relative w-100 mt-3">
