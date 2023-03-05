@@ -71,7 +71,7 @@ const Home = () => {
             <div className=" py-5 bg-blue-900 mb-5">
                 <div className=" my-5 py-5 lg:px-5">
                     <div className="g-5 py-5 flex flex-wrap items-center justify-between mx-auto">
-                        <div className="lg:w-1/2 text-center">
+                        <div className="lg:w-1/2 text-center pt-6">
                             <h1 className="text-white mb-4 animated zoomIn">All in one Digital Solution need to grow your business rapidly</h1>
                             <p className="text-white pb-3 animated zoomIn ">Welcome to Flexible IT, your trusted partner for cutting-edge software solutions. We are a leading software development company dedicated to providing our clients with innovative and reliable digital solutions to help them achieve their business goals.
 
@@ -105,7 +105,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                         <button type="button" className="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div> */}
                     <div className="modal-body flex">
-                        <div  className='input-group flex mx-auto w-max'>
+                        <div  className='input-group flex mx-auto w-max py-4'>
                             <input type="text" className="form-control bg-transparent text-sm w-full 
                               mr-3 py-5 px-4 h-2 border 
                               border-gray-200 rounded mb-2" placeholder="Type search keyword" />
@@ -120,8 +120,8 @@ So, whether you're a startup or a well-established business, we're here to help 
 
         {/* <!-- About Start --> */}
     
-        <div className="container-xxl py-5">
-            <div className="container lg:px-5">
+        <div className="py-5">
+            <div className="container mx-auto lg:px-5">
                 <div className="row g-5 flex flex-wrap items-center justify-between mx-auto">
                     <div className="col-lg-6 lg:w-1/2 wow fadeInUp" data-wow-delay="0.1s">
                         <div className="section-title position-relative mb-4 pb-2">
@@ -157,18 +157,18 @@ So, whether you're a startup or a well-established business, we're here to help 
         {/* <!-- About End --> */}
 
         {/* <!-- Newsletter Start --> */}
-        <div className="container-xxl bg-sky-900 newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div className="container lg:px-5">
-                <div className="row flex items-center h-36">
-                    <div className="col-12 md:w-1/2">
+        <div className="bg-sky-900 newsletter my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div className="container mx-auto lg:px-5">
+                <div className="row flex flex-wrap items-center h-36">
+                    <div className=" md:w-1/2 justify-center">
                         <h3 className="text-white">Ready to get started</h3>
                         <small className="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                        <div className="position-relative w-100 mt-3">
-                            <input className="form-control border-0 rounded-pill w-100 ps-4 pe-5 h-12" type="text" placeholder="Enter Your Email"/>
+                        <div className="position-relative w-fit mt-3">
+                            <input className="form-control border-0 rounded-pill w-96 ps-4 pr-5 h-12" type="text" placeholder="Enter Your Email"/>
                             <button type="button" className="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><FaTelegramPlane size={26}/></button>
                         </div>
                     </div>
-                    <div className="col-md-6 text-center mb-n5 d-none d-md-block">
+                    <div className="col-md-6 md:w-1/2 text-center mb-5 hidden md:block"> 
                         <img className="img-fluid mt-5 h-36" src="img/newsletter.png"/>
                     </div>
                 </div>
@@ -177,17 +177,17 @@ So, whether you're a startup or a well-established business, we're here to help 
         {/* <!-- Newsletter End --> */}
 
         {/* <!-- Service Start --> */}
-        <div className="container-xxl py-5 mt-37">
-            <div className="container px-lg-5">
+        <div className="py-5 mt-9">
+            <div className="container mx-auto lg:px-5">
                 <div className="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 className="position-relative d-inline text-primary ps-4">Our Services</h6>
+                    <h6 className="position-relative inline text-sky-900 pl-4">Our Services</h6>
                     <h2 className="mt-2">What Solutions We Provide</h2>
                 </div>
-                <div className="row g-4">
-                    <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                <div className="grid grid-cols-3 gap-4">
+                    <div className="wow zoomIn" data-wow-delay="0.1s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                            <GiShoppingCart/>
+                            <GiShoppingCart size={50}/>
                             </div>
                             <h5 className="mb-3">Ecommerce Solutions</h5>
                             <p>We offer ecommerce solutions for businesses looking to sell their products online. Our team of experts can help you set up your online store and integrate it with your existing systems.</p>
@@ -197,7 +197,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <TiHtml5/>
+                                <TiHtml5 size={50}/>
                             </div>
                             <h5 className="mb-3">Web Design & Development</h5>
                             <p>We create custom websites and web applications that are tailored to your specific business needs. Our designers and developers work together to ensure a seamless user experience that is both functional and visually appealing.</p>
@@ -207,7 +207,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <MdManageAccounts/>
+                                <MdManageAccounts size={50}/>
                             </div>
                             <h5 className="mb-2">Accounting & POS Software</h5>
                             <p className='text-xl'>We provide accounting software solutions to help you manage your finances more efficiently. Our software is easy to use and integrate with your existing systems. Our point-of-sale software solutions make it easy for businesses to manage sales and transactions. Our software is fast, reliable, and easy to use.</p>
@@ -217,7 +217,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.1s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                            <RiReactjsFill/>
+                            <RiReactjsFill size={50}/>
                             </div>
                             <h5 className="mb-3">Automation Software</h5>
                             <p>We develop automation software to streamline your business processes and save you time and money. Our solutions are custom-built to meet the unique requirements of your business.</p>
@@ -227,7 +227,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                                <TbBugOff/>
+                                <TbBugOff size={50}/>
                             </div>
                             <h5 className="mb-3">Bug Fixing Services & Data Migration</h5>
                             <p>Our team of experienced developers can help you fix any bugs in your website or web application. We provide fast and efficient solutions to get your site back up and running smoothly.</p>
@@ -237,7 +237,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
                         <div className="service-item d-flex flex-column justify-content-center text-center rounded">
                             <div className="service-icon flex-shrink-0">
-                            <MdSupportAgent/>
+                            <MdSupportAgent size={50}/>
                             </div>
                             <h5 className="mb-3">Support & Maintenance</h5>
                             <p>We offer ongoing support and maintenance services to keep your website or web application running smoothly. Our team is available to help you with any issues you may encounter.</p>
@@ -250,8 +250,8 @@ So, whether you're a startup or a well-established business, we're here to help 
         {/* <!-- Service End --> */}
 
         {/* <!-- Portfolio Start --> */}
-        <div className="container-xxl py-5">
-            <div className="container px-lg-5">
+        <div className="py-5">
+            <div className="container mx-auto lg:px-5">
                 <div className="section-title position-relative text-center mb-5 pb-2 wow fadeInUp" data-wow-delay="0.1s">
                     <h6 className="position-relative d-inline text-primary ps-4">Our Projects</h6>
                     <h2 className="mt-2">Recently Launched Projects</h2>
@@ -265,7 +265,7 @@ So, whether you're a startup or a well-established business, we're here to help 
                         </ul>
                     </div>
                 </div>
-                <div className="row g-4 portfolio-container">
+                <div className="grid grid-cols-3 gap-4 portfolio-container">
                     <div className="col-lg-4 col-md-6 portfolio-item first wow zoomIn" data-wow-delay="0.1s">
                         <div className="position-relative rounded overflow-hidden">
                             <img className="img-fluid w-100" src="img/portfolio-1.jpg" alt=""/>
@@ -344,9 +344,9 @@ So, whether you're a startup or a well-established business, we're here to help 
         {/* <!-- Portfolio End --> */}
 
         {/* <!-- Testimonial Start --> */}
-        <div className="container-xxl bg-primary testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
-            <div className="container py-5 px-lg-5">
-                <div className="owl-carousel testimonial-carousel">
+        <div className="bg-sky-900 testimonial py-5 my-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div className="container mx-auto py-5 lg:px-5">
+                <div className="grid grid-cols-4 gap-4 owl-carousel testimonial-carousel">
                     <div className="testimonial-item bg-transparent border rounded text-white p-4">
                         <i className="fa fa-quote-left fa-2x mb-3"></i>
                         <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
@@ -397,25 +397,25 @@ So, whether you're a startup or a well-established business, we're here to help 
         {/* <!-- Testimonial End --> */}
 
         {/* <!-- Footer Start --> */}
-        <footer className="page-footer footer-img bg-image bg-dark" style={{backgroundImage:"url('/img/footer.png')"}} > 
+        <footer className="page-footer footer-img bg-image bg-black" style={{backgroundImage:"url('/img/footer.png')"}} > 
         {/* style="background-image: url('img/world_pattern.svg');" */}
-            <div className="container">
-              <div className="row mb-5">
-                <div className="col-lg-3 py-3">
+            <div className="container mx-auto">
+              <div className="grid grid-cols-4 mb-5">
+                <div className="py-3">
                   <h3 className='text-white'>Flexible IT</h3>
-                  <p className='text-white'>Building your digital presence with precision and creativity.</p>
+                  <p className='text-sky-900'>Building your digital presence with precision and creativity.</p>
         
                   <div className="social-media-button">
-                    <a href="#"><span className="mai-logo-facebook-f"></span></a>
+                    <a href="#"><span><BsFacebook className='w-9 h-7'/></span></a>
                     <a href="#"><span className="mai-logo-twitter"></span></a>
                     <a href="#"><span className="mai-logo-google-plus-g"></span></a>
                     <a href="#"><span className="mai-logo-instagram"></span></a>
                     <a href="#"><span className="mai-logo-youtube"></span></a>
                   </div>
                 </div>
-                <div className="col-lg-3 py-3">
-                  <h5>Company</h5>
-                  <ul className="footer-menu">
+                <div className="py-3">
+                  <h5 className='text-white'>Company</h5>
+                  <ul className="footer-menu text-sky-900">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Career</a></li>
                     <li><a href="#">Advertise</a></li>
@@ -423,15 +423,15 @@ So, whether you're a startup or a well-established business, we're here to help 
                     <li><a href="#">Help & Support</a></li>
                   </ul>
                 </div>
-                <div className="col-lg-3 py-3">
-                  <h5>Contact Us</h5>
-                  <p>203 Fake St. Mountain View, San Francisco, California, USA</p>
-                  <a href="#" className="footer-link">+00 1122 3344 5566</a>
-                  <a href="#" className="footer-link">seogram@temporary.com</a>
+                <div className="py-3">
+                  <h5 className='text-white'>Contact Us</h5>
+                  <p className='text-sky-900'>203 Fake St. Mountain View, San Francisco, California, USA</p>
+                  <a href="#" className="footer-link text-sky-900">+00 1122 3344 5566</a>
+                  <a href="#" className="footer-link text-sky-900">seogram@temporary.com</a>
                 </div>
-                <div className="col-lg-3 py-3">
-                  <h5>Newsletter</h5>
-                  <p>Get updates, news or events on your mail.</p>
+                <div className="py-3">
+                  <h5 className='text-white'>Newsletter</h5>
+                  <p className='text-sky-900'>Get updates, news or events on your mail.</p>
                   <form action="#">
                     <input type="text" className="form-control" placeholder="Enter your email.."/>
                     <button type="submit" className="btn btn-success btn-block mt-2">Subscribe</button>
