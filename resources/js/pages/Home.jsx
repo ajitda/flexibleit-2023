@@ -70,13 +70,13 @@ const Home = () => {
                 </nav>
 
                 {/* <-- Hero Section Start --> */}
-                <div className=" py-5 bg-blue-900 mb-5">
+                <div className=" py-5 bg-indigo-800 mb-5">
                     <Container>
                         <div className=" my-5 py-5 lg:px-5">
                             <div className="py-5 flex flex-wrap items-center justify-between mx-auto">
                                 <div className="lg:w-1/2 text-center pt-6">
-                                    <h1 className="font-sans font-bold text-white mb-4 py-4 animated zoomIn text-4xl">All in one Digital Solution need to grow your business rapidly</h1>
-                                    <p className="text-white pb-3 animated zoomIn font-sans text-base font-normal leading-normal text-left">Welcome to Flexible IT, your trusted partner for cutting-edge software solutions. We are a leading software development company dedicated to providing our clients with innovative and reliable digital solutions to help them achieve their business goals.
+                                    <h1 className="font-sans font-bold text-white mb-4 pt-12 animated zoomIn text-4xl">All in one Digital Solution need to grow your business rapidly</h1>
+                                    <p className="text-white pb-3 pt-4 animated zoomIn font-sans text-base font-normal leading-normal text-left">Welcome to Flexible IT, your trusted partner for cutting-edge software solutions. We are a leading software development company dedicated to providing our clients with innovative and reliable digital solutions to help them achieve their business goals.
 
                                         With 10 years of experience in the industry, our team of expert developers and designers specialize in creating customized software applications tailored to the specific needs of our clients. From web and mobile applications to enterprise software solutions, we offer a comprehensive range of services to help businesses streamline their operations and stay ahead of the competition.</p>
                                     {/* <a href="" className="button btn-light py-sm-3 px-sm-5 rounded-pill ">Free Tools</a> */}
@@ -86,7 +86,7 @@ const Home = () => {
                                     </div>
                                     {/* <a href="" className="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">Contact Us</a> */}
                                 </div>
-                                <div className="col-lg-6 lg:w-1/2 text-center lg:text-start">
+                                <div className="lg:w-1/2 text-center lg:text-start">
                                     <img className="img-fluid" src="/img/hero.png" alt="" />
                                 </div>
                             </div>
@@ -119,30 +119,29 @@ const Home = () => {
             {/* <!-- Full Screen Search End --> */}
 
             {/* <!-- About Start --> */}
-
-            <div className="py-5">
+            <div className="py-6">
                 <Container>
                 <div className=" mx-auto lg:px-5">
                     <div className="row g-5 flex flex-wrap items-center justify-between mx-auto">
-                        <div className="col-lg-6 lg:w-1/2 wow fadeInUp" data-wow-delay="0.1s">
+                        <div className="lg:w-1/2 wow fadeInUp" data-wow-delay="0.1s">
                             <div className="section-title position-relative mb-4 pb-2">
-                                <h6 className="position-relative text-sky-900 px-4">About Us</h6>
-                                <h2 className="mt-2">The best Digital solution with 10 years of experience</h2>
+                                <h6 className="position-relative text-sky-900 px-4 font-sans font-medium text-base">About Us</h6>
+                                <h2 className="mt-2 font-bold text-3xl font-sans">The best Digital solution with 10 years of experience</h2>
                             </div>
-                            <p className="mb-4">We pride ourselves on delivering exceptional software products that meet the highest standards of quality and performance. Our solutions are designed to be user-friendly, scalable, and secure, ensuring that our clients get the most out of their investment.</p>
+                            <p className="mb-4 font-normal text-base text-neutral-500">We pride ourselves on delivering exceptional software products that meet the highest standards of quality and performance. Our solutions are designed to be user-friendly, scalable, and secure, ensuring that our clients get the most out of their investment.</p>
                             <div className="row g-3 flex">
                                 <div className="sm:w-1/2">
-                                    <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2' /> Award Winning</h6>
-                                    <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2' /> Professional Staff</h6>
+                                    <h6 className="m-4 flex items-center font-medium text-base"><BsCheckLg className='text-sky-900 mr-2' /> Award Winning</h6>
+                                    <h6 className="m-4 flex items-center font-medium text-base"><BsCheckLg className='text-sky-900 mr-2' /> Professional Staff</h6>
                                 </div>
                                 <div className="sm:w-1/2">
-                                    <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2' /> 24/7 Support</h6>
-                                    <h6 className="m-4 flex items-center"><BsCheckLg className='text-sky-900 mr-2' /> Fair Prices</h6>
+                                    <h6 className="m-4 flex items-center font-medium text-base"><BsCheckLg className='text-sky-900 mr-2' /> 24/7 Support</h6>
+                                    <h6 className="m-4 flex items-center font-medium text-base"><BsCheckLg className='text-sky-900 mr-2' /> Fair Prices</h6>
                                 </div>
                             </div>
                             <div className="flex items-center mt-4 ">
                                 {/* <a className="btn btn-primary rounded-pill px-4 ml-3" href="">Read More</a> */}
-                                <Button text="Read More" link="" className='border bg-sky-500 text-white hover:bg-sky-900 pt-4' />
+                                <Button text="Read More" link="" className='border bg-indigo-800 text-white font-medium hover:bg-sky-900' />
                                 <a className="ml-3" href=""> <BsFacebook className='w-9 h-7' /></a>
                                 <a className="ml-3" href=""> <BsTwitter className='w-9 h-7' /></a>
                                 <a className="ml-3" href=""> <BsInstagram className='w-9 h-7' /></a>
