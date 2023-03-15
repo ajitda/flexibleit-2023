@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -33,10 +33,10 @@ Route::group([ 'prefix' => 'blogs'], function () {
     })->where('any','.*');
 });
 
-Route::get('/home2', function () {
-    return view('home2');
-});
-
-Route::get('/home3', function () {
+Route::get('/', function () {
     return view('blog');
 });
+
+// Route::get('/home3', function () {
+//     return view('blog');
+// });
