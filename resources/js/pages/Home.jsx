@@ -25,10 +25,14 @@ const Home = () => {
             <Portfolios />
          </div>
       </div>
-      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={` ${styles.flexCenter} bg-gray-100 my-12`}>
          <div className={`${styles.boxWidth}`}>
             <Testimonials />
-            <Clients />
+            </div>
+      </div>
+      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+         <div className={`${styles.boxWidth}`}>
+            {/* <Clients /> */}
             <Blogs />
             <Cta />
             <Footer />

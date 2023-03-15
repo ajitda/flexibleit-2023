@@ -19,9 +19,13 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@swiper/core": "^0.0.21",
         "react-icons": "^4.7.1",
+        "react-responsive-masonry": "^2.1.7",
         "react-router-dom": "^6.8.1",
+        "react-slider-swiper": "^2.0.6",
         "react-stickynode": "^4.1.0",
-        "react-waypoint": "^10.3.0"
+        "react-waypoint": "^10.3.0",
+        "swiper": "^9.1.0"
     }
 }

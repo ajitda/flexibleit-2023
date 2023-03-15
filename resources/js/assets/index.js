@@ -8,8 +8,15 @@ export const robot = '/img/robot.png';
 export const herobanner = '/img/hero-banner.png';
 
 export const gallery1 = '/img/gallery/1.png';
-export const gallery2 = '/img/gallery/2.png';
+export const gallery2 = '/img/gallery/gallarytest.png';
 export const gallery3 = '/img/gallery/3.png';
 export const gallery4 = '/img/gallery/4.png';
 export const gallery5 = '/img/gallery/5.png';
 export const gallery6 = '/img/gallery/6.png';
+
+export const testimonialsImage1 = '/img/testimonials/testimonial-1-1.png'
+export const testimonialsImage2 = '/img/testimonials/testimonial-1-2.png'
+export const testimonialsImage3 = '/img/testimonials/testimonial-1-3.png'
+export const testimonialsImage4 = '/img/testimonials/testimonial-1-4.png'
+export const testimonialsImage5 = '/img/testimonials/testimonial-1-5.png'
+export const testimonialsImage6 = '/img/testimonials/testimonial-1-6.png'

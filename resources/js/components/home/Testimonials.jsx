@@ -1,7 +1,12 @@
 import React from 'react'
+import SwiperCore, { Autoplay } from 'swiper'
+import {Swiper, SwiperSlide} from 'swiper/react'
 import { testimonials } from '../../constants'
 import styles from '../../style'
 import TestimonialsCard from './TestimonialsCard'
+import 'swiper/css';
+
+SwiperCore.use([Autoplay]);
 
 const Testimonials = () => {
   const testimonialCarousel = {
@@ -37,9 +42,10 @@ const Testimonials = () => {
 
   return (
     <>
-    <div className='text-center py-24'>
+    
+    <div className='text-center py-10'>
     <h2 className={`${styles.heading2} mb-1`}>What Clients Say About US</h2>
-      <p className={`${styles.paragraph} max-w-xl mx-auto`}>Customer Testimonial</p>
+    <p className={`${styles.paragraph} max-w-xl mx-auto`}>Customer Testimonial</p>
     </div>
     <div>
     <Swiper {...testimonialCarousel}>

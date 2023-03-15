@@ -3,15 +3,15 @@ import React from 'react'
 const TestimonialsCard = ({ image, text, name, username }) => {
     return (
         <div>
-            <div class="css-1gnkfvm">
-                <p class="css-vurnku">{text}.</p>
-                <div class="css-ljyqfc">
-                    <div class="css-1rl56xl">
+            <div className=' my-4 bg-white p-6'>
+                <p className=" text-base font-normal text-[#343D48] ">{text}.</p>
+                <div className="flex py-4">
+                    <div className="">
                         <img src={image} alt="Minnie Horn" class="css-9taffg" />
                     </div>
-                    <div class="css-1cmdwej">
-                        <h3 class="css-1wf7gym">{name}</h3>
-                        <p class="css-vurnku">{username}</p>
+                    <div className="pl-4">
+                        <h3 className=" text-[17px] font-medium text-[#343D48]">{name}</h3>
+                        <p className=" text-sm text-secondary">{username}</p>
                     </div>
                 </div>
             </div>
