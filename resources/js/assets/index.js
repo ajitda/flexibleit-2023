@@ -26,3 +26,8 @@ export const thumb1 = '/img/blog/1.png'
 export const thumb2 = '/img/blog/2.png'
 export const thumb3 = '/img/blog/3.png'
 export const thumb4 = '/img/blog/4.png'
+
+export const facebook = '/img/icons/facebook.png'
+export const dribbble = '/img/icons/dribbble.png'
+export const github = '/img/icons/github.png'
+export const twitter = '/img/icons/twitter.png'
