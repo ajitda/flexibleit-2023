@@ -1,6 +1,6 @@
 // import { people01, people02, people03, facebook, instagram, linkedin, twitter, airbnb, binance, coinbase, dropbox, send, shield, star  } from "../assets";
 
-import { gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, testimonialsImage1, testimonialsImage2, testimonialsImage3, testimonialsImage4, testimonialsImage5, testimonialsImage6 } from "../assets";
+import { gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, testimonialsImage1, testimonialsImage2, testimonialsImage3, testimonialsImage4, testimonialsImage5, testimonialsImage6, thumb1, thumb2, thumb3, thumb4 } from "../assets";
 
 
 export const navLinks = [

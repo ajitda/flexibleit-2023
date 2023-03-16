@@ -4,7 +4,7 @@ const TestimonialsCard = ({ image, text, name, username }) => {
     return (
         <div>
             <div className=' my-4 bg-white p-6'>
-                <p className=" text-base font-normal text-[#343D48] ">{text}.</p>
+                <p className=" text-base font-normal text-[#343D48] ">{text}</p>
                 <div className="flex py-4">
                     <div className="">
                         <img src={image} alt="Minnie Horn" class="css-9taffg" />

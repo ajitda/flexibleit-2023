@@ -6,6 +6,7 @@ export const close = '/img/close.svg';
 export const discount = '/img/discount.svg';
 export const robot = '/img/robot.png';
 export const herobanner = '/img/hero-banner.png';
+export const subscribe = '/img/subscribe-bg.png'
 
 export const gallery1 = '/img/gallery/1.png';
 export const gallery2 = '/img/gallery/gallarytest.png';
@@ -20,3 +21,8 @@ export const testimonialsImage3 = '/img/testimonials/testimonial-1-3.png'
 export const testimonialsImage4 = '/img/testimonials/testimonial-1-4.png'
 export const testimonialsImage5 = '/img/testimonials/testimonial-1-5.png'
 export const testimonialsImage6 = '/img/testimonials/testimonial-1-6.png'
+
+export const thumb1 = '/img/blog/1.png'
+export const thumb2 = '/img/blog/2.png'
+export const thumb3 = '/img/blog/3.png'
+export const thumb4 = '/img/blog/4.png'

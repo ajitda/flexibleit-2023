@@ -28,13 +28,21 @@ const Home = () => {
       <div className={` ${styles.flexCenter} bg-gray-100 my-12`}>
          <div className={`${styles.boxWidth}`}>
             <Testimonials />
-            </div>
+         </div>
       </div>
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
          <div className={`${styles.boxWidth}`}>
             {/* <Clients /> */}
-            <Blogs />
+            <div className={`  ${styles.flexCenter}`}>
+               <div className={`${styles.boxWidth}`}>
+                  <Blogs />
+               </div>
+            </div>
+            <div className={`${styles.paddingX} ${styles.flexCenter} my-10`} style={{ backgroundImage: 'url(/img/subscribe-bg.png)'}}>
+         <div className={`${styles.boxWidth}`}>
             <Cta />
+            </div>
+            </div>
             <Footer />
          </div>
       </div>
