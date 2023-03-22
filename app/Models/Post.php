@@ -9,4 +9,15 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description'];
+    public function saveData(array $input, string $id): Post
+    {
+        $post = $this->findOrFail($id);
+        $post->fill($input);
+        $post->save();
+        return $post;
+    }
+    public function deletePost()
+    {
+        $this->delete();
+    }
 }

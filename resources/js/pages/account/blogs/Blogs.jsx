@@ -16,6 +16,20 @@ export default function Blogs() {
          setPosts(data);
         });
    }
+
+   const handleDelete = (id) => {
+    fetch(`/api/posts/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Optionally, update your component state or perform other actions.
+      getPosts();
+    })
+    // .catch(error => console.error(error));
+  }
+
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto">
@@ -24,7 +38,7 @@ export default function Blogs() {
                         <label htmlFor="hs-table-search" className="sr-only">
                             Search
                         </label>
-                        <Link to={"/blogs/create"}>Add</Link>
+                        <Link to={"/account/blogs/create"} className='bg-green-400 py-3 px-6' >Add</Link>
                         <input
                             type="text"
                             name="hs-table-search"
@@ -157,7 +171,7 @@ export default function Blogs() {
                                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                         <a
                                             className="text-green-500 hover:text-green-700"
-                                            href="#"
+                                            href={`/account/blogs/${post.id}/edit`}
                                         >
                                             Edit
                                         </a>
@@ -165,7 +179,7 @@ export default function Blogs() {
                                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                         <a
                                             className="text-red-500 hover:text-red-700"
-                                            href="#"
+                                            href="#" onClick={() => handleDelete(post.id)}
                                         >
                                             Delete
                                         </a>

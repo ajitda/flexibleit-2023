@@ -1,4 +1,3 @@
-import Container from '../../components/Container';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +19,7 @@ const BlogCreate = () => {
      fetch('/api/posts', requestOptions).then(response => response.json())
          .then(data => {
             console.log('data',data)
-            navigate('/blogs')
+            navigate('/account/blogs')
          });
  
    }
@@ -80,6 +79,7 @@ const BlogCreate = () => {
      </div>
    </div> */}
    <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
+   <button><a href="/account/blogs">Back</a></button>
  </form>);
 }
 

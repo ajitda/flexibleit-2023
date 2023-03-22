@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,23 +20,33 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/blogs', function () {
-    return view('blog');
-});
-
-Route::group([ 'prefix' => 'blogs'], function () {
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/blogs', function () {
+//     return view('blog');
+// });
+Route::group([ 'prefix' => 'account', 'middleware'=>'auth'], function () {
     Route::get('/', function () {
-        return view('blog');
+        return view('home');
     })->name("blog");
     Route::get('/{any}', function () {
-        return view('blog');
+        return view('home');
     })->where('any','.*');
 });
 
-Route::get('/', function () {
-    return view('blog');
-});
+// Route::group([ 'prefix' => 'blogs'], function () {
+    Route::get('/', function () {
+        return view('index');
+    })->name("blog");
+    Route::get('/{any}', function () {
+        return view('index');
+    })->where('any','.*');
+// });
+
+// Route::get('/', function () {
+//     return view('blog');
+// });
+
+// Route::resource('blogs', BlogController::class);
 
 // Route::get('/home3', function () {
 //     return view('blog');

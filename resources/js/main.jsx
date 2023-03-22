@@ -4,21 +4,30 @@ import Example from "./components/Example";
 import Contact from "./pages/Contact";
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import Blogs from "./pages/blogs/Blogs";
-import BlogCreate from "./pages/blogs/BlogCreate";
+import Blogs from "./pages/account/blogs/Blogs";
+import BlogCreate from "./pages/account/blogs/BlogCreate";
 import Home from "./pages/Home";
+import BlogEdit from "./pages/account/blogs/BlogEdit";
 
 const router = createBrowserRouter([
   {
-    path: "/blogs",
+    path: "/account",
     element: <Blogs />,
   },
   {
-   path: "/blogs/create",
+    path: "/account/blogs",
+    element: <Blogs />,
+  },
+  {
+   path: "/account/blogs/create",
    element: <BlogCreate />,
  },
+ {
+  path: "/account/blogs/:id/edit",
+  element: <BlogEdit />,
+},
   {
-   path: "/blogs/contacts",
+   path: "/account/blogs/contacts",
    element: <Contact />,
  },
  {

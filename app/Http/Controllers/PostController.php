@@ -37,9 +37,9 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Post $post)
     {
-        //
+        return response()->json($post);
     }
 
     /**
@@ -55,14 +55,19 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $input = $request->all();
+        $postObj = new Post();
+        $post = $postObj->saveData($input, $id);
+        return response()->json($post);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        //
+        // $post = Post::findOrFail($id);
+        $post->delete();
+        return response()->json(['delete successful']);
     }
 }
