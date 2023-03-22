@@ -33,16 +33,16 @@ const Home = () => {
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
          <div className={`${styles.boxWidth}`}>
             {/* <Clients /> */}
-            <div className={`  ${styles.flexCenter}`}>
-               <div className={`${styles.boxWidth}`}>
-                  <Blogs />
-               </div>
-            </div>
-            <div className={`${styles.paddingX} ${styles.flexCenter} my-10`} style={{ backgroundImage: 'url(/img/subscribe-bg.png)'}}>
+            <Blogs />
+         </div>
+      </div>
+      <div className={`${styles.paddingX} ${styles.flexCenter} my-10`} style={{ backgroundImage: 'url(/img/subscribe-bg.png)' }}>
          <div className={`${styles.boxWidth}`}>
             <Cta />
-            </div>
-            </div>
+         </div>
+      </div>
+      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+         <div className={`${styles.boxWidth}`}>
             <Footer />
          </div>
       </div>
