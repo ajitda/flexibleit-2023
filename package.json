@@ -26,6 +26,7 @@
         "react-slider-swiper": "^2.0.6",
         "react-stickynode": "^4.1.0",
         "react-waypoint": "^10.3.0",
-        "swiper": "^9.1.0"
+        "swiper": "^9.1.0",
+        "tus-js-client": "^3.1.0"
     }
 }

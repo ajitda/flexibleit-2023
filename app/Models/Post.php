@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description'];
+    protected $appends = ['thumbnail'];
     public function saveData(array $input, string $id): Post
     {
         $post = $this->findOrFail($id);
@@ -20,4 +21,15 @@ class Post extends Model
     {
         $this->delete();
     }
+
+    
+    /**
+	 * Get all of the medias for the Review
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function media()
+	{
+		return $this->morphMany(Media::class , 'mediable');
+	}
 }
