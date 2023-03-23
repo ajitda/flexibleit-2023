@@ -5,11 +5,12 @@ const BlogPost = ({post}) => {
     <>
     <div className='py-4'>
        {/* <article>{post.description}</article>  */}
-       <img src={post.thumbnail} alt="" />
+       <img src={post?.thumbnail ? post?.thumbnail : '/img/blog/1.png'} alt="" />
     </div>
     <div>
         <h3 className='text-2xl text-[#0F2137] text-xl font-bold'>{post.title}</h3>
         <p className='text-[rgba(15,33,55,0.6)] mt-[10px] text-base'>{post.description}</p>
+        
 
     </div>
     </>
