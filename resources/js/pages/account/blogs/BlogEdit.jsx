@@ -27,6 +27,7 @@ const BlogEdit = () => {
         setPost(resdata);
            setTitle(resdata.title);
            setDescription(resdata.description);
+           setMedia(res.media);
      });
 
     //     fetch(`/api/posts/${id}`)
