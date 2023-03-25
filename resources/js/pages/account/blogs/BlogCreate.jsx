@@ -22,16 +22,20 @@ const BlogCreate = () => {
         if ( uploads === false ) return false;
         postData.media = uploads ;
       }
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(postData)
-      };
-     fetch('/api/posts', requestOptions).then(response => response.json())
-         .then(data => {
-            console.log('data',data)
-            navigate('/account/blogs')
-         });
+      axios.post('/api/posts', postData).then(res => {
+        console.log('data',res.data)
+        navigate('/account/blogs')
+     });
+    //   const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(postData)
+    //   };
+    //  fetch('/api/posts', requestOptions).then(response => response.json())
+    //      .then(data => {
+    //         console.log('data',data)
+    //         navigate('/account/blogs')
+    //      });
  
    }
 
