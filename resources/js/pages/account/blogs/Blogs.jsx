@@ -137,6 +137,13 @@ export default function Blogs() {
                                     </th>
                                     <th
                                         scope="col"
+                                        className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                                    >
+                                        Image
+                                    </th>
+                                    
+                                    <th
+                                        scope="col"
                                         className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                                     >
                                         Edit
@@ -175,6 +182,9 @@ export default function Blogs() {
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                         {post.description}
+                                    </td>
+                                    <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                        {post.thumbnail}
                                     </td>
                                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                         <a
