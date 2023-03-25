@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuth } from '../../../hooks/auth';
 
 const BlogEdit = () => {
-
+  const {user} = useAuth({middleware: "auth"})
     let { id } = useParams();
 
     const [title, setTitle] = useState();
