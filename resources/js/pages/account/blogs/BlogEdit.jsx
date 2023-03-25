@@ -27,7 +27,7 @@ const BlogEdit = () => {
         setPost(resdata);
            setTitle(resdata.title);
            setDescription(resdata.description);
-           setMedia(res.media);
+           setMedia(resdata.media);
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -58,7 +58,7 @@ const BlogEdit = () => {
          }
 
 
-        axios.put(`/api/posts/${id}`, { title: title, description: description })
+        axios.put(`/api/posts/${id}`, postData)
             .then(res => {
                 console.log('data', res.data)
                 navigate('/account/blogs')
