@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import ImageUpload from '../../../components/UI/ImageUpload';
+import { uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
 
 const BlogEdit = () => {
@@ -9,6 +11,7 @@ const BlogEdit = () => {
 
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
+    const [media, setMedia] = useState([]);
     const navigate = useNavigate();
 
     const [post, setPost]= useState()
@@ -36,7 +39,7 @@ const BlogEdit = () => {
     //       });
      }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         console.log('title', title);
         console.log('description', description);
@@ -46,6 +49,14 @@ const BlogEdit = () => {
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
+        const postData = { title: title, description: description };
+        if (media.length > 0) {
+         const uploads = await uploadFiles(media);
+           if ( uploads === false ) return false;
+           postData.media = uploads ;
+         }
+
+
         axios.put(`/api/posts/${id}`, { title: title, description: description })
             .then(res => {
                 console.log('data', res.data)
@@ -78,6 +89,9 @@ const BlogEdit = () => {
                 <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
                 <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
             </div>
+            <div className='flex flex-wrap'>
+      <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
         </div>
         {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
