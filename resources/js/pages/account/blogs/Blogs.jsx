@@ -11,9 +11,10 @@ export default function Blogs() {
    }, []);
 
    const getPosts = () => {
-    axios.post('/api/posts', setPosts).then(res => {
+    axios.get('/api/posts', ).then(res => {
         console.log('data',res.data)
-        navigate('/account/blogs')
+        // navigate('/account/blogs')
+        setPosts(res.data.data);
      });
 
 //       fetch('/api/posts')

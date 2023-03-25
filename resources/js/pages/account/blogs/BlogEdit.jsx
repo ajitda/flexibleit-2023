@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
@@ -17,9 +18,12 @@ const BlogEdit = () => {
      }, []);
 
      const getPost = () => {
-      axios.post('/api/posts').then(res => {
+      axios.get(`/api/posts/${id}`).then(res => {
         console.log('data',res.data)
-        navigate('/account/blogs')
+        const resdata = res.data.data
+        setPost(resdata);
+           setTitle(resdata.title);
+           setDescription(resdata.description);
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -37,14 +41,14 @@ const BlogEdit = () => {
         console.log('title', title);
         console.log('description', description);
         //call the api
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: title, description: description })
-        };
-        fetch(`/api/posts/${id}`, requestOptions).then(response => response.json())
-            .then(data => {
-                console.log('data', data)
+        // const requestOptions = {
+        //     method: 'PUT',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify()
+        // };
+        axios.put(`/api/posts/${id}`, { title: title, description: description })
+            .then(res => {
+                console.log('data', res.data)
                 navigate('/account/blogs')
             });
 

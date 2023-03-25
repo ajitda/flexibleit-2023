@@ -28,12 +28,8 @@ const router = createBrowserRouter([
   path: "/account/blogs/:id/edit",
   element: <BlogEdit />,
 },
-{
-  path: "/account/categories",
-  element: <Categories />
-},
-  {
-   path: "/account/blogs/contacts",
+    {path: "/account/categories", element: <Categories />},
+  {path: "/account/blogs/contacts",
    element: <Contact />,
  },
  {
