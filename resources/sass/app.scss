@@ -16,6 +16,8 @@
 
 @import "tailwindcss/utilities";
 
+@import "./components/drag-and-upload.scss";
+
 @import "./pages/home";
 
 @import "./pages/custom/home.scss"

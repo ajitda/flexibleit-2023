@@ -3,8 +3,7 @@ module.exports = {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.jsx",
-    "./resources/**/*.vue",
+    "./resources/**/*.jsx"
   ],
   theme: {
     extend: {
@@ -27,6 +26,9 @@ module.exports = {
       lg: "1200px",
       xl: "1700px",
     },
+  },
+  corePlugins: {
+    collapse: false
   },
   plugins: [],
 }

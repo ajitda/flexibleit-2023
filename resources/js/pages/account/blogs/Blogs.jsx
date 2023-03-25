@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/auth";
 
 export default function Blogs() {
+    const {user} = useAuth({middleware: 'auth'})
    const [posts, setPosts] = useState();
 
    useEffect(()=>{
@@ -11,9 +13,9 @@ export default function Blogs() {
    const getPosts = () => {
       fetch('/api/posts')
         .then(response => response.json())
-        .then(data => {
-         console.log('posts res ', data)
-         setPosts(data);
+        .then(res => {
+         console.log('posts res ', res)
+         setPosts(res.data);
         });
    }
 

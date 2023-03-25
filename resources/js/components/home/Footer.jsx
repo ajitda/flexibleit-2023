@@ -1,11 +1,11 @@
 import React from 'react'
 import { logo } from '../../assets'
 import { menuItems } from '../../constants'
-import Widget from './widget'
+import FooterWidget from './FooterWidget'
 
 const Footer = () => {
   return (
-    <footer >
+    <footer>
       <div className='flex grid grid-cols-5 gap-4'>
         <div className='py-8'>
           <div>
@@ -19,7 +19,7 @@ const Footer = () => {
           <p>Copyright by {new Date().getFullYear()} FlexibleIT</p>
         </div>
         {menuItems.map(({ id, title, items }) => (
-            <Widget key={id} title={title} items={items} />
+            <FooterWidget key={id} title={title} items={items} />
           ))}
       </div>
     </footer>

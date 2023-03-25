@@ -19,6 +19,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@rajesh896/video-thumbnails-generator": "^2.3.9",
         "@swiper/core": "^0.0.21",
         "react-icons": "^4.7.1",
         "react-responsive-masonry": "^2.1.7",
@@ -26,6 +27,8 @@
         "react-slider-swiper": "^2.0.6",
         "react-stickynode": "^4.1.0",
         "react-waypoint": "^10.3.0",
-        "swiper": "^9.1.0"
+        "swiper": "^9.1.0",
+        "swr": "^2.1.1",
+        "tus-js-client": "^3.1.0"
     }
 }
