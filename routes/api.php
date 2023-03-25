@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TusController;
 use Illuminate\Http\Request;
@@ -24,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->group(function () {
     Route::any('/tus/{any?}', [TusController::class,'any'])->where('any', '.*')->name('tus');
     Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoryController::class);
 });

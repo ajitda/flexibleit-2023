@@ -11,12 +11,17 @@ export default function Blogs() {
    }, []);
 
    const getPosts = () => {
-      fetch('/api/posts')
-        .then(response => response.json())
-        .then(res => {
-         console.log('posts res ', res)
-         setPosts(res.data);
-        });
+    axios.post('/api/posts', setPosts).then(res => {
+        console.log('data',res.data)
+        navigate('/account/blogs')
+     });
+
+//       fetch('/api/posts')
+//         .then(response => response.json())
+//         .then(res => {
+//          console.log('posts res ', res)
+//          setPosts(res.data);
+//         });
    }
 
    const handleDelete = (id) => {

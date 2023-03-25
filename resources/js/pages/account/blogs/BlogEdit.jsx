@@ -17,14 +17,19 @@ const BlogEdit = () => {
      }, []);
 
      const getPost = () => {
-        fetch(`/api/posts/${id}`)
-          .then(response => response.json())
-          .then(data => {
-           console.log('posts res ', data)
-           setPost(data);
-           setTitle(data.title);
-           setDescription(data.description);
-          });
+      axios.post('/api/posts').then(res => {
+        console.log('data',res.data)
+        navigate('/account/blogs')
+     });
+
+    //     fetch(`/api/posts/${id}`)
+    //       .then(response => response.json())
+    //       .then(data => {
+    //        console.log('posts res ', data)
+    //        setPost(data);
+    //        setTitle(data.title);
+    //        setDescription(data.description);
+    //       });
      }
 
     const handleSubmit = (e) => {

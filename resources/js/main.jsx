@@ -6,8 +6,10 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import Blogs from "./pages/account/blogs/Blogs";
 import BlogCreate from "./pages/account/blogs/BlogCreate";
+import Categories from "./pages/account/Categories/Categories"
 import Home from "./pages/Home";
 import BlogEdit from "./pages/account/blogs/BlogEdit";
+import { element } from "prop-types";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,10 @@ const router = createBrowserRouter([
  {
   path: "/account/blogs/:id/edit",
   element: <BlogEdit />,
+},
+{
+  path: "/account/categories",
+  element: <Categories />
 },
   {
    path: "/account/blogs/contacts",
