@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::latest()->get();
-        return response()->json($posts);
+        // return response()->json($posts);
+        return $this->sendResponse($posts);
     }
 
     /**
@@ -30,8 +32,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-       $post = Post::create($input);
-        return response()->json($post);
+        $post = Post::create($input);
+        //adding media from request
+        $media = Media::getFromRequest($request);
+        if ($media) $post->media()->saveMany($media);
+        // return response()->json($post);
+        return $this->sendResponse($post);
     }
 
     /**
@@ -39,7 +45,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return response()->json($post);
+        // return response()->json($post);
+        return $this->sendResponse($post);
     }
 
     /**
@@ -58,7 +65,8 @@ class PostController extends Controller
         $input = $request->all();
         $postObj = new Post();
         $post = $postObj->saveData($input, $id);
-        return response()->json($post);
+        // return response()->json($post);
+        return $this->sendResponse($post);
     }
 
     /**
@@ -68,6 +76,7 @@ class PostController extends Controller
     {
         // $post = Post::findOrFail($id);
         $post->delete();
-        return response()->json(['delete successful']);
+        // return response()->json(['delete successful']);
+        return $this->sendResponse(['delete successful']);
     }
 }

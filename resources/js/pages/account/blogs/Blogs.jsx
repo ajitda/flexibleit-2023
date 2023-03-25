@@ -11,9 +11,9 @@ export default function Blogs() {
    const getPosts = () => {
       fetch('/api/posts')
         .then(response => response.json())
-        .then(data => {
-         console.log('posts res ', data)
-         setPosts(data);
+        .then(res => {
+         console.log('posts res ', res)
+         setPosts(res.data);
         });
    }
 

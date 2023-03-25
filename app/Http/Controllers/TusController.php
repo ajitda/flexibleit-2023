@@ -26,7 +26,7 @@ class TusController extends Controller
 		if ( $request->isMethod('get') && $request->has('upload_url') ) {
 			$media = Media::where([
 				'upload_url' => $request->input('upload_url'),
-				'author_id' => $request->user()->id,
+				'author_id' => 1,//$request->user()->id,
 			])->latest()->firstOrFail();
 			return new MediaResource($media);
 		}
@@ -53,7 +53,7 @@ class TusController extends Controller
 				
 				$media = Media::firstOrCreate([
 					'upload_url' => $cache['location'],
-					'author_id'  => $request->user()->id,
+					'author_id'  => 1, //$request->user()->id,
 					'type'    => 'image',
 					],[
 					'path'    => str_replace(Storage::disk('public')->path(''),'',$cache['file_path']),

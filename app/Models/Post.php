@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
     protected $fillable = ['title', 'description'];
     protected $appends = ['thumbnail'];
+
     public function saveData(array $input, string $id): Post
     {
         $post = $this->findOrFail($id);
@@ -21,6 +22,11 @@ class Post extends Model
     {
         $this->delete();
     }
+
+    public function getThumbnailAttribute()
+	{
+		return $this->media->whereNotNull('thumbnail')->pluck('thumbnail')->first();
+	}
 
     
     /**

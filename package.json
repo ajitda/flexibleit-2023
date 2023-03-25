@@ -19,6 +19,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@rajesh896/video-thumbnails-generator": "^2.3.9",
         "@swiper/core": "^0.0.21",
         "react-icons": "^4.7.1",
         "react-responsive-masonry": "^2.1.7",

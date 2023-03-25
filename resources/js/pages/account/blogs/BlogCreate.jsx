@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ImageUpload from '../../../components/UI/ImageUpload';
+import { uploadFiles } from '../../../helpers/helpers';
 
 const BlogCreate = () => {
    const [title, setTitle] = useState();
    const [description, setDescription] = useState();
+   const [media, setMedia] = useState([]);
    const navigate = useNavigate();
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async(e) => {
       e.preventDefault();
       console.log('title', title);
       console.log('description', description);
       //call the api
+      const postData = { title: title, description: description };
+     if (media.length > 0) {
+      const uploads = await uploadFiles(media);
+        if ( uploads === false ) return false;
+        postData.media = uploads ;
+      }
       const requestOptions = {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ title: title, description: description })
-     };
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData)
+      };
      fetch('/api/posts', requestOptions).then(response => response.json())
          .then(data => {
             console.log('data',data)
@@ -49,6 +58,9 @@ const BlogCreate = () => {
        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
      </div>
    </div>
+   <div className='flex flex-wrap'>
+      <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
    {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">

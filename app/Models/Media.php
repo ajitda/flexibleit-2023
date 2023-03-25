@@ -95,6 +95,7 @@ class Media extends Model
     {
         return $value ?? ($this->type == 'image' ? $this->url : null);
     }
+
     public function getDownloadUrlAttribute()
     {
         return $this->url;
@@ -214,7 +215,7 @@ class Media extends Model
     //
     public function scopeOfAccess($query, $user)
     {
-        return $query->where('author_id', $user->id);
+        return $query->where('author_id', 1);//$user->id);
     }
 
     public function scopeOfVimeo($query)
