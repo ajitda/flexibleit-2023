@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { uploadFiles } from '../../../helpers/helpers';
+import { useAuth } from '../../../hooks/auth';
 
 const BlogCreate = () => {
+  const {user} = useAuth({middleware: "auth"})
    const [title, setTitle] = useState();
    const [description, setDescription] = useState();
    const [media, setMedia] = useState([]);

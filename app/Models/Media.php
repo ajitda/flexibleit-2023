@@ -215,7 +215,7 @@ class Media extends Model
     //
     public function scopeOfAccess($query, $user)
     {
-        return $query->where('author_id', 1);//$user->id);
+        return $query->where('author_id', $user->id);
     }
 
     public function scopeOfVimeo($query)

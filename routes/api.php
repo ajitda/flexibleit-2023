@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::post('/posts', [PostController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function () {
+    Route::any('/tus/{any?}', [TusController::class,'any'])->where('any', '.*')->name('tus');
+    Route::resource('posts', PostController::class);
 });
-Route::any('/tus/{any?}', [TusController::class,'any'])->where('any', '.*')->name('tus');
-Route::resource('posts', PostController::class);

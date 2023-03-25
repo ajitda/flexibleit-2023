@@ -28,6 +28,7 @@
         "react-stickynode": "^4.1.0",
         "react-waypoint": "^10.3.0",
         "swiper": "^9.1.0",
+        "swr": "^2.1.1",
         "tus-js-client": "^3.1.0"
     }
 }

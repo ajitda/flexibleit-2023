@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/auth";
 
 export default function Blogs() {
+    const {user} = useAuth({middleware: 'auth'})
    const [posts, setPosts] = useState();
 
    useEffect(()=>{
