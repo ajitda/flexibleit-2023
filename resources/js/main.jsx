@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import BlogEdit from "./pages/account/blogs/BlogEdit";
 import { element } from "prop-types";
 import CategoryCreate from "./pages/account/Categories/CategoryCreate";
+import CategoryEdit from "./pages/account/Categories/CategoryEdit";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
 },
     {path: "/account/categories", element: <Categories />},
     {path: "/account/categories/create", element: <CategoryCreate />},
+    {path: "/account/categories/:id/edit", element: <CategoryEdit />},
   {path: "/account/blogs/contacts",
    element: <Contact />,
  },

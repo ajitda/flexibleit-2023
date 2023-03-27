@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // $post = Post::findOrFail($id);
+        // $category = Category::findOrFail($id);
         $category->delete();
         // return response()->json(['delete successful']);
         return $this->sendResponse(['delete successful']);
