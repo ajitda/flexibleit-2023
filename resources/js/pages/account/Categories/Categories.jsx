@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../hooks/auth';
 
 const Categories = () => {
+  const {user} = useAuth({middleware: 'auth'})
+  const [categories, setCategories] = useState();
+
+  useEffect(()=>{
+    getCategories();
+ }, []);
+
+ const getCategories = () => {
+  axios.get('/api/categories', ).then(res => {
+      console.log('data',res.data)
+      // navigate('/account/blogs')
+      setCategories(res.data.data);
+   });
+  }
+  const handleDelete = (id) => {
+    fetch(`/api/categories/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Optionally, update your component state or perform other actions.
+      getCategories();
+    })
+    // .catch(error => console.error(error));
+  }
   return (
     <div className="flex flex-col">
     <div className="overflow-x-auto">
@@ -10,7 +37,7 @@ const Categories = () => {
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
                 </label>
-                <Link to={"/account/blogs/create"} className='bg-green-400 py-3 px-6' >Add</Link>
+                <Link to={"/account/categories/create"} className='bg-green-400 py-3 px-6' >Add</Link>
                 <input
                     type="text"
                     name="hs-table-search"
@@ -121,7 +148,7 @@ const Categories = () => {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {posts && posts.map(post=> {
+                      {categories && categories.map(category=> {
                          return (
                          <tr>
                             <td className="py-3 pl-4">
@@ -139,16 +166,16 @@ const Categories = () => {
                                 </div>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                {post.id}
+                                {category.id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {post.title}
+                                {category.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {post.description}
+                                {category.description}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {post.thumbnail}
+                                {category.thumbnail}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
