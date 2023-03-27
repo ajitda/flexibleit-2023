@@ -180,7 +180,7 @@ const Categories = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-green-500 hover:text-green-700"
-                                    href={`/account/blogs/${post.id}/edit`}
+                                    href={`/account/categories/${category.id}/edit`}
                                 >
                                     Edit
                                 </a>
@@ -188,7 +188,7 @@ const Categories = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-red-500 hover:text-red-700"
-                                    href="#" onClick={() => handleDelete(post.id)}
+                                    href="#" onClick={() => handleDelete(category.id)}
                                 >
                                     Delete
                                 </a>
