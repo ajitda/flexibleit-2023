@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('sl no')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-
             $table->timestamps();
         });
     }
