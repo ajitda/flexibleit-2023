@@ -26,12 +26,9 @@ export default function Blogs() {
    }
 
    const handleDelete = (id) => {
-    fetch(`/api/posts/${id}`, {
-      method: 'DELETE'
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    axios.delete(`/api/posts/${id}`)
+    .then(res => {
+      console.log(res.data);
       // Optionally, update your component state or perform other actions.
       getPosts();
     })

@@ -19,12 +19,9 @@ const Categories = () => {
    });
   }
   const handleDelete = (id) => {
-    fetch(`/api/categories/${id}`, {
-      method: 'DELETE'
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    axios.delete(`/api/categories/${id}`)
+    .then(res => {
+      console.log(res.data);
       // Optionally, update your component state or perform other actions.
       getCategories();
     })
