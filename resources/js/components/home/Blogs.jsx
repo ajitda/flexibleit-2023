@@ -16,7 +16,7 @@ const Blogs = () => {
        .then(response => response.json())
        .then(data => {
         console.log('posts res ', data)
-        setPosts(data);
+        setPosts(data.data);
        });
   }
   return (
