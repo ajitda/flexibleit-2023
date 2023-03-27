@@ -1,0 +1,45 @@
+/* Reorder upload section */
+.media-upload{
+    position: relative;
+  }
+  .upload-btn {
+    border: dotted gray 1px;
+    background-color: #F0F3F5;
+    text-align: center;
+    height: 142px;
+    width: 142px;
+  
+    &.preview {
+        img {
+            object-fit: cover;
+        }
+    }
+  }
+  .upload-btn:hover {
+    cursor: pointer;
+    border: dotted gray 1px;
+    background-color: #d3e0e9;
+    text-align: center;
+    height: 144px;
+    width: 144px;
+  }
+  .media-upload .media-delete{
+    display: none;
+    position: absolute;
+    top: 15%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: white;
+    // color: white;
+    font-size: 16px;
+    padding: 3px 7px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+  }
+  
+  .media-upload:hover .media-delete {
+    display: block;
+  }

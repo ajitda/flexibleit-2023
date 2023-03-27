@@ -19,8 +19,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class=" navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container flex justify-between">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -35,7 +35,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto flex">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
