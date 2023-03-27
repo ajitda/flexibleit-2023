@@ -20,11 +20,14 @@ const Categories = () => {
    });
   }
   const handleDelete = (id) =>{
+    {if(window.confirm('Are you sure to delete this record?'))
     axios.delete(`/api/categories/${id}`)
     .then(res => {
-      console.log(res.data, 'Deleted Successfully.'); //
+      console.log(res.data, 'Deleted Successfully.');
+      getCategories()
     })
   }
+}
   // const handleDelete = (id) => {
   //   axios.delete(`/api/categories/${id}`)
   //   .then(res => {
@@ -193,7 +196,7 @@ const Categories = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-red-500 hover:text-red-700"
-                                    href="#" onClick={() => {if(window.confirm('Are you sure to delete this record?')){handleDelete(category.id)}}} 
+                                    href="#" onClick={() => {handleDelete(category.id)}} 
                                     // onClick={() => handleDelete(category.id)}
                                 >
                                     Delete

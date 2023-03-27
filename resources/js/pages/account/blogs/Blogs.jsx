@@ -26,6 +26,7 @@ export default function Blogs() {
    }
 
    const handleDelete = (id) => {
+    {if(window.confirm('Are you sure to delete this record?'))
     axios.delete(`/api/posts/${id}`)
     .then(res => {
       console.log(res.data);
@@ -34,7 +35,7 @@ export default function Blogs() {
     })
     // .catch(error => console.error(error));
   }
-
+   }
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto">
