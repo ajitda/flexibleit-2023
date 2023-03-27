@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
+import DeleteButton from '../deleteButton/DeleteButton';
 
 const Categories = () => {
   const {user} = useAuth({middleware: 'auth'})
@@ -18,15 +19,21 @@ const Categories = () => {
       setCategories(res.data.data);
    });
   }
-  const handleDelete = (id) => {
+  const handleDelete = (id) =>{
     axios.delete(`/api/categories/${id}`)
     .then(res => {
-      console.log(res.data);
-      // Optionally, update your component state or perform other actions.
-      getCategories();
+      console.log(res.data, 'Deleted Successfully.'); //
     })
-    // .catch(error => console.error(error));
   }
+  // const handleDelete = (id) => {
+  //   axios.delete(`/api/categories/${id}`)
+  //   .then(res => {
+  //     console.log(res.data);
+  //     // Optionally, update your component state or perform other actions.
+  //     getCategories();
+  //   })
+  //   // .catch(error => console.error(error));
+  // }
   return (
     <div className="flex flex-col">
     <div className="overflow-x-auto">
@@ -186,7 +193,8 @@ const Categories = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-red-500 hover:text-red-700"
-                                    href="#" onClick={() => handleDelete(category.id)}
+                                    href="#" onClick={() => {if(window.confirm('Are you sure to delete this record?')){handleDelete(category.id)}}} 
+                                    // onClick={() => handleDelete(category.id)}
                                 >
                                     Delete
                                 </a>
