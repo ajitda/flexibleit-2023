@@ -1,31 +1,43 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../../../hooks/auth';
-import { Link } from 'react-router-dom';
 
-const services = () => {
+const Portfolios = () => {
     const {user} = useAuth({middleware: 'auth'})
-    const [services, setServices] = useState();
-  
+    const [portfolios, setPortfolios] = useState();
+ 
     useEffect(()=>{
-      getServices();
-   }, []);
-  
-   const getServices = () => {
-    axios.get('/api/services').then(res => {
-        console.log('data',res.data)
-        // navigate('/account/blogs')
-        setServices(res.data.data);
-     });
+       getPortfolios();
+    }, []);
+ 
+    const getPortfolios = () => {
+     axios.get('/api/portfolios', ).then(res => {
+         console.log('data',res.data)
+         // navigate('/account/blogs')
+         setPortfolios(res.data.data);
+      });
+ 
+ //       fetch('/api/posts')
+ //         .then(response => response.json())
+ //         .then(res => {
+ //          console.log('posts res ', res)
+ //          setPosts(res.data);
+ //         });
     }
-    const handleDelete = (id) =>{
-      {if(window.confirm('Are you sure to delete this record?'))
-      axios.delete(`/api/services/${id}`)
-      .then(res => {
-        console.log(res.data, 'Deleted Successfully.');
-        getServices()
-      })
+ 
+    const handleDelete = (id) => {
+     {if(window.confirm('Are you sure to delete this record?'))
+     axios.delete(`/api/portfolios/${id}`)
+     .then(res => {
+       console.log(res.data);
+       // Optionally, update your component state or perform other actions.
+       getPortfolios();
+     })
+     // .catch(error => console.error(error));
+   }
     }
-  }
+
+
   return (
     <div className="flex flex-col">
     <div className="overflow-x-auto">
@@ -34,7 +46,7 @@ const services = () => {
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
                 </label>
-                <Link to={"/account/services/create"} className='bg-green-400 py-3 px-6' >Add</Link>
+                <Link to={"/account/portfolios/create"} className='bg-green-400 py-3 px-6' >Add</Link>
                 <input
                     type="text"
                     name="hs-table-search"
@@ -125,6 +137,13 @@ const services = () => {
                             </th>
                             <th
                                 scope="col"
+                                className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                            >
+                                Image
+                            </th>
+                            
+                            <th
+                                scope="col"
                                 className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                             >
                                 Edit
@@ -138,7 +157,7 @@ const services = () => {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {services && services.map(service=> {
+                      {portfolios && portfolios.map(portfolio=> {
                          return (
                          <tr>
                             <td className="py-3 pl-4">
@@ -156,18 +175,21 @@ const services = () => {
                                 </div>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                {service.id}
+                                {portfolio.id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {service.title}
+                                {portfolio.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {service.description}
+                                {portfolio.description}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                {portfolio.thumbnail}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-green-500 hover:text-green-700"
-                                    href={`/account/services/${service.id}/edit`}
+                                    href={`/account/portfolios/${portfolio.id}/edit`}
                                 >
                                     Edit
                                 </a>
@@ -175,7 +197,7 @@ const services = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-red-500 hover:text-red-700"
-                                    href="#" onClick={() => {handleDelete(service.id)}}
+                                    href="#" onClick={() => handleDelete(portfolio.id)}
                                 >
                                     Delete
                                 </a>
@@ -194,4 +216,4 @@ const services = () => {
   )
 }
 
-export default services
+export default Portfolios

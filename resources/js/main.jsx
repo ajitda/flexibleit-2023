@@ -14,6 +14,11 @@ import CategoryCreate from "./pages/account/Categories/CategoryCreate";
 import CategoryEdit from "./pages/account/Categories/CategoryEdit";
 import Services from "./pages/account/services/services";
 import ServicesCreate from "./pages/account/services/ServicesCreate";
+import ServiceEdit from "./pages/account/services/ServiceEdit";
+import Portfolios from "./pages/account/portfolios/Portfolios";
+import PortfolioCreate from "./pages/account/portfolios/PortfolioCreate";
+import PortfolioEdit from "./pages/account/portfolios/PortfolioEdit";
+
 
 
 const router = createBrowserRouter([
@@ -38,6 +43,10 @@ const router = createBrowserRouter([
     {path: "/account/categories/:id/edit", element: <CategoryEdit />},
     {path: "/account/services", element: <Services />},
     {path: "/account/services/create", element: <ServicesCreate />},
+    {path: "/account/services/:id/edit", element: <ServiceEdit /> },
+    {path: "/account/portfolios/", element: <Portfolios />},
+    {path: "/account/portfolios/create", element: <PortfolioCreate />},
+    {path: "/account/portfolios/:id/edit", element: <PortfolioEdit />},
     
   {path: "/account/blogs/contacts",
    element: <Contact />,

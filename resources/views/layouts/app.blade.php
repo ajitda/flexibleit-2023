@@ -28,14 +28,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class=" flex collapse navbar-collapse" id="navbarSupportedContent">
+                   <div> 
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
+                    <ul class=" mr-8"> <!-- -->
+                        <button><a href="/account/blogs">Blogs</a></button>
+                        <button><a href="/account/categories">Categories</a></button>
+                        <button><a href="/account/services">Services</a></button>
+                        <button><a href="/account/portfolios/">Portfolios</a></button>
                     </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto flex">
+                    </div>                   
+                    <div> <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -69,6 +73,7 @@
                             </li>
                         @endguest
                     </ul>
+                    </div>
                 </div>
             </div>
         </nav>

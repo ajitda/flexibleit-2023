@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TusController;
@@ -28,4 +29,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('portfolios', PortfolioController::class);
 });
