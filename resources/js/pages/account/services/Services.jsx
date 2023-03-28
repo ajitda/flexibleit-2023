@@ -1,41 +1,31 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
+import { Link } from 'react-router-dom';
 
-const Categories = () => {
-  const {user} = useAuth({middleware: 'auth'})
-  const [categories, setCategories] = useState();
-
-  useEffect(()=>{
-    getCategories();
- }, []);
-
- const getCategories = () => {
-  axios.get('/api/categories', ).then(res => {
-      console.log('data',res.data)
-      // navigate('/account/blogs')
-      setCategories(res.data.data);
-   });
+const services = () => {
+    const {user} = useAuth({middleware: 'auth'})
+    const [services, setServices] = useState();
+  
+    useEffect(()=>{
+      getServices();
+   }, []);
+  
+   const getServices = () => {
+    axios.get('/api/services').then(res => {
+        console.log('data',res.data)
+        // navigate('/account/blogs')
+        setServices(res.data.data);
+     });
+    }
+    const handleDelete = (id) =>{
+      {if(window.confirm('Are you sure to delete this record?'))
+      axios.delete(`/api/services/${id}`)
+      .then(res => {
+        console.log(res.data, 'Deleted Successfully.');
+        getServices()
+      })
+    }
   }
-  const handleDelete = (id) =>{
-    {if(window.confirm('Are you sure to delete this record?'))
-    axios.delete(`/api/categories/${id}`)
-    .then(res => {
-      console.log(res.data, 'Deleted Successfully.');
-      getCategories()
-    })
-  }
-}
-  // const handleDelete = (id) => {
-  //   axios.delete(`/api/categories/${id}`)
-  //   .then(res => {
-  //     console.log(res.data);
-  //     // Optionally, update your component state or perform other actions.
-  //     getCategories();
-  //   })
-  //   // .catch(error => console.error(error));
-  // }
   return (
     <div className="flex flex-col">
     <div className="overflow-x-auto">
@@ -44,7 +34,7 @@ const Categories = () => {
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
                 </label>
-                <Link to={"/account/categories/create"} className='bg-green-400 py-3 px-6' >Add</Link>
+                <Link to={"/account/services/create"} className='bg-green-400 py-3 px-6' >Add</Link>
                 <input
                     type="text"
                     name="hs-table-search"
@@ -135,13 +125,6 @@ const Categories = () => {
                             </th>
                             <th
                                 scope="col"
-                                className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
-                            >
-                                Image
-                            </th>
-                            
-                            <th
-                                scope="col"
                                 className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                             >
                                 Edit
@@ -155,7 +138,7 @@ const Categories = () => {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {categories && categories.map(category=> {
+                      {services && services.map(service=> {
                          return (
                          <tr>
                             <td className="py-3 pl-4">
@@ -173,21 +156,18 @@ const Categories = () => {
                                 </div>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-                                {category.id}
+                                {service.id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {category.title}
+                                {service.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {category.description}
-                            </td>
-                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {category.thumbnail}
+                                {service.description}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-green-500 hover:text-green-700"
-                                    href={`/account/categories/${category.id}/edit`}
+                                    href={`/account/categories/${service.id}/edit`}
                                 >
                                     Edit
                                 </a>
@@ -195,7 +175,7 @@ const Categories = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-red-500 hover:text-red-700"
-                                    href="#" onClick={() => {handleDelete(category.id)}}
+                                    href="#" onClick={() => {handleDelete(service.id)}}
                                 >
                                     Delete
                                 </a>
@@ -211,7 +191,7 @@ const Categories = () => {
         </div>
     </div>
 </div>
-  );
+  )
 }
 
-export default Categories
+export default services

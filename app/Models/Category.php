@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['sl no', 'title', 'description'];
+    protected $fillable = ['title', 'description'];
     protected $appends = ['thumbnail'];
 
     public function saveData(array $input, string $id): Category
