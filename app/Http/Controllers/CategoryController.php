@@ -28,6 +28,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $category = Category::create($input);
         //adding media from request
         $media = Media::getFromRequest($request);
@@ -61,6 +62,8 @@ class CategoryController extends Controller
         $input = $request->all();
         $categoryObj = new Category();
         $category = $categoryObj->saveData($input, $id);
+        $media = Media::getFromRequest($request);
+        if ($media) $category->media()->saveMany($media);
         // return response()->json($post);
         return $this->sendResponse($category);
     }

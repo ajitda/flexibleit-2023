@@ -31,7 +31,7 @@
                 <div class=" flex collapse navbar-collapse" id="navbarSupportedContent">
                    <div> 
                     <!-- Left Side Of Navbar -->
-                    <ul class=" mr-8"> <!-- -->
+                    <ul class=" mr-8">
                         <button><a href="/account/blogs">Blogs</a></button>
                         <button><a href="/account/categories">Categories</a></button>
                         <button><a href="/account/services">Services</a></button>

@@ -32,6 +32,7 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $portfolio = Portfolio::create($input);
         //adding media from request
         $media = Media::getFromRequest($request);
@@ -65,6 +66,8 @@ class PortfolioController extends Controller
         $input = $request->all();
         $portfolioObj = new Portfolio();
         $portfolio = $portfolioObj->saveData($input, $id);
+        $media = Media::getFromRequest($request);
+        if ($media) $portfolio->media()->saveMany($media);
         // return response()->json($post);
         return $this->sendResponse($portfolio);
     }

@@ -7,20 +7,22 @@ const ServicesCreate = () => {
     const {user} = useAuth({middleware: "auth"})
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
-    // const [media, setMedia] = useState([]);
+    const [media, setMedia] = useState([]);
+    const [slug, setSlug] = useState();
     const navigate = useNavigate();
  
     const handleSubmit = async(e) => {
        e.preventDefault();
        console.log('title', title);
        console.log('description', description);
+       console.log('slug', slug);
        //call the api
-       const serviceData = { title: title, description: description };
-    //   if (media.length > 0) {
-    //    const uploads = await uploadFiles(media);
-    //      if ( uploads === false ) return false;
-    //      categoryData.media = uploads ;
-    //    }
+       const serviceData = { title: title, description: description, slug: slug };
+      if (media.length > 0) {
+       const uploads = await uploadFiles(media);
+         if ( uploads === false ) return false;
+         categoryData.media = uploads ;
+       }
        axios.post('/api/services', serviceData).then(res => {
          console.log('data',res.data)
          navigate('/account/services')
@@ -45,8 +47,15 @@ const ServicesCreate = () => {
           Title
         </label>
         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setTitle(e.target.value)}/>
-        <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+        {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
       </div>
+      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+         Slug
+       </label>
+       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setSlug(e.target.value)}/>
+       {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+     </div>
       {/* <div className="w-full md:w-1/2 px-3">
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
           Last Name
@@ -63,6 +72,9 @@ const ServicesCreate = () => {
         <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
       </div>
     </div> 
+    <div className='flex flex-wrap'>
+      <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
     <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
     <Link to='/account/categories'>
     <button>Back</button>

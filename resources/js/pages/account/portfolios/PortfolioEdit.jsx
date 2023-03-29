@@ -11,6 +11,7 @@ const PortfolioEdit = () => {
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
+    const [slug, setSlug] = useState();
     const navigate = useNavigate();
 
     const [portfolio, setPortfolio]= useState()
@@ -27,6 +28,7 @@ const PortfolioEdit = () => {
            setTitle(resdata.title);
            setDescription(resdata.description);
            setMedia(resdata.media);
+           setSlug(resdata.slug);
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -43,13 +45,14 @@ const PortfolioEdit = () => {
         e.preventDefault();
         console.log('title', title);
         console.log('description', description);
+        console.log('slug', slug);
         //call the api
         // const requestOptions = {
         //     method: 'PUT',
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
-        const portfoliosData = { title: title, description: description };
+        const portfoliosData = { title: title, description: description, slug: slug };
         if (media.length > 0) {
          const uploads = await uploadFiles(media);
            if ( uploads === false ) return false;
@@ -72,8 +75,15 @@ const PortfolioEdit = () => {
                     Title
                 </label>
                 <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" value={title} name='title' onChange={(e) => setTitle(e.target.value)} />
-                <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+                {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
             </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Slug
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e) => setSlug(e.target.value)} />
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
             {/* <div className="w-full md:w-1/2 px-3">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
          Last Name

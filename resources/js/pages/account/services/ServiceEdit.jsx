@@ -8,6 +8,8 @@ const ServiceEdit = () => {
 
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
+    const [media, setMedia] = useState([]);
+    const [slug, setSlug] = useState();
     const navigate = useNavigate();
 
     const [service, setService]= useState()
@@ -23,7 +25,8 @@ const ServiceEdit = () => {
         setService(resdata);
            setTitle(resdata.title);
            setDescription(resdata.description);
-        //    setMedia(resdata.media);
+           setSlug(resdata.slug);
+           setMedia(resdata.media);
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -40,6 +43,8 @@ const ServiceEdit = () => {
         e.preventDefault();
         console.log('title', title);
         console.log('description', description);
+        console.log('slug', slug);
+        console.log('media', media);
         //call the api
         // const requestOptions = {
         //     method: 'PUT',

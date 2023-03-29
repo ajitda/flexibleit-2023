@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
-// use App\Models\Media;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -28,10 +28,11 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $service = Service::create($input);
         //adding media from request
-        // $media = Media::getFromRequest($request);
-        // if ($media) $category->media()->saveMany($media);
+        $media = Media::getFromRequest($request);
+        if ($media) $service->media()->saveMany($media);
         // return response()->json($post);
         return $this->sendResponse($service);
     }
@@ -61,6 +62,8 @@ class ServiceController extends Controller
         $input = $request->all();
         $serviceObj = new Service();
         $service = $serviceObj->saveData($input, $id);
+        $media = Media::getFromRequest($request);
+        if ($media) $service->media()->saveMany($media);
         // return response()->json($post);
         return $this->sendResponse($service);
     }

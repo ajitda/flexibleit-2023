@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description'];
-    // protected $appends = ['thumbnail'];
+    protected $fillable = ['title', 'description', 'slug', 'user_id'];
+    protected $appends = ['thumbnail'];
 
     public function saveData(array $input, string $id): Service
     {
@@ -22,4 +22,19 @@ class Service extends Model
     {
         $this->delete();
     }
+    public function getThumbnailAttribute()
+	{
+		return $this->media->whereNotNull('thumbnail')->pluck('thumbnail')->first();
+	}
+
+    
+    /**
+	 * Get all of the medias for the Review
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function media()
+	{
+		return $this->morphMany(Media::class , 'mediable');
+	}
 }
