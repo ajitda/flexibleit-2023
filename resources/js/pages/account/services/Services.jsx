@@ -125,6 +125,12 @@ const services = () => {
                             </th>
                             <th
                                 scope="col"
+                                className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                            >
+                                Image
+                            </th>
+                            <th
+                                scope="col"
                                 className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                             >
                                 Edit
@@ -163,6 +169,9 @@ const services = () => {
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                 {service.description}
+                            </td>
+                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                {service.thumbnail}
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a

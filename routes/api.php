@@ -28,6 +28,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::any('/tus/{any?}', [TusController::class,'any'])->where('any', '.*')->name('tus');
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('services', ServiceController::class);
+    Route::resource('services', ServiceController::class)->except('index');
     Route::resource('portfolios', PortfolioController::class);
 });
+
+Route::resource('services', ServiceController::class)->only('index');

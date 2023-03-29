@@ -28,7 +28,7 @@ const ServicesCreate = () => {
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
-         categoryData.media = uploads ;
+         serviceData.media = uploads ;
        }
        axios.post('/api/services', serviceData).then(res => {
          console.log('data',res.data)
