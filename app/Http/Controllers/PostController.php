@@ -32,6 +32,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $post = Post::create($input);
         //adding media from request
         $media = Media::getFromRequest($request);
@@ -65,6 +66,8 @@ class PostController extends Controller
         $input = $request->all();
         $postObj = new Post();
         $post = $postObj->saveData($input, $id);
+        $media = Media::getFromRequest($request);
+        if ($media) $post->media()->saveMany($media);
         // return response()->json($post);
         return $this->sendResponse($post);
     }
