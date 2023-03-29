@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import ImageUpload from '../../../components/UI/ImageUpload';
+import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
 
 const ServiceEdit = () => {
@@ -13,6 +15,11 @@ const ServiceEdit = () => {
     const navigate = useNavigate();
 
     const [service, setService]= useState()
+
+    useEffect(()=>{
+        const cslug = title ? slugify(title) : '';
+        setSlug(cslug);
+       }, [title]);
 
     useEffect(()=>{
         getService();
@@ -51,12 +58,12 @@ const ServiceEdit = () => {
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
-        const ServiceData = { title: title, description: description };
-        // if (media.length > 0) {
-        //  const uploads = await uploadFiles(media);
-        //    if ( uploads === false ) return false;
-        //    ServiceData.media = uploads ;
-        //  }
+        const ServiceData = { title: title, description: description, slug: slug };
+        if (media.length > 0) {
+         const uploads = await uploadFiles(media);
+           if ( uploads === false ) return false;
+           ServiceData.media = uploads ;
+         }
 
 
         axios.put(`/api/services/${id}`, ServiceData)
@@ -74,7 +81,14 @@ const ServiceEdit = () => {
                 Title
             </label>
             <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" value={title} name='title' onChange={(e) => setTitle(e.target.value)} />
-            <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+            {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
+        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Slug
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e) => setSlug(e.target.value)} />
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
         </div>
         {/* <div className="w-full md:w-1/2 px-3">
    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -90,6 +104,9 @@ const ServiceEdit = () => {
             </label>
             <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
             <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+        </div>
+        <div className='flex flex-wrap'>
+          <ImageUpload value={media} onChange={(m) => setMedia(m)} />
         </div>
     </div>
     <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>

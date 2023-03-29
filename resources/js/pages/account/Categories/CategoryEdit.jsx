@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router';
 import ImageUpload from '../../../components/UI/ImageUpload'
-import { uploadFiles } from '../../../helpers/helpers';
+import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
 
 
@@ -17,6 +17,11 @@ import { useAuth } from '../../../hooks/auth';
     const navigate = useNavigate();
 
     const [category, setCategory]= useState()
+
+    useEffect(()=>{
+      const cslug = title ? slugify(title) : '';
+      setSlug(cslug);
+     }, [title]);
 
     useEffect(()=>{
         getCategory();
@@ -84,7 +89,7 @@ import { useAuth } from '../../../hooks/auth';
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
             Slug
           </label>
-          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e) => setSlug(e.target.value)} />
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e) => setSlug(e.target.value)} />
           {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
         </div>
             {/* <div className="w-full md:w-1/2 px-3">
