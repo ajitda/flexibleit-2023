@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { portfolios } from '../../constants'
 import styles from '../../style'
 import Portfolio from './Portfolio'
@@ -6,6 +6,21 @@ import Masonry from "react-responsive-masonry"
 
 
 const Portfolios = () => {
+  const [portfolios, setPortfolios] = useState();
+
+  useEffect(()=>{
+     getPortfolios();
+  }, []);
+
+  const getPortfolios = () => {
+     fetch('/api/portfolios')
+       .then(response => response.json())
+       .then(data => {
+        console.log('portfolios res ', data)
+        setPortfolios(data.data);
+       });
+  }
+
   return (
     <>
    
@@ -16,7 +31,7 @@ const Portfolios = () => {
     
     <div className=''>
     <Masonry>
-      {portfolios.map(portfolio=>{
+      {portfolios?.map(portfolio=>{
         return (
           <Portfolio portfolio={portfolio} />
         )
