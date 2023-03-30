@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload'
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
@@ -12,6 +13,7 @@ const PortfolioEdit = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
+    const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
 
     const [portfolio, setPortfolio]= useState()
@@ -34,6 +36,7 @@ const PortfolioEdit = () => {
            setDescription(resdata.description);
            setMedia(resdata.media);
            setSlug(resdata.slug);
+           setCategoryIds(resdata.categories.map(cat=>cat.id))
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -57,7 +60,7 @@ const PortfolioEdit = () => {
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
-        const portfoliosData = { title: title, description: description, slug: slug };
+        const portfoliosData = { title: title, description: description, slug: slug, categoryIds };
         if (media.length > 0) {
          const uploads = await uploadFiles(media);
            if ( uploads === false ) return false;
@@ -73,6 +76,8 @@ const PortfolioEdit = () => {
     }
 
   return (
+    <div className='max-w-6xl mx-auto'>
+      <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -108,6 +113,9 @@ const PortfolioEdit = () => {
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
     </div>
         </div>
+        <div className='flex flex-wrap mb-4'>
+          <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+        </div>
         {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
@@ -140,6 +148,7 @@ const PortfolioEdit = () => {
         <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
         <button><a href="/account/portfolios">Back</a></button>
     </form>
+    </div>
   )
 }
 

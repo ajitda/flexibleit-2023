@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
@@ -10,6 +11,7 @@ const PortfolioCreate = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
+    const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -23,7 +25,7 @@ const PortfolioCreate = () => {
        console.log('description', description);
        console.log('slug', slug);
        //call the api
-       const portfolioData = { title: title, description: description, slug: slug };
+       const portfolioData = { title: title, description: description, slug, categoryIds };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -47,6 +49,8 @@ const PortfolioCreate = () => {
     }
 
   return (
+    <div className='max-w-6xl mx-auto'>
+    <h1 className='text-xl mb-5 font-medium'>Create Portfoio</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
    <div className="flex flex-wrap -mx-3 mb-6">
      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -79,8 +83,11 @@ const PortfolioCreate = () => {
        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
      </div>
    </div>
-   <div className='flex flex-wrap'>
+   <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
+    <div className='flex flex-wrap mb-4'>
+      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>
    {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -114,6 +121,7 @@ const PortfolioCreate = () => {
    <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
    <button><a href="/account/portfolios">Back</a></button>
  </form>
+  </div>
   )
 }
 

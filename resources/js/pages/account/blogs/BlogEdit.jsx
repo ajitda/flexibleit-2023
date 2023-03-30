@@ -78,6 +78,8 @@ const BlogEdit = () => {
   }
 
   return (
+    <div className='max-w-6xl mx-auto'>
+      <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
       <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -147,7 +149,9 @@ const BlogEdit = () => {
    </div> */}
       <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
       <button><a href="/account/blogs">Back</a></button>
-    </form>);
+    </form>
+    </div>
+    );
 }
 
 export default BlogEdit;

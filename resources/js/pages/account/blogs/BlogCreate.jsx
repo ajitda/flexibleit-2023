@@ -11,7 +11,7 @@ const BlogCreate = () => {
    const [description, setDescription] = useState();
    const [media, setMedia] = useState([]);
    const [slug, setSlug] = useState();
-   const [categoryIds, setCategoryIds] = useState()
+   const [categoryIds, setCategoryIds] = useState();
    const navigate = useNavigate();
 
    useEffect(()=>{

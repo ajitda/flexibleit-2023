@@ -37,6 +37,9 @@ class PortfolioController extends Controller
         //adding media from request
         $media = Media::getFromRequest($request);
         if ($media) $portfolio->media()->saveMany($media);
+        if (!empty($input['categoryIds'])) {
+            $portfolio->categories()->attach($input['categoryIds']);
+        }
         // return response()->json($post);
         return $this->sendResponse($portfolio);
     }
@@ -68,6 +71,9 @@ class PortfolioController extends Controller
         $portfolio = $portfolioObj->saveData($input, $id);
         $media = Media::getFromRequest($request);
         if ($media) $portfolio->media()->saveMany($media);
+        if (!empty($input['categoryIds'])) {
+            $portfolio->categories()->sync($input['categoryIds']);
+        }
         // return response()->json($post);
         return $this->sendResponse($portfolio);
     }

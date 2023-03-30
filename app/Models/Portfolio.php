@@ -38,4 +38,8 @@ class Portfolio extends Model
 	{
 		return $this->morphMany(Media::class , 'mediable');
 	}
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categoryable');
+    }
 }
