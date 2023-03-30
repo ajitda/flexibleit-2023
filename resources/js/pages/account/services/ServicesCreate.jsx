@@ -4,6 +4,7 @@ import { useAuth } from '../../../hooks/auth';
 import { Link } from 'react-router-dom';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import ImageUpload from '../../../components/UI/ImageUpload';
+import CategoryInput from '../../../components/CategoryInput';
 
 const ServicesCreate = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -11,6 +12,7 @@ const ServicesCreate = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
+    const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -24,7 +26,7 @@ const ServicesCreate = () => {
        console.log('description', description);
        console.log('slug', slug);
        //call the api
-       const serviceData = { title: title, description: description, slug: slug };
+       const serviceData = { title: title, description: description, slug: slug, categoryIds };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -47,6 +49,8 @@ const ServicesCreate = () => {
   
     }
   return (
+    <div className='max-w-6xl mx-auto'>
+      <h1 className='text-xl mb-5 font-medium'>Create Service</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
     <div className="flex flex-wrap -mx-3 mb-6">
       <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -79,14 +83,18 @@ const ServicesCreate = () => {
         <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
       </div>
     </div> 
-    <div className='flex flex-wrap'>
+    <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
+    <div className='flex flex-wrap mb-4'>
+      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>
     <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
     <Link to='/account/categories'>
     <button>Back</button>
     </Link>
   </form>
+  </div>
   );
 }
 

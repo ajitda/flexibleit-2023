@@ -33,6 +33,9 @@ class ServiceController extends Controller
         //adding media from request
         $media = Media::getFromRequest($request);
         if ($media) $service->media()->saveMany($media);
+        if (!empty($input['categoryIds'])) {
+            $service->categories()->attach($input['categoryIds']);
+        }
         // return response()->json($post);
         return $this->sendResponse($service);
     }
@@ -43,6 +46,7 @@ class ServiceController extends Controller
     public function show(Service $service)
     {
         // return response()->json($post);
+        $service->load('categories');
         return $this->sendResponse($service);
     }
 
@@ -64,6 +68,9 @@ class ServiceController extends Controller
         $service = $serviceObj->saveData($input, $id);
         $media = Media::getFromRequest($request);
         if ($media) $service->media()->saveMany($media);
+        if (!empty($input['categoryIds'])) {
+            $service->categories()->sync($input['categoryIds']);
+        }
         // return response()->json($post);
         return $this->sendResponse($service);
     }

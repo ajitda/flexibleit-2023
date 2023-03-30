@@ -36,7 +36,7 @@ const PortfolioEdit = () => {
            setDescription(resdata.description);
            setMedia(resdata.media);
            setSlug(resdata.slug);
-           setCategoryIds(resdata.categories.map(cat=>cat.id))
+           setCategoryIds(resdata.categories.map(cat=>cat.id));
      });
 
     //     fetch(`/api/posts/${id}`)
