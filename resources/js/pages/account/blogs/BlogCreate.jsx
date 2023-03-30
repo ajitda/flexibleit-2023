@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { uploadFiles, slugify } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
@@ -10,6 +11,7 @@ const BlogCreate = () => {
    const [description, setDescription] = useState();
    const [media, setMedia] = useState([]);
    const [slug, setSlug] = useState();
+   const [categoryIds, setCategoryIds] = useState()
    const navigate = useNavigate();
 
    useEffect(()=>{
@@ -23,7 +25,7 @@ const BlogCreate = () => {
       console.log('description', description);
       console.log('slug', slug);
       //call the api
-      const postData = { title: title, description: description, slug: slug };
+      const postData = { title: title, description: description, slug: slug, categoryIds };
      if (media.length > 0) {
       const uploads = await uploadFiles(media);
         if ( uploads === false ) return false;
@@ -47,6 +49,8 @@ const BlogCreate = () => {
    }
 
    return (
+    <div className='max-w-6xl mx-auto'>
+      <h1 className='text-xl mb-5 font-medium'>Create Blog Post</h1>
    <form className="w-full max-w-lg" onSubmit={handleSubmit}>
    <div className="flex flex-wrap -mx-3 mb-6">
      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -79,8 +83,11 @@ const BlogCreate = () => {
        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
      </div>
    </div>
-   <div className='flex flex-wrap'>
+   <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+    </div>
+    <div className='flex flex-wrap mb-4'>
+      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>
    {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -111,9 +118,10 @@ const BlogCreate = () => {
        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210"/>
      </div>
    </div> */}
+
    <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
    <button><a href="/account/blogs">Back</a></button>
- </form>);
+ </form></div>);
 }
 
 export default BlogCreate;

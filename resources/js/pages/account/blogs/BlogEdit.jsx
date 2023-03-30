@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
@@ -13,6 +14,7 @@ const BlogEdit = () => {
   const [description, setDescription] = useState();
   const [media, setMedia] = useState([]);
   const [slug, setSlug] = useState();
+  const [categoryIds, setCategoryIds] = useState();
   const navigate = useNavigate();
 
   const [post, setPost] = useState()
@@ -35,6 +37,7 @@ const BlogEdit = () => {
       setSlug(resdata.slug);
       setDescription(resdata.description);
       setMedia(resdata.media);
+      setCategoryIds(resdata.categories.map(cat=>cat.id))
     });
 
     //     fetch(`/api/posts/${id}`)
@@ -58,7 +61,7 @@ const BlogEdit = () => {
     //     headers: { 'Content-Type': 'application/json' },
     //     body: JSON.stringify()
     // };
-    const postData = { title: title, description: description, slug: slug };
+    const postData = { title: title, description: description, slug, categoryIds };
     if (media.length > 0) {
       const uploads = await uploadFiles(media);
       if (uploads === false) return false;
@@ -106,10 +109,13 @@ const BlogEdit = () => {
           <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
           <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
         </div>
-        <div className='flex flex-wrap'>
+        <div className='flex flex-wrap mb-4'>
           <ImageUpload value={media} onChange={(m) => setMedia(m)} />
         </div>
       </div>
+        <div className='flex flex-wrap mb-4'>
+          <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+        </div>
       {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">

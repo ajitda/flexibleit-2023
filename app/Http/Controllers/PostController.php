@@ -37,6 +37,9 @@ class PostController extends Controller
         //adding media from request
         $media = Media::getFromRequest($request);
         if ($media) $post->media()->saveMany($media);
+        if (!empty($input['categoryIds'])) {
+            $post->categories()->attach($input['categoryIds']);
+        }
         // return response()->json($post);
         return $this->sendResponse($post);
     }
@@ -47,6 +50,7 @@ class PostController extends Controller
     public function show(Post $post)
     {
         // return response()->json($post);
+        $post->load('categories');
         return $this->sendResponse($post);
     }
 
@@ -69,6 +73,9 @@ class PostController extends Controller
         $media = Media::getFromRequest($request);
         if ($media) $post->media()->saveMany($media);
         // return response()->json($post);
+        if (!empty($input['categoryIds'])) {
+            $post->categories()->sync($input['categoryIds']);
+        }
         return $this->sendResponse($post);
     }
 
