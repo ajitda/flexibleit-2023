@@ -50,6 +50,7 @@ class PortfolioController extends Controller
     public function show(Portfolio $portfolio)
     {
         // return response()->json($post);
+        $portfolio->load('categories');
         return $this->sendResponse($portfolio);
     }
 
