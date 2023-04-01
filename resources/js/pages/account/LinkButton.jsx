@@ -9,6 +9,7 @@ const LinkButton = () => {
             <Link to="/account/services"><li>Service</li></Link> 
             <Link to="/account/categories"><li>Category</li></Link>
             <Link to="/account/portfolios/"><li>Portfolio</li></Link>
+            <Link to="/account/testomonials/"><li>Testomonial</li></Link>
         </ul>
     </div>
   )

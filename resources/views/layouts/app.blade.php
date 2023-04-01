@@ -22,7 +22,7 @@
         <nav class=" navbar navbar-expand-md navbar-light bg-white shadow-sm py-6">
             <div class="container mx-auto flex justify-between">
                 <a class="navbar-brand font-bold text-2xl" href="{{ url('/') }}">
-                    {{ config('app.name', 'FlexibleIT') }}
+                    {{ config('app.name', 'Flexible IT') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,8 +45,8 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <li class="nav-item dropdown flex">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle pr-4" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
