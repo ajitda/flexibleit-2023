@@ -20,7 +20,18 @@ const Testimonials = () => {
       .then(response => response.json())
       .then(data => {
        console.log('posts res ', data)
-       setTestomonials(data.data);
+      //  setTestomonials(data.data);
+      const resdata = data.data;
+       const allTestimonials = [];
+       
+       const chunkSize = 1;
+        for (let i = 0; i < resdata.length; i += chunkSize) {
+            const chunk = resdata.slice(i, i + chunkSize);
+            // do whatever
+            allTestimonials.push(chunk);
+        }
+        // console.log('allTestimonials', allTestimonials)
+        setTestomonials(allTestimonials)
       });
  }
   const testimonialCarousel = {
@@ -67,11 +78,11 @@ const Testimonials = () => {
           <SwiperSlide key={index}>
             {item.map(({ thumbnail, description, author_name, designation }, _index) => (
               <TestimonialsCard
-                image={thumbnail}
-                text={description}
-                name={author_name}
+                thumbnail={thumbnail}
+                description={description}
+                author_name={author_name}
                 key={_index}
-                username={designation}
+                desigantion={designation}
               />
             ))}
           </SwiperSlide>
