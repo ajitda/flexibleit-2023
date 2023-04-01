@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SwiperCore, { Autoplay } from 'swiper'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import { testimonials } from '../../constants'
@@ -9,6 +9,20 @@ import 'swiper/css';
 SwiperCore.use([Autoplay]);
 
 const Testimonials = () => {
+  const [testimonials, setTestomonials] = useState();
+
+  useEffect(()=>{
+    getTestomonials();
+ }, []);
+
+ const getTestomonials = () => {
+    fetch('/api/testomonials')
+      .then(response => response.json())
+      .then(data => {
+       console.log('posts res ', data)
+       setTestomonials(data.data);
+      });
+ }
   const testimonialCarousel = {
     slidesPerView: 1,
     spaceBetween: 20,
@@ -49,15 +63,15 @@ const Testimonials = () => {
     </div>
     <div>
     <Swiper {...testimonialCarousel}>
-        {testimonials.map((item, index) => (
+        {testimonials?.map((item, index) => (
           <SwiperSlide key={index}>
-            {item.map(({ image, text, name, username }, _index) => (
+            {item.map(({ thumbnail, description, author_name, designation }, _index) => (
               <TestimonialsCard
-                image={image}
-                text={text}
-                name={name}
+                image={thumbnail}
+                text={description}
+                name={author_name}
                 key={_index}
-                username={username}
+                username={designation}
               />
             ))}
           </SwiperSlide>
