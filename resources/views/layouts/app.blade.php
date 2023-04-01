@@ -19,38 +19,29 @@
 </head>
 <body>
     <div id="app">
-        <nav class=" navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container flex justify-between">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+        <nav class=" navbar navbar-expand-md navbar-light bg-white shadow-sm py-6">
+            <div class="container mx-auto flex justify-between">
+                <a class="navbar-brand font-bold text-2xl" href="{{ url('/') }}">
+                    {{ config('app.name', 'FlexibleIT') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class=" flex collapse navbar-collapse" id="navbarSupportedContent">
-                   <div> 
-                    <!-- Left Side Of Navbar -->
-                    <ul class=" mr-8">
-                        <button><a href="/account/blogs">Blogs</a></button>
-                        <button><a href="/account/categories">Categories</a></button>
-                        <button><a href="/account/services">Services</a></button>
-                        <button><a href="/account/portfolios/">Portfolios</a></button>
-                    </ul>
-                    </div>                   
+                <div class=" flex collapse navbar-collapse" id="navbarSupportedContent">                   
                     <div> <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav flex gap-2">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link text-xl text-blue-500" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link text-xl text-green-400" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
