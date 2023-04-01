@@ -36,5 +36,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::resource('posts', PostController::class)->only('index');
 Route::resource('services', ServiceController::class)->only('index');
-Route::resource('portfolios', PortfolioController::class)->except('index');
-Route::resource('testomonials', TestomonialController::class)->except('index');
+Route::resource('portfolios', PortfolioController::class)->only('index');
+Route::resource('testomonials', TestomonialController::class)->only('index');
