@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
+import LinkButton from '../LinkButton';
 
 const Categories = () => {
   const {user} = useAuth({middleware: 'auth'})
@@ -37,6 +38,8 @@ const Categories = () => {
   //   // .catch(error => console.error(error));
   // }
   return (
+    <>
+    <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
         <div className="flex justify-between py-3 pl-2">
@@ -211,6 +214,7 @@ const Categories = () => {
         </div>
     </div>
 </div>
+</>
   );
 }
 

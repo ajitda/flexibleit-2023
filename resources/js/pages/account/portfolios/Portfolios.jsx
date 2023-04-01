@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../../hooks/auth';
+import LinkButton from '../LinkButton';
 
 const Portfolios = () => {
     const {user} = useAuth({middleware: 'auth'})
@@ -39,6 +40,8 @@ const Portfolios = () => {
 
 
   return (
+    <>
+    <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
         <div className="flex justify-between py-3 pl-2">
@@ -213,6 +216,7 @@ const Portfolios = () => {
         </div>
     </div>
 </div>
+</>
   )
 }
 

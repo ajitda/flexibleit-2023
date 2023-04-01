@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../hooks/auth';
 import { Link } from 'react-router-dom';
+import LinkButton from '../LinkButton';
 
 const services = () => {
     const {user} = useAuth({middleware: 'auth'})
@@ -27,6 +28,8 @@ const services = () => {
     }
   }
   return (
+    <>
+    <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
         <div className="flex justify-between py-3 pl-2">
@@ -200,6 +203,7 @@ const services = () => {
         </div>
     </div>
 </div>
+</>
   )
 }
 

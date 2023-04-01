@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/auth";
+import LinkButton from "../LinkButton";
 
 export default function Blogs() {
     const {user} = useAuth({middleware: 'auth'})
@@ -37,6 +38,8 @@ export default function Blogs() {
   }
    }
     return (
+        <>
+        <LinkButton />
         <div className="flex flex-col">
             <div className="overflow-x-auto">
                 <div className="flex justify-between py-3 pl-2">
@@ -211,5 +214,6 @@ export default function Blogs() {
                 </div>
             </div>
         </div>
+</>
     );
 }
