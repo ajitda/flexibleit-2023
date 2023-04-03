@@ -5,7 +5,7 @@ const Portfolio = ({portfolio}) => {
    const {thumbnail, title, description } = portfolio;
    return (
      
-      <div className="m-2 relative before:block before:absolute before:w-full before:h-full before:bg-[rgba(0,0,0,0.1)] hover:scale-105 ">
+      <div id="product" className="m-2 relative before:block before:absolute before:w-full before:h-full before:bg-[rgba(0,0,0,0.1)] hover:scale-105 ">
          <figure>
             <img className=" rounded-lg" src={thumbnail} alt="" />
          </figure>

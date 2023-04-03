@@ -19,7 +19,7 @@ const Services = () => {
        });
   }
   return (<>
-    <div className='text-center py-24'>
+    <div id="services" className='text-center py-24'>
       <h2 className={`${styles.heading2} mb-1`}>Grow your startup with our Service</h2>
       <p className={`${styles.paragraph} max-w-xl mx-auto`}>Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents.</p>
     </div>

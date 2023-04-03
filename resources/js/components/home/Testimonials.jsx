@@ -68,7 +68,7 @@ const Testimonials = () => {
   return (
     <>
     
-    <div className='text-center py-10'>
+    <div id='clients' className='text-center py-10'>
     <h2 className={`${styles.heading2} mb-1`}>What Clients Say About US</h2>
     <p className={`${styles.paragraph} max-w-xl mx-auto`}>Customer Testimonial</p>
     </div>
