@@ -17,9 +17,9 @@ const Contact = () => {
       console.log('email', email);
       console.log('subject', subject);
       console.log('message', message);
-      const caontactData = { name, email, subject, message };
+      const contactData = { name, email, subject, message };
 
-      axios.post('/api/contacts', portfolioData).then(res => {
+      axios.post('/api/contacts', contactData).then(res => {
          console.log('data',res.data)
          navigate('/contact-us')
       });
