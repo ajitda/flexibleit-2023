@@ -4,7 +4,7 @@ import { useAuth } from "../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
-   const {user} = useAuth({middleware: "auth"})
+   // const {user} = useAuth({middleware: "auth"})
    const [name, setName] = useState();
    const [email, setEmail] = useState();
    const [subject, setSubject] = useState();
