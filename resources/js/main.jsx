@@ -54,7 +54,7 @@ const router = createBrowserRouter([
     {path: "/account/testomonials/create", element: <TestomonialCreate/>},
     {path: "/account/testomonials/:id/edit", element: <TestomonialEdit/>},
     
-  {path: "/contacts",
+  {path: "/contact-us",
    element: <Contact />,
  },
  {

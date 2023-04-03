@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
@@ -32,9 +33,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('services', ServiceController::class)->except('index');
     Route::resource('portfolios', PortfolioController::class)->except('index');
     Route::resource('testomonials', TestomonialController::class)->except('index');
+    Route::resource('contacts', ContactController::class)->except('store');
 });
 
 Route::resource('posts', PostController::class)->only('index');
 Route::resource('services', ServiceController::class)->only('index');
 Route::resource('portfolios', PortfolioController::class)->only('index');
 Route::resource('testomonials', TestomonialController::class)->only('index');
+Route::resource('contacts', ContactController::class)->only('store');
