@@ -37,7 +37,7 @@ const Contact = () => {
         setName("");
         setEmail("");
         setSubject("");
-        setEmail("");
+        setMessage("");
       }
       const contactData = { name, email, subject, message };
 
