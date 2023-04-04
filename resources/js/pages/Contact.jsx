@@ -11,20 +11,56 @@ const Contact = () => {
    const [message, setMessage] = useState();
    const navigate = useNavigate();
 
-   const handleSubmit = (e) => {
+   const onChangeHandler = (fieldName, value)=>{
+      if(fieldName === "name"){
+        setName(value);
+      }
+      else if(fieldName==="email"){
+        setEmail(value);
+      }
+      else if(fieldName==="subject"){
+        setSubject(value);
+      }
+      else if(fieldName==="message"){
+        setMessage(value);
+      }
+
+    }
+
+    const handleSubmit = (e)=>{
       e.preventDefault();
-      console.log('name', name);
-      console.log('email', email);
-      console.log('subject', subject);
-      console.log('message', message);
+      if(name.trim()==="" || email.trim() =="" || subject.trim() =="" || message.trim() ==""){
+        alert("required all field");
+      }
+      else{
+        alert(name+ " " +email+ " " +subject+" " +message);
+        setName("");
+        setEmail("");
+        setSubject("");
+        setEmail("");
+      }
       const contactData = { name, email, subject, message };
 
       axios.post('/api/contacts', contactData).then(res => {
          console.log('data',res.data)
          navigate('/contact-us')
       });
+    }
 
-   }
+   // const handleSubmit = (e) => {
+   //    e.preventDefault();
+   //    console.log('name', name);
+   //    console.log('email', email);
+   //    console.log('subject', subject);
+   //    console.log('message', message);
+   //    const contactData = { name, email, subject, message };
+
+   //    axios.post('/api/contacts', contactData).then(res => {
+   //       console.log('data',res.data)
+   //       navigate('/contact-us')
+   //    });
+
+   // }
 
    return (<>
       <div>
@@ -51,11 +87,11 @@ const Contact = () => {
 
          </div>
       <div>
-      <form action="" onSubmit={handleSubmit}>
-         <input type="text" name="name" placeholder="Your Name" className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>setName(e.target.value)} /><br/>
-         <input type="text" name="email" placeholder="Your Email" className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>setEmail(e.target.value)} /><br/>
-         <input type="text" name="subject" placeholder="Subject" className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>setSubject(e.target.value)} /><br/>
-         <input type="text" name="message" placeholder="Message" className="border border-slate-600 my-3 w-96 py-8 pl-2" onChange={(e)=>setMessage(e.target.value)} /><br/>
+      <form action="" onSubmit={(e)=>{handleSubmit(e)}}>
+         <input type="text" name="name" placeholder="Your Name" value={name} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{onChangeHandler("name",e.target.value)}} /><br/>
+         <input type="text" name="email" placeholder="Your Email" value={email} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{ onChangeHandler("email",e.target.value)}} /><br/>
+         <input type="text" name="subject" placeholder="Subject" value={subject} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{ onChangeHandler("subject",e.target.value)}} /><br/>
+         <input type="text" name="message" placeholder="Message" value={message} className="border border-slate-600 my-3 w-96 py-8 pl-2" onChange={(e)=>{ onChangeHandler("message",e.target.value)}} /><br/>
          <button className=" bg-secondary px-6 py-3 text-stone-50 rounded">Submit</button>
       </form>
       </div>
