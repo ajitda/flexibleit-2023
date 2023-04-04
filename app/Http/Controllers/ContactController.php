@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,9 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
         // $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $contact = Contact ::create($input);
         //adding media from request
