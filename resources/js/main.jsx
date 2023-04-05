@@ -12,7 +12,7 @@ import BlogEdit from "./pages/account/blogs/BlogEdit";
 import { element } from "prop-types";
 import CategoryCreate from "./pages/account/Categories/CategoryCreate";
 import CategoryEdit from "./pages/account/Categories/CategoryEdit";
-import Services from "./pages/account/services/services";
+import Services from "./pages/account/services/Services";
 import ServicesCreate from "./pages/account/services/ServicesCreate";
 import ServiceEdit from "./pages/account/services/ServiceEdit";
 import Portfolios from "./pages/account/portfolios/Portfolios";
@@ -21,6 +21,8 @@ import PortfolioEdit from "./pages/account/portfolios/PortfolioEdit";
 import Testomonials from "./pages/account/testomonials/Testomonials";
 import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
+import Contacts from "./pages/account/contacts/Contacts";
+import ContactView from "./pages/account/contacts/ContactView";
 
 
 
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
     {path: "/account/categories", element: <Categories />},
     {path: "/account/categories/create", element: <CategoryCreate />},
     {path: "/account/categories/:id/edit", element: <CategoryEdit />},
-    {path: "/account/services", element: <Services />},
+    {path: "/account/services", element: <Services/> },
     {path: "/account/services/create", element: <ServicesCreate />},
     {path: "/account/services/:id/edit", element: <ServiceEdit /> },
     {path: "/account/portfolios/", element: <Portfolios />},
@@ -53,6 +55,8 @@ const router = createBrowserRouter([
     {path: "/account/testomonials", element: <Testomonials/>},
     {path: "/account/testomonials/create", element: <TestomonialCreate/>},
     {path: "/account/testomonials/:id/edit", element: <TestomonialEdit/>},
+    {path: "/account/contacts", element: <Contacts/>},
+    {path: "/account/contacts/:id/view", element: <ContactView/> },
     
   {path: "/contact-us",
    element: <Contact />,
