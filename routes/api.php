@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('services', ServiceController::class)->except('index');
     Route::resource('portfolios', PortfolioController::class)->except('index');
     Route::resource('testomonials', TestomonialController::class)->except('index');
-    Route::resource('contacts', ContactController::class)->except('store');
+    Route::resource('contacts', ContactController::class)->only('index', 'show', 'destroy');
 });
 
 Route::resource('posts', PostController::class)->only('index');
