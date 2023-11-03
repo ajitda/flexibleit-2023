@@ -3,6 +3,7 @@ import { portfolios } from '../../constants'
 import styles from '../../style'
 import Portfolio from './Portfolio'
 import Masonry from "react-responsive-masonry"
+import { Link } from 'react-router-dom'
 
 
 const Portfolios = () => {
@@ -16,7 +17,7 @@ const Portfolios = () => {
      fetch('/api/portfolios')
        .then(response => response.json())
        .then(data => {
-        console.log('portfolios res ', data)
+        console.log('portfolios res :', data)
         setPortfolios(data.data);
        });
   }
@@ -31,11 +32,13 @@ const Portfolios = () => {
     
     <div className=''>
     <Masonry>
-      {portfolios?.map(portfolio=>{
-        return (
+      {portfolios?.map((portfolio) => (
+        <div key={portfolio.id}>
+          <Link to={`/portfolios/${portfolio.id}`}>
           <Portfolio portfolio={portfolio} />
-        )
-      })}
+          </Link>
+        </div>
+      ))}
       </Masonry>
     </div>
     

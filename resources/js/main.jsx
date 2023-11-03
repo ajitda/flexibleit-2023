@@ -23,6 +23,7 @@ import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
 import Contacts from "./pages/account/contacts/Contacts";
 import ContactView from "./pages/account/contacts/ContactView";
+import PortfolioDetails from "./components/home/portfolioDetails";
 
 
 
@@ -62,9 +63,12 @@ const router = createBrowserRouter([
    element: <Contact />,
  },
  {
-  path: "/",
-  element: <Home />,
-},
+   path: "/",
+   element: <Home />,
+ },
+  {path: "/portfolios/:id",
+   element: <PortfolioDetails />
+ },
 ]);
 
 // ReactDOM.createRoot(document.getElementById("root")).render(

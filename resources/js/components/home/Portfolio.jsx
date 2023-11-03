@@ -9,7 +9,7 @@ const Portfolio = ({portfolio}) => {
          <figure>
             <img className=" rounded-lg" src={thumbnail} alt="" />
          </figure>
-            <h2 class="absolute text-lg font-bold text-white bottom-4 left-0 text-center px-3 w-full">{title}</h2>
+            <h2 className="absolute text-lg font-bold text-white bottom-4 left-0 text-center px-3 w-full">{title}</h2>
             <p className={`${styles.paragraph}`}>{description}</p>
       </div>
    )
