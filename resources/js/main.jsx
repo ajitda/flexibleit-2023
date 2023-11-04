@@ -24,6 +24,7 @@ import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
 import Contacts from "./pages/account/contacts/Contacts";
 import ContactView from "./pages/account/contacts/ContactView";
 import PortfolioDetails from "./components/home/portfolioDetails";
+import AllPortfolio from "./components/home/AllPortfolio";
 
 
 
@@ -68,6 +69,9 @@ const router = createBrowserRouter([
  },
   {path: "/portfolios/:id",
    element: <PortfolioDetails />
+ },
+  {path: "/all-portfolios",
+    element: <AllPortfolio />
  },
 ]);
 

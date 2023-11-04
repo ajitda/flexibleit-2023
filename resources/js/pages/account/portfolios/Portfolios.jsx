@@ -44,20 +44,20 @@ const Portfolios = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 pl-2">
+        <div className="flex justify-between py-3 ml-16 pl-2">
             <div className="relative max-w-xs">
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
                 </label>
-                <Link to={"/account/portfolios/create"} className='bg-green-400 py-3 px-6' >Add</Link>
+                <Link to={"/account/portfolios/create"} className='bg-green-400 py-3 px-6 leading-10' >Add</Link>
                 <input
                     type="text"
                     name="hs-table-search"
                     id="hs-table-search"
-                    className="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
+                    className="block w-full p-3 mt-4 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                     placeholder="Search..."
                 />
-                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <div className="absolute inset-y-0 left-0 flex items-center mt-11 pl-4 pointer-events-none">
                     <svg
                         className="h-3.5 w-3.5 text-gray-400"
                         xmlns="http://www.w3.org/2000/svg"

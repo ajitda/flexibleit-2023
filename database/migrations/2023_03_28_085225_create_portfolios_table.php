@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->tinyInteger('featured');
             $table->integer('user_id');
             $table->text('description');
             $table->timestamps();

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Portfolio extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'slug', 'user_id'];
+    protected $fillable = ['title', 'description', 'slug', 'user_id', 'featured'];
     protected $appends = ['thumbnail'];
 
     public function saveData(array $input, string $id): Portfolio

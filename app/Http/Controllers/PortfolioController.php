@@ -53,6 +53,13 @@ class PortfolioController extends Controller
         $portfolio->load('categories');
         return $this->sendResponse($portfolio);
     }
+
+    public function showAllPortfolio()
+    {
+        $portfolios = Portfolio::latest()->get();
+        // return response()->json($posts);
+        return $this->sendResponse($portfolios);
+    }
     
     public function showPortfolio($id) {
         $portfolio = Portfolio::find($id);
