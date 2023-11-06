@@ -15,7 +15,7 @@ export default function AllPortfolio() {
  }, []);
 
  const getAllPortfolios = () => {
-    fetch('/api/all-portfolios')
+    fetch('/api/portfolios')
       .then(response => response.json())
       .then(data => {
        console.log('All portfolios res :', data)
@@ -30,20 +30,23 @@ export default function AllPortfolio() {
               <Navbar />
           </div>
       </div>
+      
       <div className='text-center -mb-10'>
         <h2 className={`${styles.heading2} mb-1`}>All Portfolios</h2>
       </div>
+      
       <div className="p-20 col-md-2">
       <Masonry>
         {portfolios?.map((portfolio) => (
           <div key={portfolio.id}>
             <Link to={`/portfolios/${portfolio.id}`}>
-            <Portfolio portfolio={portfolio} />
+             <Portfolio portfolio={portfolio} />
             </Link>
           </div>
         ))}
         </Masonry>
       </div>
+      
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Footer />

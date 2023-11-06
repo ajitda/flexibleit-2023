@@ -1,46 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
+import styles from '../../../style';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 import { useParams } from 'react-router-dom';
-import styles from '../../style';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Masonry from 'react-responsive-masonry';
 
-export default function PortfolioDetails() {
+export default function BlogDetails() {
+
     const { id } = useParams();
-    const [portfolio, setPortfolio] = useState(null);
+    const [post, setPost] = useState(null);
 
     useEffect(() => {
-        getPortfolioDetails(id); // Pass id as an argument
+        getPostDetails(id); // Pass id as an argument
     }, [id]); // Include id in the dependency array
 
-    const getPortfolioDetails = (id) => {
-        fetch(`/api/portfolios/${id}`)
+    const getPostDetails = (id) => {
+        fetch(`/api/posts/${id}`)
         .then(response => response.json())
         .then(data => {
             if (data.data) {
-                setPortfolio(data.data);
+                setPost(data.data);
             }
         });
     }
-console.log('portfolio',portfolio)
-    return (
-        <div>
+console.log('post:',post)
+
+  return (
+    <div>
             <div className={`${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Navbar />
                 </div>
             </div>
             
-            {portfolio ? (
+            {post ? (
                 <div>
                     <div className='text-center -mb-28'>
-                        <h2 className={`${styles.heading2} `}>{portfolio.title}</h2>
+                        <h2 className={`${styles.heading2} `}>{post.title}</h2>
                     </div>
                     <div id="product" className="p-36 ">
                     <figure>
-                        <img className=" rounded-lg" src={portfolio.thumbnail} alt="" />
+                        <img className=" rounded-lg" src={post.thumbnail} alt="" />
                     </figure>
-                        <h2 className="">{portfolio.title}</h2>
-                        <p className={`${styles.paragraph}`}>{portfolio.description}</p>
+                        <h2 className="">{post.title}</h2>
+                        <p className={`${styles.paragraph}`}>{post.description}</p>
                     </div>
                 </div>
             ) : (
@@ -53,5 +56,5 @@ console.log('portfolio',portfolio)
                 </div>
             </div>                                                        
         </div>
-    );
+  );
 }

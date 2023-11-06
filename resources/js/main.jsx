@@ -18,13 +18,17 @@ import ServiceEdit from "./pages/account/services/ServiceEdit";
 import Portfolios from "./pages/account/portfolios/Portfolios";
 import PortfolioCreate from "./pages/account/portfolios/PortfolioCreate";
 import PortfolioEdit from "./pages/account/portfolios/PortfolioEdit";
+import AllPortfolio from "./components/home/AllPortfolio";
+import PortfolioDetails from "./components/home/PortfolioDetails";
 import Testomonials from "./pages/account/testomonials/Testomonials";
 import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
 import Contacts from "./pages/account/contacts/Contacts";
 import ContactView from "./pages/account/contacts/ContactView";
-import PortfolioDetails from "./components/home/portfolioDetails";
-import AllPortfolio from "./components/home/AllPortfolio";
+import AllBlogs from "./components/home/blog/AllBlogs";
+import BlogDetails from "./components/home/blog/BlogDetails";
+import AllServices from "./components/home/service/AllServices";
+import ServiceDetails from "./components/home/service/ServiceDetails";
 
 
 
@@ -67,11 +71,23 @@ const router = createBrowserRouter([
    path: "/",
    element: <Home />,
  },
+  {path: "/all-services",
+  element: <AllServices />
+},
+{path: "/services/:id",
+    element: <ServiceDetails />
+ },
   {path: "/portfolios/:id",
    element: <PortfolioDetails />
  },
   {path: "/all-portfolios",
     element: <AllPortfolio />
+ },
+ {path: "/posts/:id",
+    element: <BlogDetails />
+ },
+  {path: "/all-blogs",
+    element: <AllBlogs />
  },
 ]);
 

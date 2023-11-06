@@ -26,7 +26,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/portfolios/{id}', [PortfolioController::class, 'showPortfolio']);
-Route::get('/all-portfolios', [PortfolioController::class, 'showAllPortfolio']);
+Route::get('/portfolios', [PortfolioController::class, 'index']);
+
+Route::get('/posts/{id}', [PostController::class, 'showPost']);
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/services/{id}', [ServiceController::class, 'showService']);
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::post('/posts', [PostController::class, 'store']);

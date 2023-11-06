@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Testomonial extends Model
 {
     use HasFactory;
-    protected $fillable = ['author_name', 'description', 'designation'];
+    protected $fillable = ['author_name', 'description', 'designation', 'featured'];
     protected $appends = ['thumbnail'];
 
     public function saveData(array $input, string $id): Testomonial

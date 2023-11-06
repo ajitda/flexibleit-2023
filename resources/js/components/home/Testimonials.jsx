@@ -9,7 +9,7 @@ import 'swiper/css';
 SwiperCore.use([Autoplay]);
 
 const Testimonials = () => {
-  const [testimonials, setTestomonials] = useState();
+  const [testimonials, setTestomonials] = useState([]);
 
   useEffect(()=>{
     getTestomonials();
@@ -65,6 +65,8 @@ const Testimonials = () => {
     },
   }
 
+  const featuredTestimonials = testimonials.filter((testomonial) => testomonial.featured === 1 )
+
   return (
     <>
     
@@ -74,7 +76,7 @@ const Testimonials = () => {
     </div>
     <div>
     <Swiper {...testimonialCarousel}>
-        {testimonials?.map((item, index) => (
+        {featuredTestimonials.map((item, index) => (
           <SwiperSlide key={index}>
             {item.map(({ thumbnail, description, author_name, designation }, _index) => (
               <TestimonialsCard

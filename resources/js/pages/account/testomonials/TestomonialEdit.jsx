@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import ImageUpload from '../../../components/UI/ImageUpload'
 import { uploadFiles } from '../../../helpers/helpers';
@@ -12,6 +12,7 @@ const TestomonialEdit = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [designation, setDesignation] = useState();
+    const [featured, setFeatured] = useState(0);
     // const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
 
@@ -26,10 +27,12 @@ const TestomonialEdit = () => {
         console.log('data',res.data)
         const resdata = res.data.data
         setTestomonial(resdata);
-           setAuthorName(resdata.title);
+           setAuthorName(resdata.author_name);
            setDescription(resdata.description);
+           setDesignation(resdata.designation);
            setMedia(resdata.media);
-           setDesignation(resdata.slug);
+          //  setDesignation(resdata.slug);
+           setFeatured(resdata.featured);
         //    setCategoryIds(resdata.categories.map(cat=>cat.id));
      });
 
@@ -54,7 +57,7 @@ const TestomonialEdit = () => {
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
-        const portfoliosData = { author_name, description, designation};
+        const testomonialsData = { author_name: author_name, description: description, designation: designation, featured: featured};
         if (media.length > 0) {
          const uploads = await uploadFiles(media);
            if ( uploads === false ) return false;
@@ -104,8 +107,24 @@ const TestomonialEdit = () => {
                 <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
             </div>
             <div className='flex flex-wrap'>
-      <ImageUpload value={media} onChange={(m) => setMedia(m)} />
-    </div>
+              <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+            </div>
+            <div className='mb-5 ml-20'>
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+                Featured
+              </label>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="form-checkbox h-5 w-5 text-gray-600"
+                  id="featured"
+                  name="featured"
+                  checked={featured === 1}
+                  onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+                />
+                <label className="ml-2 text-gray-700">Yes</label>
+              </div>
+            </div>
         </div>
         {/* <div className='flex flex-wrap mb-4'>
           <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />

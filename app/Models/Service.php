@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'slug', 'user_id'];
+    protected $fillable = ['title', 'description', 'slug', 'featured', 'user_id'];
     protected $appends = ['thumbnail'];
 
     public function saveData(array $input, string $id): Service

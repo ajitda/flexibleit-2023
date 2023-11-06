@@ -114,19 +114,20 @@ const PortfolioEdit = () => {
       </div>
 
       <div className='mb-5'>
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="featured">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
           Featured
-          </label>
-          <select
-            className="block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        </label>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            className="form-checkbox h-5 w-5 text-gray-600"
             id="featured"
             name="featured"
-            onChange={(e) => setFeatured(e.target.value)}
-            >
-            <option >Please select a feature</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-          </select>
+            checked={featured === 1}
+            onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+          />
+          <label className="ml-2 text-gray-700">Yes</label>
+        </div>
       </div>
 
       <div className='flex flex-wrap'>

@@ -204,7 +204,7 @@ const Testomonials = () => {
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-green-500 hover:text-green-700"
-                                    href={`/account/portfolios/${testomonial.id}/edit`}
+                                    href={`/account/testomonials/${testomonial.id}/edit`}
                                 >
                                     Edit
                                 </a>

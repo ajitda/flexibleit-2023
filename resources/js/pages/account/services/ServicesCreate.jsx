@@ -12,6 +12,7 @@ const ServicesCreate = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
+    const [featured, setFeatured] = useState(0);
     const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
 
@@ -25,8 +26,9 @@ const ServicesCreate = () => {
        console.log('title', title);
        console.log('description', description);
        console.log('slug', slug);
+       console.log('featured', featured);
        //call the api
-       const serviceData = { title: title, description: description, slug: slug, categoryIds };
+       const serviceData = { title: title, description: description, slug: slug, featured:featured, categoryIds };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -86,6 +88,24 @@ const ServicesCreate = () => {
     <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
     </div>
+
+    <div className='mb-5'>
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+        Featured
+      </label>
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          className="form-checkbox h-5 w-5 text-gray-600"
+          id="featured"
+          name="featured"
+          checked={featured === 1}
+          onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+        />
+        <label className="ml-2 text-gray-700">Yes</label>
+      </div>
+    </div>
+
     <div className='flex flex-wrap mb-4'>
       <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>

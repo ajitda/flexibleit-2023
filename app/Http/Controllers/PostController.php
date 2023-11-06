@@ -19,6 +19,8 @@ class PostController extends Controller
         return $this->sendResponse($posts);
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -53,6 +55,18 @@ class PostController extends Controller
         // return response()->json($post);
         $post->load('categories');
         return $this->sendResponse($post);
+    }
+
+    public function showPost($id) {
+        $post = Post::find($id);
+    
+        if ($post) {
+            // If a portfolio with the specified ID is found, return it
+            return $this->sendResponse($post);
+        } else {
+            // If no portfolio with the specified ID is found, return an error or appropriate response
+            return $this->sendError('Post not found', [], 404);
+        }
     }
 
     /**
