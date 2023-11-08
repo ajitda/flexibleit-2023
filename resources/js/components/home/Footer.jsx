@@ -6,8 +6,8 @@ import FooterWidget from './FooterWidget'
 const Footer = () => {
   return (
     <footer>
-      <div className='flex grid grid-cols-5 gap-4'>
-      <div className='m-4 mt-24'>
+      <div className='flex grid grid-cols-4 gap-4'>
+      <div className=''>
           <img src={logo} alt="" />
         </div>
         {menuItems.map(({ id, title, items }) => (

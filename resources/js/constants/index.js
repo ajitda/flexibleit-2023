@@ -404,7 +404,7 @@ export const menuItems = [
   },
   {
     id: 3,
-    title: 'Category',
+    title: 'Pages',
     items: [
       {
         path: '/all-services',
@@ -421,28 +421,6 @@ export const menuItems = [
       {
         path: '/all-blogs',
         label: 'Blogs',
-      },
-    ],
-  },
-  {
-    id: 4,
-    title: 'My Account',
-    items: [
-      {
-        path: '#!',
-        label: 'Press inquiries',
-      },
-      {
-        path: '#!',
-        label: 'Social media ',
-      },
-      {
-        path: '#!',
-        label: 'directories',
-      },
-      {
-        path: '#!',
-        label: 'Permissions',
       },
     ],
   },
