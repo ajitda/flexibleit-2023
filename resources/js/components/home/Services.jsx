@@ -26,11 +26,7 @@ const Services = () => {
     <div id="services" className='text-center py-24'>
       <h2 className={`${styles.heading2} mb-1`}>Grow your startup with our Service</h2>
       <p className={`${styles.paragraph} max-w-xl mx-auto`}>Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents.</p>
-      <div className="mt-8">
-      <Link to={`/all-services`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Services</button>
-      </Link>
-    </div>
+      
     </div>
     <div className='grid md:grid-cols-3 grid-cols-1 gap-5'>
       {featuredServices.map(feature=>{
@@ -42,6 +38,11 @@ const Services = () => {
         </div>
         )
       })}
+    </div>
+    <div className="mt-8 mb-8 text-center">
+      <Link to={`/all-services`}>
+        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Services</button>
+      </Link>
     </div>
     </>
   )

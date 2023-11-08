@@ -18,8 +18,6 @@ import ServiceEdit from "./pages/account/services/ServiceEdit";
 import Portfolios from "./pages/account/portfolios/Portfolios";
 import PortfolioCreate from "./pages/account/portfolios/PortfolioCreate";
 import PortfolioEdit from "./pages/account/portfolios/PortfolioEdit";
-import AllPortfolio from "./components/home/AllPortfolio";
-import PortfolioDetails from "./components/home/PortfolioDetails";
 import Testomonials from "./pages/account/testomonials/Testomonials";
 import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
@@ -29,6 +27,9 @@ import AllBlogs from "./components/home/blog/AllBlogs";
 import BlogDetails from "./components/home/blog/BlogDetails";
 import AllServices from "./components/home/service/AllServices";
 import ServiceDetails from "./components/home/service/ServiceDetails";
+import AllTestimonials from "./components/home/testimonials/AllTestomonial";
+import AllPortfolio from "./components/home/portfolio/AllPortfolio";
+import PortfolioDetails from "./components/home/portfolio/PortfolioDetails";
 
 
 
@@ -88,6 +89,9 @@ const router = createBrowserRouter([
  },
   {path: "/all-blogs",
     element: <AllBlogs />
+ },
+ {path: "/all-testimonials",
+    element: <AllTestimonials />
  },
 ]);
 

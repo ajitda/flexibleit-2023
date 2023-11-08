@@ -30,11 +30,7 @@ const Portfolios = () => {
     <div className='text-center py-24'>
       <h2 className={`${styles.heading2} mb-1`}>Lets Meet Our Projects</h2>
       <p className={`${styles.paragraph} max-w-xl mx-auto`}>Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents.</p>
-    <div className="mt-8">
-      <Link to={`/all-portfolios`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
-      </Link>
-    </div>
+    
     </div>
     
     <div className="-mt-14">
@@ -47,6 +43,11 @@ const Portfolios = () => {
         </div>
       ))}
       </Masonry>
+      <div className="mt-8 text-center">
+      <Link to={`/all-portfolios`}>
+        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
+      </Link>
+    </div>
     </div>
     
     </>

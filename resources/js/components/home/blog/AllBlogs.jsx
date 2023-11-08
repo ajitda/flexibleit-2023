@@ -35,7 +35,7 @@ export default function AllBlogs() {
             <h2 className={`${styles.heading2} mb-1`}>All Blogs</h2>
         </div>
 
-        <div className='p-20 grid md:grid-cols-3 grid-cols-1 gap-5'>
+        <div className='p-20'>
         <Masonry>
           {posts?.map((post) => (
             <div key={post.id}>

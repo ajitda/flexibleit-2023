@@ -28,11 +28,7 @@ const Blogs = () => {
       <div className='text-center py-10'>
     <h2 className={`${styles.heading2} mb-1 text-3xl font-bold`}>Popular blog post we update everyday</h2>
     <p className={`${styles.paragraph} max-w-xl mx-auto text-base font-normal`}>Focus only on the meaning, we take care of the design. As soon as the meeting end you can export in one click.</p>
-    <div className="mt-8">
-      <Link to={`/all-blogs`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Blogs</button>
-      </Link>
-    </div>
+    
     </div>
       <Masonry>
           {featuredBlogs.map((post) => (
@@ -43,6 +39,11 @@ const Blogs = () => {
             </div>
           ))}
       </Masonry>
+      <div className="mt-8 text-center">
+      <Link to={`/all-blogs`}>
+        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Blogs</button>
+      </Link>
+    </div>
     </>
   )
 }

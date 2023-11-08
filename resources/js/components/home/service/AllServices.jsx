@@ -32,7 +32,7 @@ export default function AllServices() {
         </div>
         
         <div className='text-center -mb-10'>
-            <h2 className={`${styles.heading2} mb-1`}>All Blogs</h2>
+            <h2 className={`${styles.heading2} mb-1`}>All Services</h2>
         </div>
 
         <div className='p-20 grid md:grid-cols-3 grid-cols-1 gap-5'>

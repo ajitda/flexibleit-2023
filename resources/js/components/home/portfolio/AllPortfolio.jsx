@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Masonry from 'react-responsive-masonry';
 import { Link } from 'react-router-dom';
-import Portfolio from './Portfolio';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import styles from '../../style';
+import Portfolio from '../Portfolio';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
+import styles from '../../../style';
 
 export default function AllPortfolio() {
 
@@ -35,7 +35,7 @@ export default function AllPortfolio() {
         <h2 className={`${styles.heading2} mb-1`}>All Portfolios</h2>
       </div>
       
-      <div className="p-20 col-md-2">
+      <div className="p-20">
       <Masonry>
         {portfolios?.map((portfolio) => (
           <div key={portfolio.id}>

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { MdOutlineMail } from "react-icons/md"
 import { useAuth } from "../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import styles from "../style";
+import { Footer, Navbar } from "../components";
 
 const Contact = () => {
    // const {user} = useAuth({middleware: "auth"})
@@ -64,11 +66,16 @@ const Contact = () => {
 
    return (<>
       <div>
-         <div className="text-center">
-            <h2 className=" text-3xl mb-3 font-medium ">Get In Touch</h2>
-            <p className=" text-base mb-10">Contact us today to learn more about how we can help your business establish or improve its online presence.<br/> Our team is available to answer any questions you may have and provide a free quote for your project.</p>
+         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+               <Navbar />
+            </div>
          </div>
-         <div className="container mx-auto grid grid-cols-2 gap-4">
+         <div className="text-center mt-20">
+            <h2 className=" text-3xl mb-3 font-medium ">Get In Touch</h2>
+            <p className=" text-base mb-10">Contact us today to learn more about how we can help your business establish or improve<br/> its online presence.Our team is available to answer any questions you may have and<br/>  provide a free quote for your project.</p>
+         </div>
+         <div className="container mx-auto grid grid-cols-2 gap-4 mb-36">
          <div>
             <h3 className="text-xl font-medium mb-2 flex items-center gap-3"> <MdOutlineMail/> Email Us:</h3>
             <p className="text-base mb-6">Fill out our form and we will contact you within 24 hours.</p>
@@ -86,16 +93,21 @@ const Contact = () => {
                
 
          </div>
-      <div>
-      <form action="" onSubmit={(e)=>{handleSubmit(e)}}>
-         <input type="text" name="name" placeholder="Your Name" value={name} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{onChangeHandler("name",e.target.value)}} /><br/>
-         <input type="text" name="email" placeholder="Your Email" value={email} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{ onChangeHandler("email",e.target.value)}} /><br/>
-         <input type="text" name="subject" placeholder="Subject" value={subject} className="border border-slate-600 my-3 w-96 py-4 pl-2" onChange={(e)=>{ onChangeHandler("subject",e.target.value)}} /><br/>
-         <input type="text" name="message" placeholder="Message" value={message} className="border border-slate-600 my-3 w-96 py-8 pl-2" onChange={(e)=>{ onChangeHandler("message",e.target.value)}} /><br/>
-         <button className=" bg-secondary px-6 py-3 text-stone-50 rounded">Submit</button>
-      </form>
-      </div>
+         <div>
+         <form action="" onSubmit={(e)=>{handleSubmit(e)}}>
+            <input type="text" name="name" placeholder="Your Name" value={name} className="border border-slate-600 my-3 py-4 pl-2" style={{width: '36rem'}} onChange={(e)=>{onChangeHandler("name",e.target.value)}} /><br/>
+            <input type="text" name="email" placeholder="Your Email" value={email} className="border border-slate-600 my-3 w-96 py-4 pl-2" style={{width: '36rem'}} onChange={(e)=>{ onChangeHandler("email",e.target.value)}} /><br/>
+            <input type="text" name="subject" placeholder="Subject" value={subject} className="border border-slate-600 my-3 w-96 py-4 pl-2" style={{width: '36rem'}} onChange={(e)=>{ onChangeHandler("subject",e.target.value)}} /><br/>
+            <input type="text" name="message" placeholder="Message" value={message} className="border border-slate-600 my-3 w-96 py-8 pl-2" style={{width: '36rem'}} onChange={(e)=>{ onChangeHandler("message",e.target.value)}} /><br/>
+            <button className=" bg-secondary px-6 py-3 text-stone-50 rounded">Submit</button>
+         </form>
          </div>
+      </div>
+      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+         <div className={`${styles.boxWidth}`}>
+            <Footer />
+         </div>
+      </div>
       </div>
       </>
    )

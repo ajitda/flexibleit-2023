@@ -11,14 +11,22 @@ export const navLinks = [
   {
     id: "services",
     title: "Services",
+    path: "/all-services"
   },
   {
-    id: "product",
-    title: "Product",
+    id: "portfolio",
+    title: "Portfolios",
+    path: "/all-portfolios",
   },
   {
     id: "clients",
     title: "Clients",
+    path: "/all-testimonials"
+  },
+  {
+    id: "contact-us",
+    title: "Contact Us",
+    path: "/contact-us",
   },
 ];
 
@@ -389,38 +397,30 @@ export const menuItems = [
         label: 'About Us',
       },
       {
-        path: '#!',
-        label: 'Copyright',
-      },
-      {
-        path: '#!',
-        label: 'Popular Campaign',
+        path: '/contact-us',
+        label: 'Contact Us',
       },
     ],
   },
   {
     id: 3,
-    title: 'Our Information',
+    title: 'Category',
     items: [
       {
-        path: '#!',
-        label: 'Return Policy ',
+        path: '/all-services',
+        label: 'All Services ',
       },
       {
-        path: '#!',
-        label: 'Privacy Policy',
+        path: '/all-portfolios',
+        label: 'All Portfolios',
       },
       {
-        path: '#!',
-        label: 'Terms & Conditions',
+        path: '/all-testimonials',
+        label: 'Clients',
       },
       {
-        path: '#!',
-        label: 'Site Map',
-      },
-      {
-        path: '#!',
-        label: 'Store Hours',
+        path: '/all-blogs',
+        label: 'Blogs',
       },
     ],
   },
@@ -439,10 +439,6 @@ export const menuItems = [
       {
         path: '#!',
         label: 'directories',
-      },
-      {
-        path: '#!',
-        label: 'Images & B-roll',
       },
       {
         path: '#!',

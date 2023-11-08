@@ -33,21 +33,26 @@ export default function ServiceDetails() {
             </div>
             
             {service ? (
-                <div>
-                    <div className='text-center -mb-28'>
-                        <h2 className={`${styles.heading2} `}>{service.title}</h2>
-                    </div>
-                    <div id="product" className="p-36 ">
-                    <figure>
-                        <img className=" rounded-lg" src={service.thumbnail} alt="" />
-                    </figure>
-                        <h2 className="">{service.title}</h2>
-                        <p className={`${styles.paragraph}`}>{service.description}</p>
-                    </div>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
+        <div className="grid grid-cols-2">
+          <div>
+            <div className="p-24">
+              <figure>
+                <img className="rounded-lg" src={service.thumbnail} alt="" />
+              </figure>
+            </div>
+          </div>
+          <div className="pt-24">
+          <h2 className="">{service.title}</h2>
+            <h2 className={styles.heading2}>{service.title}</h2>
+            <div>
+              <p className="font-medium">Short description:</p>
+              <p className={styles.paragraph}>{service.description}</p>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
             
             <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
