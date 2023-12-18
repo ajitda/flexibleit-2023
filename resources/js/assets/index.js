@@ -1,6 +1,6 @@
 // import logo from '/img/logo-1.png';
 
-export const logo = "/img/logo1.png";
+export const logo = "/img/logo2.svg";
 export const menu = '/img/menu.svg';
 export const close = '/img/close.svg';
 export const discount = '/img/discount.svg';

@@ -8,7 +8,7 @@ const Footer = () => {
     <footer>
       <div className='flex grid grid-cols-4 gap-4'>
       <div className=''>
-          <img src={logo} alt="" />
+          <img src={logo} alt="" className=' h-[205px] pl-14' />
         </div>
         {menuItems.map(({ id, title, items }) => (
             <div className=''>
@@ -19,8 +19,8 @@ const Footer = () => {
       <hr />
       <div className='grid grid-cols-2 gap-4'> {/* Added flex and items-end classes */}
         
-        <div className=' p-8'>
-          <p>Copyright by {new Date().getFullYear()} FlexibleIT</p>
+        <div className=' pl-16 p-8'>
+          <p>Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
           
         </div>
         <div className=' p-8 ml-80'>
