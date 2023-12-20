@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'DevsBrain') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -22,7 +22,7 @@
         <nav class=" navbar navbar-expand-md navbar-light bg-white shadow-sm py-6">
             <div class="container mx-auto flex justify-between">
                 <a class="navbar-brand font-bold text-2xl" href="{{ url('/') }}">
-                    {{ config('app.name', 'Flexible IT') }}
+                    {{ config('app.name', 'DevsBrain') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -46,7 +46,7 @@ export default function ServiceDetails() {
             <h2 className={styles.heading2}>{service.title}</h2>
             <div>
               <p className="font-medium">Short description:</p>
-              <p className={styles.paragraph}>{service.description}</p>
+              <p className={`${styles.paragraph} pr-28`}>{service.description}</p>
             </div>
           </div>
         </div>

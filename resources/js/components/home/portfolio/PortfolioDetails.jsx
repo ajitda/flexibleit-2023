@@ -78,7 +78,7 @@ export default function PortfolioDetails() {
           </div>
           <div>
             <p className=' font-medium'>Short description:</p>
-            <p className={`${styles.paragraph}`}>{portfolio.description}</p>
+            <p className={`${styles.paragraph} pr-28`}>{portfolio.description}</p>
           </div>
           <div className=" mt-4">
             <Link to={`/contact-us`}>
