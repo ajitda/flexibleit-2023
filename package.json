@@ -25,6 +25,7 @@
         "@tailwindcss/oxide": "^0.0.0-insiders.8fb9ae8f",
         "antd": "^5.3.3",
         "lightningcss": "^1.22.0",
+        "react-dropzone": "^14.2.3",
         "react-icons": "^4.7.1",
         "react-responsive-masonry": "^2.1.7",
         "react-router-dom": "^6.8.1",

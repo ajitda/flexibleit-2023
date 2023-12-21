@@ -72,10 +72,10 @@ export default function About() {
         </div>
         </div>
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
-         <div className={`${styles.boxWidth}`}>
-            <Footer />
-         </div>
-      </div>
+            <div className={`${styles.boxWidth}`}>
+                <Footer />
+            </div>
+        </div>
     </div>
   )
 }

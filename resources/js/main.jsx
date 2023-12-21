@@ -32,6 +32,8 @@ import AllPortfolio from "./components/home/portfolio/AllPortfolio";
 import PortfolioDetails from "./components/home/portfolio/PortfolioDetails";
 import Privacy from "./components/privacy";
 import About from "./components/About";
+import EmailExtractor from "./components/tools/EmailExtractor";
+import ImageTwichEmoteResizer from "./components/tools/ImageTwichEmoteResizer";
 
 
 
@@ -100,6 +102,13 @@ const router = createBrowserRouter([
  },
  {path: "/about-us",
     element: <About />
+ },
+ //tools route
+ {path: "/tools/email",
+    element: <EmailExtractor />
+ },
+ {path: "/tools/image-resizer",
+    element: <ImageTwichEmoteResizer />
  },
 ]);
 
