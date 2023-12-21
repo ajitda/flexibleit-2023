@@ -393,7 +393,7 @@ export const menuItems = [
         label: 'Customer Support',
       },
       {
-        path: '#!',
+        path: '/about-us',
         label: 'About Us',
       },
       {

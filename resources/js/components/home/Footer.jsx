@@ -24,9 +24,9 @@ const Footer = () => {
           
         </div>
         <div className=' p-8 ml-80'>
-        <a href="#">Terms of use</a>
+        <a href="/privacy">Terms of use</a>
           <span> | </span>
-          <a href="#">Privacy</a>
+          <a href="/privacy">Privacy</a>
         </div>
       </div>
     </footer>

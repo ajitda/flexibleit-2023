@@ -30,6 +30,8 @@ import ServiceDetails from "./components/home/service/ServiceDetails";
 import AllTestimonials from "./components/home/testimonials/AllTestomonial";
 import AllPortfolio from "./components/home/portfolio/AllPortfolio";
 import PortfolioDetails from "./components/home/portfolio/PortfolioDetails";
+import Privacy from "./components/privacy";
+import About from "./components/About";
 
 
 
@@ -92,6 +94,12 @@ const router = createBrowserRouter([
  },
  {path: "/all-testimonials",
     element: <AllTestimonials />
+ },
+ {path: "/privacy",
+    element: <Privacy />
+ },
+ {path: "/about-us",
+    element: <About />
  },
 ]);
 
