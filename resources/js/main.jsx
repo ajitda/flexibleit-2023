@@ -107,7 +107,7 @@ const router = createBrowserRouter([
  {path: "/tools/email",
     element: <EmailExtractor />
  },
- {path: "/tools/image-resizer",
+ {path: "/tools/twitch-emote-resizer",
     element: <ImageTwichEmoteResizer />
  },
 ]);

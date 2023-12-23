@@ -425,6 +425,28 @@ export const menuItems = [
     ],
   },
   {
+    id: 4,
+    title: 'Tools',
+    items: [
+      {
+        path: '/tools/twitch-emote-resizer',
+        label: 'Emote Resizer',
+      },
+      {
+        path: '#',
+        label: 'Image Converter',
+      },
+      {
+        path: '#',
+        label: 'Email Extractor',
+      },
+      {
+        path: '#',
+        label: 'Free QR Code',
+      },
+    ],
+  },
+  {
     id: 5,
     title: 'Connect',
     items: [

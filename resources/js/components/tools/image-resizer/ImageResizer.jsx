@@ -63,13 +63,17 @@ export default function ImageResizer() {
         <div>
           {customSize ? (
             <div className="controls-container">
-              <label>Set Custom Width:</label>
+              <label>Set Custom</label>
+              <div className='text-center'>
+              <p>Width:</p>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
                 className="border border-gray-300 rounded-md p-1 ml-1"
               />
+              </div>
+              <div className='text-center'>
               <label>Height:</label>
               <input
                 type="number"
@@ -77,6 +81,7 @@ export default function ImageResizer() {
                 onChange={(e) => setHeight(e.target.value)}
                 className="border border-gray-300 rounded-md p-1 ml-1"
               />
+              </div>
             </div>
           ) : (
             <a href="#" onClick={() => setCustomSize(true)} className="text-blue-500">
@@ -84,7 +89,7 @@ export default function ImageResizer() {
             </a>
           )}
         </div>
-        <div>
+        <div  className='ml-28'>
           Image type
           <select onChange={(e) => setImgType(e.target.value)} className="border border-gray-300 rounded-md p-1 ml-1">
             <option value="">default</option>
