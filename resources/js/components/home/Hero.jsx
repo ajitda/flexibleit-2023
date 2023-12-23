@@ -11,7 +11,7 @@ const Hero = () => {
           Creativity starts with viewing the whole world differently
           </h1>
           <p className={`${styles.paragraph}`}>A service agency with customer satisfaction</p>
-          <a href="" className="text-white inline-block mt-10 bg-secondary px-10 py-5 rounded-md">Get Started</a>
+          <a href="/contact-us" className="text-white inline-block mt-10 bg-secondary px-10 py-5 rounded-md">Get Started</a>
         </div>
         <div>
           <img src={herobanner} alt="" />

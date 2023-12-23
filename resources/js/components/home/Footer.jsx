@@ -6,12 +6,12 @@ import FooterWidget from './FooterWidget'
 const Footer = () => {
   return (
     <footer>
-      <div className='flex grid grid-cols-5'>
+      <div className='md:grid grid-cols-5'>
       <div className=''>
-          <img src={logo} alt="" className=' h-[205px] pl-14' />
+          <img src={logo} alt="" className=' w-60 md:h-[205px] md:pl-14 ml-16 mb-4' />
         </div>
         {menuItems.map(({ id, title, items }) => (
-            <div className=''>
+            <div className='md:ml-0 ml-10'>
             <FooterWidget key={id} title={title} items={items} />
             </div>
           ))}
@@ -23,7 +23,7 @@ const Footer = () => {
           <p>Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
           
         </div>
-        <div className=' p-8 ml-80'>
+        <div className=' p-8 md:ml-80'>
         <a href="/privacy">Terms of use</a>
           <span> | </span>
           <a href="/privacy">Privacy</a>
