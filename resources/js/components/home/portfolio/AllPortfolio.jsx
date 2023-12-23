@@ -35,8 +35,7 @@ export default function AllPortfolio() {
         <h2 className={`${styles.heading2} mb-1`}>All Portfolios</h2>
       </div>
       
-      <div className="p-20">
-      <Masonry>
+      <div className="p-20 grid md:grid-cols-3 grid-cols-1 gap-5">
         {portfolios?.map((portfolio) => (
           <div key={portfolio.id}>
             <Link to={`/portfolios/${portfolio.id}`}>
@@ -44,7 +43,6 @@ export default function AllPortfolio() {
             </Link>
           </div>
         ))}
-        </Masonry>
       </div>
       
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>

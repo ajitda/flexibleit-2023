@@ -51,7 +51,7 @@ export default function ImageResizer() {
 
   return (
     <div className="image-resizer-container p-4">
-      <div {...getRootProps()} className="dropzone-container border border-dashed border-gray-400 rounded-md p-8 text-center">
+      <div {...getRootProps()} className="dropzone-container border border-dashed border-gray-400 rounded-md md:p-24 text-center">
         <input {...getInputProps()} />
         {isDragActive ? (
           <p>Drop the files here ...</p>
@@ -63,24 +63,21 @@ export default function ImageResizer() {
         <div>
           {customSize ? (
             <div className="controls-container">
-              <label>Set Custom</label>
-              <div className='text-center'>
-              <p>Width:</p>
+              <label>Set Custom <span className='font-medium'>Width:</span></label>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
-                className="border border-gray-300 rounded-md p-1 ml-1"
+                className="border border-gray-300 rounded-md p-1 ml-1 mb-3"
               />
-              </div>
-              <div className='text-center'>
-              <label>Height:</label>
-              <input
-                type="number"
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
-                className="border border-gray-300 rounded-md p-1 ml-1"
-              />
+              <div className='lg:pl-20'>
+                <label className='font-medium'>Height:</label>
+                <input
+                  type="number"
+                  value={height}
+                  onChange={(e) => setHeight(e.target.value)}
+                  className="border border-gray-300 rounded-md p-1 ml-1"
+                />
               </div>
             </div>
           ) : (
@@ -89,9 +86,9 @@ export default function ImageResizer() {
             </a>
           )}
         </div>
-        <div  className='ml-28'>
+        <div  className='md:ml-28'>
           Image type
-          <select onChange={(e) => setImgType(e.target.value)} className="border border-gray-300 rounded-md p-1 ml-1">
+          <select onChange={(e) => setImgType(e.target.value)} className="border border-gray-300 rounded-md p-1 md:ml-1">
             <option value="">default</option>
             <option value="jpg">jpg</option>
             <option value="png">png</option>

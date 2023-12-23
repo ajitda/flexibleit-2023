@@ -5,26 +5,26 @@ import { dribbble, facebook, gallery1, gallery2, gallery3, gallery4, gallery5, g
 
 export const navLinks = [
   {
-    id: "home",
+    id: "/",
     title: "Home",
   },
   {
-    id: "services",
+    id: "/all-services",
     title: "Services",
     path: "/all-services"
   },
   {
-    id: "portfolio",
+    id: "/all-portfolios",
     title: "Portfolios",
     path: "/all-portfolios",
   },
   {
-    id: "clients",
+    id: "/all-testimonials",
     title: "Clients",
     path: "/all-testimonials"
   },
   {
-    id: "contact-us",
+    id: "/contact-us",
     title: "Contact Us",
     path: "/contact-us",
   },
@@ -384,14 +384,14 @@ export const menuItems = [
     id: 2,
     title: 'About Us',
     items: [
-      {
-        path: '#!',
-        label: 'Support Center',
-      },
-      {
-        path: '#!',
-        label: 'Customer Support',
-      },
+      // {
+      //   path: '#!',
+      //   label: 'Support Center',
+      // },
+      // {
+      //   path: '#!',
+      //   label: 'Customer Support',
+      // },
       {
         path: '/about-us',
         label: 'About Us',
@@ -432,18 +432,18 @@ export const menuItems = [
         path: '/tools/twitch-emote-resizer',
         label: 'Emote Resizer',
       },
-      {
-        path: '#',
-        label: 'Image Converter',
-      },
-      {
-        path: '#',
-        label: 'Email Extractor',
-      },
-      {
-        path: '#',
-        label: 'Free QR Code',
-      },
+      // {
+      //   path: '#',
+      //   label: 'Image Converter',
+      // },
+      // {
+      //   path: '#',
+      //   label: 'Email Extractor',
+      // },
+      // {
+      //   path: '#',
+      //   label: 'Free QR Code',
+      // },
     ],
   },
   {
@@ -451,25 +451,25 @@ export const menuItems = [
     title: 'Connect',
     items: [
       {
-        path: '#!',
+        path: 'https://www.facebook.com/devsbrain',
         icon: facebook,
         label: 'Facebook',
       },
-      {
-        path: '#!',
-        icon: twitter,
-        label: 'Twitter',
-      },
+      // {
+      //   path: '#!',
+      //   icon: twitter,
+      //   label: 'Twitter',
+      // },
       {
         path: '#!',
         icon: github,
         label: 'Github',
       },
-      {
-        path: '#!',
-        icon: dribbble,
-        label: 'Dribbble',
-      },
+      // {
+      //   path: '#!',
+      //   icon: dribbble,
+      //   label: 'Dribbble',
+      // },
     ],
   },
 ];

@@ -33,8 +33,7 @@ const Portfolios = () => {
     
     </div>
     
-    <div className="-mt-14">
-    <Masonry>
+    <div className="grid md:grid-cols-3 grid-cols-1 gap-5 -mt-14 mb-8">
       {featuredPortfolios.map((portfolio) => (
         <div key={portfolio.id}>
           <Link to={`/portfolios/${portfolio.id}`}>
@@ -42,13 +41,12 @@ const Portfolios = () => {
           </Link>
         </div>
       ))}
-      </Masonry>
-      <div className="mt-8 text-center">
-      <Link to={`/all-portfolios`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
-      </Link>
     </div>
-    </div>
+      <div className='text-center'>
+        <Link to={`/all-portfolios`}>
+          <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
+        </Link>
+      </div>
     
     </>
   )

@@ -12,12 +12,12 @@ export default function ImageTwichEmoteResizer() {
                <Navbar />
             </div>
          </div>
-        <div className="container mb-3 p-10">
-            <h1 className="text-center text-4xl font-semibold mb-8 ml-28">Image Resizer tool to reduce twitch emotes</h1>
+        <div className="mb-3 p-10">
+            <h1 className="text-center text-5xl font-semibold mb-8 md:ml-28">Image Resizer tool to reduce twitch emotes</h1>
             <div className="row">
-                <div className="grid grid-cols-3">
-                    <div></div>
-                    <div className=' ml-28'>
+                <div className="md:flex">
+                    <div className='md:flex-none w-80'></div>
+                    <div className='md:ml-28 md:flex-initial md:w-7/12'>
                         <p className="text-center mb-5">
                             By utilizing our cutting-edge Image Resizer tool, it is now achievable to effortlessly reduce the size of your twitch emotes.
                             With our user-friendly resizer tool, resizing your twitch images has never been easier or more convenient.
@@ -31,7 +31,7 @@ export default function ImageTwichEmoteResizer() {
                             Our tool offers unrivaled ease-of-use and convenience when it comes to resizing your twitch emotes.
                             So why wait? Upload your emotes today and start resizing!
                         </p>
-                        <ul className='list-disc'>
+                        <ul className='list-disc mx-9'>
                             <li>Upload your twitch emotes, then you can see many sizes of your photos.</li>
                             <li>You can download all resized images by clicking <span>Save All</span> button</li>
                         </ul>
@@ -39,12 +39,13 @@ export default function ImageTwichEmoteResizer() {
                             <ImageResizer />
                         </div>
                     </div>
+                    <div className='md:flex-initial md:w-96'></div>
                 </div>
             </div>
 
             
 
-            <p className="text-center mb-5 mt-8 ml-32">
+            <p className="text-center mb-5 mt-8 md:ml-32">
                 If you have any question or face any problem or if you have any feature request? Please <a href="/contact">Contact Us</a>
             </p>
         </div>
