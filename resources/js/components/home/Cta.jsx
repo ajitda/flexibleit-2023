@@ -14,7 +14,6 @@ const Cta = () => {
       <button className='bg-secondary text-white mt-2 p-[13px] rounded pl-2'>Subscribe Us</button>
       <p className='pt-4 pl-4'>Don’t provide any promotional message.</p>
     </div> */}
-    
     </div>
   )
 }
