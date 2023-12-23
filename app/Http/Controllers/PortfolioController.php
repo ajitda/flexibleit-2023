@@ -53,6 +53,20 @@ class PortfolioController extends Controller
         $portfolio->load('categories');
         return $this->sendResponse($portfolio);
     }
+    
+    public function showPortfolio($id) {
+        $portfolio = Portfolio::find($id);
+    
+        if ($portfolio) {
+            // If a portfolio with the specified ID is found, return it
+            return $this->sendResponse($portfolio);
+        } else {
+            // If no portfolio with the specified ID is found, return an error or appropriate response
+            return $this->sendError('Portfolio not found', [], 404);
+        }
+    }
+
+    
 
     /**
      * Show the form for editing the specified resource.

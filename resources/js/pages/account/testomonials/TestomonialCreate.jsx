@@ -10,6 +10,7 @@ const TestomonialCreate = () => {
     const [description, setDescription] = useState();
     const [media, setMedia] = useState([]);
     const [designation, setDesignation] = useState();
+    const [featured, setFeatured] = useState(0);
     // const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
  
@@ -18,8 +19,9 @@ const TestomonialCreate = () => {
        console.log('author_name', author_name);
        console.log('description', description);
        console.log('designation', designation);
+       console.log('featured', featured);
        //call the api
-       const testomonialData = { author_name, description, designation};
+       const testomonialData = { author_name, description, designation, featured};
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -79,7 +81,26 @@ const TestomonialCreate = () => {
    </div>
    <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+      
+    <div className='mb-5 ml-20'>
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+        Featured
+      </label>
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          className="form-checkbox h-5 w-5 text-gray-600"
+          id="featured"
+          name="featured"
+          checked={featured === 1}
+          onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+        />
+        <label className="ml-2 text-gray-700">Yes</label>
+      </div>
     </div>
+    </div>
+
+
     {/* <div className='flex flex-wrap mb-4'>
       <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div> */}

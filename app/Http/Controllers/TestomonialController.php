@@ -49,8 +49,10 @@ class TestomonialController extends Controller
      */
     public function show(Testomonial $testomonial)
     {
+        // dd($testomonial);
         // return response()->json($post);
-        $testomonial->load('testomonials');
+        // $testomonial->load('testomonials');
+        // dd($testomonial);
         return $this->sendResponse($testomonial);
     }
 

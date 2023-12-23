@@ -50,6 +50,18 @@ class ServiceController extends Controller
         return $this->sendResponse($service);
     }
 
+    public function showService($id) {
+        $service = Service::find($id);
+    
+        if ($service) {
+            // If a portfolio with the specified ID is found, return it
+            return $this->sendResponse($service);
+        } else {
+            // If no portfolio with the specified ID is found, return an error or appropriate response
+            return $this->sendError('Service not found', [], 404);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

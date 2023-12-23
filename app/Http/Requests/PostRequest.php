@@ -23,7 +23,9 @@ class PostRequest extends FormRequest
     {
         return [
             'title'=> 'required | min:3 | max:299 |unique:posts',
-            'description' => 'required | min:3 | max:299 |'
+            'slug' => 'required | min:3 | max:299 |',
+            'description' => 'required | min:3 | max:299 |',
+            'featured' => ' min:1 ',
         ];
     }
 }

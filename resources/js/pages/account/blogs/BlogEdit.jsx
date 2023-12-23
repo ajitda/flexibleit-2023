@@ -14,6 +14,7 @@ const BlogEdit = () => {
   const [description, setDescription] = useState();
   const [media, setMedia] = useState([]);
   const [slug, setSlug] = useState();
+  const [featured, setFeatured] = useState(0);
   const [categoryIds, setCategoryIds] = useState();
   const navigate = useNavigate();
 
@@ -36,6 +37,7 @@ const BlogEdit = () => {
       setTitle(resdata.title);
       setSlug(resdata.slug);
       setDescription(resdata.description);
+      setFeatured(resdata.featured);
       setMedia(resdata.media);
       setCategoryIds(resdata.categories.map(cat=>cat.id))
     });
@@ -61,7 +63,7 @@ const BlogEdit = () => {
     //     headers: { 'Content-Type': 'application/json' },
     //     body: JSON.stringify()
     // };
-    const postData = { title: title, description: description, slug, categoryIds };
+    const postData = { title: title, description: description, slug, featured: featured, categoryIds };
     if (media.length > 0) {
       const uploads = await uploadFiles(media);
       if (uploads === false) return false;
@@ -115,9 +117,27 @@ const BlogEdit = () => {
           <ImageUpload value={media} onChange={(m) => setMedia(m)} />
         </div>
       </div>
-        <div className='flex flex-wrap mb-4'>
-          <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+
+      <div className='mb-5'>
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+          Featured
+        </label>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            className="form-checkbox h-5 w-5 text-gray-600"
+            id="featured"
+            name="featured"
+            checked={featured === 1}
+            onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+          />
+          <label className="ml-2 text-gray-700">Yes</label>
         </div>
+      </div>
+
+      <div className='flex flex-wrap mb-4'>
+        <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+      </div>
       {/* <div className="flex flex-wrap -mx-3 mb-2">
      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">

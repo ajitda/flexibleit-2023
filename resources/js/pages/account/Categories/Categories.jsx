@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../hooks/auth';
 import LinkButton from '../LinkButton';
+import styles from '../../../style';
 
 const Categories = () => {
   const {user} = useAuth({middleware: 'auth'})
@@ -42,12 +43,13 @@ const Categories = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 pl-2">
+        <div className="flex justify-between py-3 pl-2 ml-16">
             <div className="relative max-w-xs">
+                <h2 className={`${styles.heading2} text-left mb-1`}>Categories</h2>
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
                 </label>
-                <Link to={"/account/categories/create"} className='bg-green-400 py-3 px-6' >Add</Link>
+                
                 <input
                     type="text"
                     name="hs-table-search"
@@ -55,7 +57,7 @@ const Categories = () => {
                     className="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                     placeholder="Search..."
                 />
-                <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <div className="absolute inset-y-0 left-0 flex items-center mt-20 pl-4 pointer-events-none">
                     <svg
                         className="h-3.5 w-3.5 text-gray-400"
                         xmlns="http://www.w3.org/2000/svg"
@@ -69,8 +71,9 @@ const Categories = () => {
                 </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 mt-20">
                 <div className="relative">
+                <Link to={"/account/categories/create"} className='bg-green-400 py-2 px-6 mr-5 rounded-xl' >Add</Link>
                     <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1">
                         <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
                             <div>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('author_name');
             $table->string('designation');
             $table->text('description');
+            $table->tinyInteger('featured');
             $table->timestamps();
         });
     }

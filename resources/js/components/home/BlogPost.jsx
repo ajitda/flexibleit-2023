@@ -3,7 +3,7 @@ import React from 'react'
 const BlogPost = ({post}) => {
   return (
     <>
-    <div className='py-4'>
+    <div className='py-4 w-56'>
        {/* <article>{post.description}</article>  */}
        <img src={post?.thumbnail ? post?.thumbnail : '/img/blog/1.png'} alt="" />
     </div>

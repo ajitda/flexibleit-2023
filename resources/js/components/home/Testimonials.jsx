@@ -5,11 +5,12 @@ import { testimonials } from '../../constants'
 import styles from '../../style'
 import TestimonialsCard from './TestimonialsCard'
 import 'swiper/css';
+import { Link } from 'react-router-dom'
 
 SwiperCore.use([Autoplay]);
 
 const Testimonials = () => {
-  const [testimonials, setTestomonials] = useState();
+  const [testimonials, setTestomonials] = useState([]);
 
   useEffect(()=>{
     getTestomonials();
@@ -22,15 +23,19 @@ const Testimonials = () => {
        console.log('posts res ', data)
       //  setTestomonials(data.data);
       const resdata = data.data;
+
+      const featuredTestimonials = data.data.filter((testomonial) => testomonial.featured )
+      console.log('Test Featured:', featuredTestimonials);
+
        const allTestimonials = [];
        
        const chunkSize = 1;
-        for (let i = 0; i < resdata.length; i += chunkSize) {
-            const chunk = resdata.slice(i, i + chunkSize);
+        for (let i = 0; i < featuredTestimonials.length; i += chunkSize) {
+            const chunk = featuredTestimonials.slice(i, i + chunkSize);
             // do whatever
             allTestimonials.push(chunk);
         }
-        // console.log('allTestimonials', allTestimonials)
+        console.log('allTestimonials', allTestimonials)
         setTestomonials(allTestimonials)
       });
  }
@@ -65,12 +70,15 @@ const Testimonials = () => {
     },
   }
 
+  
+
   return (
     <>
     
     <div id='clients' className='text-center py-10'>
     <h2 className={`${styles.heading2} mb-1`}>What Clients Say About US</h2>
     <p className={`${styles.paragraph} max-w-xl mx-auto`}>Customer Testimonial</p>
+    
     </div>
     <div>
     <Swiper {...testimonialCarousel}>
@@ -88,6 +96,11 @@ const Testimonials = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <div className="mt-8 mb-8 text-center">
+      <Link to={`/all-testimonials`}>
+        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Testimonials</button>
+      </Link>
+    </div>
     </div>
     </>
   )

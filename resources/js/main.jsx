@@ -23,6 +23,17 @@ import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
 import Contacts from "./pages/account/contacts/Contacts";
 import ContactView from "./pages/account/contacts/ContactView";
+import AllBlogs from "./components/home/blog/AllBlogs";
+import BlogDetails from "./components/home/blog/BlogDetails";
+import AllServices from "./components/home/service/AllServices";
+import ServiceDetails from "./components/home/service/ServiceDetails";
+import AllTestimonials from "./components/home/testimonials/AllTestomonial";
+import AllPortfolio from "./components/home/portfolio/AllPortfolio";
+import PortfolioDetails from "./components/home/portfolio/PortfolioDetails";
+import Privacy from "./components/privacy";
+import About from "./components/About";
+import EmailExtractor from "./components/tools/EmailExtractor";
+import ImageTwichEmoteResizer from "./components/tools/ImageTwichEmoteResizer";
 
 
 
@@ -62,9 +73,43 @@ const router = createBrowserRouter([
    element: <Contact />,
  },
  {
-  path: "/",
-  element: <Home />,
+   path: "/",
+   element: <Home />,
+ },
+  {path: "/all-services",
+  element: <AllServices />
 },
+{path: "/services/:id",
+    element: <ServiceDetails />
+ },
+  {path: "/portfolios/:id",
+   element: <PortfolioDetails />
+ },
+  {path: "/all-portfolios",
+    element: <AllPortfolio />
+ },
+ {path: "/posts/:id",
+    element: <BlogDetails />
+ },
+  {path: "/all-blogs",
+    element: <AllBlogs />
+ },
+ {path: "/all-testimonials",
+    element: <AllTestimonials />
+ },
+ {path: "/privacy",
+    element: <Privacy />
+ },
+ {path: "/about-us",
+    element: <About />
+ },
+ //tools route
+ {path: "/tools/email",
+    element: <EmailExtractor />
+ },
+ {path: "/tools/twitch-emote-resizer",
+    element: <ImageTwichEmoteResizer />
+ },
 ]);
 
 // ReactDOM.createRoot(document.getElementById("root")).render(

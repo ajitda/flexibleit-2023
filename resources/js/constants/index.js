@@ -11,14 +11,22 @@ export const navLinks = [
   {
     id: "services",
     title: "Services",
+    path: "/all-services"
   },
   {
-    id: "product",
-    title: "Product",
+    id: "portfolio",
+    title: "Portfolios",
+    path: "/all-portfolios",
   },
   {
     id: "clients",
     title: "Clients",
+    path: "/all-testimonials"
+  },
+  {
+    id: "contact-us",
+    title: "Contact Us",
+    path: "/contact-us",
   },
 ];
 
@@ -385,68 +393,56 @@ export const menuItems = [
         label: 'Customer Support',
       },
       {
-        path: '#!',
+        path: '/about-us',
         label: 'About Us',
       },
       {
-        path: '#!',
-        label: 'Copyright',
-      },
-      {
-        path: '#!',
-        label: 'Popular Campaign',
+        path: '/contact-us',
+        label: 'Contact Us',
       },
     ],
   },
   {
     id: 3,
-    title: 'Our Information',
+    title: 'Pages',
     items: [
       {
-        path: '#!',
-        label: 'Return Policy ',
+        path: '/all-services',
+        label: 'All Services ',
       },
       {
-        path: '#!',
-        label: 'Privacy Policy',
+        path: '/all-portfolios',
+        label: 'All Portfolios',
       },
       {
-        path: '#!',
-        label: 'Terms & Conditions',
+        path: '/all-testimonials',
+        label: 'Clients',
       },
       {
-        path: '#!',
-        label: 'Site Map',
-      },
-      {
-        path: '#!',
-        label: 'Store Hours',
+        path: '/all-blogs',
+        label: 'Blogs',
       },
     ],
   },
   {
     id: 4,
-    title: 'My Account',
+    title: 'Tools',
     items: [
       {
-        path: '#!',
-        label: 'Press inquiries',
+        path: '/tools/twitch-emote-resizer',
+        label: 'Emote Resizer',
       },
       {
-        path: '#!',
-        label: 'Social media ',
+        path: '#',
+        label: 'Image Converter',
       },
       {
-        path: '#!',
-        label: 'directories',
+        path: '#',
+        label: 'Email Extractor',
       },
       {
-        path: '#!',
-        label: 'Images & B-roll',
-      },
-      {
-        path: '#!',
-        label: 'Permissions',
+        path: '#',
+        label: 'Free QR Code',
       },
     ],
   },

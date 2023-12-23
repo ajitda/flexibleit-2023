@@ -9,6 +9,7 @@ const PortfolioCreate = () => {
     const {user} = useAuth({middleware: "auth"})
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
+    const [featured, setFeatured] = useState(0);
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
     const [categoryIds, setCategoryIds] = useState();
@@ -25,7 +26,7 @@ const PortfolioCreate = () => {
        console.log('description', description);
        console.log('slug', slug);
        //call the api
-       const portfolioData = { title: title, description: description, slug, categoryIds };
+       const portfolioData = { title: title, description: description, slug, featured: featured, categoryIds };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -74,6 +75,7 @@ const PortfolioCreate = () => {
        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"/>
      </div> */}
    </div>
+
    <div className="flex flex-wrap -mx-3 mb-6">
      <div className="w-full px-3">
        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -83,9 +85,28 @@ const PortfolioCreate = () => {
        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
      </div>
    </div>
-   <div className='flex flex-wrap mb-4'>
+
+    <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
     </div>
+
+    <div className='mb-5'>
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+        Featured
+      </label>
+      <div className="flex items-center">
+        <input
+          type="checkbox"
+          className="form-checkbox h-5 w-5 text-gray-600"
+          id="featured"
+          name="featured"
+          checked={featured === 1}
+          onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+        />
+        <label className="ml-2 text-gray-700">Yes</label>
+      </div>
+    </div>
+
     <div className='flex flex-wrap mb-4'>
       <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>
@@ -118,8 +139,8 @@ const PortfolioCreate = () => {
        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210"/>
      </div>
    </div> */}
-   <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
-   <button><a href="/account/portfolios">Back</a></button>
+   <button className='p-2 text-white text-lg bg-blue-500 inline-block rounded-xl'>Submit</button>
+   <button className='ml-2'><a href="/account/portfolios">Back</a></button>
  </form>
   </div>
   )
