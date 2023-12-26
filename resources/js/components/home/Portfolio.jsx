@@ -17,8 +17,8 @@ const Portfolio = ({portfolio}) => {
          <figure>
             <img className=" rounded-lg" src={thumbnail} alt="" />
          </figure>
-            <h2 className="absolute text-lg font-bold text-cyan-600 bottom-4 left-0 text-center md:p-8 md:leading-10 w-full">{slicedTitle}</h2>
-            <p className={`${styles.paragraph} md:p-8 md:mt-1 md:text-center`}>{slicedDescription}</p>
+            <h2 className="absolute text-lg font-bold text-cyan-600 md:bottom-4 my-2 left-0 text-center md:p-8 md:leading-10 w-full">{slicedTitle}</h2>
+            <p className={`${styles.paragraph} md:p-8 p-4 md:mt-1 md:text-center`}>{slicedDescription}</p>
       </div>
    )
 }
