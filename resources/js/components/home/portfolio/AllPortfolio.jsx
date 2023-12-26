@@ -35,7 +35,7 @@ export default function AllPortfolio() {
         <h2 className={`${styles.heading2} mb-1`}>All Portfolios</h2>
       </div>
       
-      <div className="p-20 grid md:grid-cols-3 grid-cols-1 gap-5">
+      <div className="md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5">
         {portfolios?.map((portfolio) => (
           <div key={portfolio.id}>
             <Link to={`/portfolios/${portfolio.id}`}>

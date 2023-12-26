@@ -47,15 +47,15 @@ export default function PortfolioDetails() {
       </div>
 
       {portfolio ? (
-        <div className='grid grid-cols-2'>
+        <div className='grid md:grid-cols-2 grid-cols-1'>
           <div>
           
-          <div id="product" className=" p-24">
+          <div id="product" className=" md:p-24 p-5">
             <figure>
               <img className="rounded" src={portfolio.thumbnail} alt="" />
             </figure>
             {portfolio.media && portfolio.media.length > 0 ? (
-              <div className="flex mr-96 mt-5 mb-5">
+              <div className="flex md:mr-96 mt-5 mb-5">
                 {portfolio.media.map((image, index) => (
                   <img
                     key={index}
@@ -71,14 +71,14 @@ export default function PortfolioDetails() {
             )}
           </div>
           </div>
-          <div className='pt-24'>
+          <div className='md:pt-24 p-5 mb-12'>
           <h2 className="">{portfolio.title}</h2>
           <div className=''>
             <h2 className={`${styles.heading2} `}>{portfolio.title}</h2>
           </div>
           <div>
             <p className=' font-medium'>Short description:</p>
-            <p className={`${styles.paragraph} pr-28`}>{portfolio.description}</p>
+            <p className={`${styles.paragraph} md:pr-28`}>{portfolio.description}</p>
           </div>
           <div className=" mt-4">
             <Link to={`/contact-us`}>
@@ -115,7 +115,7 @@ export default function PortfolioDetails() {
               unmount: { scale: 0.9, y: -100 },
             }}
           >
-            <DialogBody className="" style={{width:'50rem',left:'15rem'}}> {/* Transparent background */}
+            <DialogBody className="md:w-4/5 md:ml-80 md:mr-0 mr-7 md:mt-0 mt-60"> {/* Transparent background */}
               <img
                 alt="Modal Image"
                 className="rounded-lg top" // Small width

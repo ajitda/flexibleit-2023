@@ -6,7 +6,7 @@ import FooterWidget from './FooterWidget'
 const Footer = () => {
   return (
     <footer>
-      <div className='md:grid grid-cols-5'>
+      <div className='grid md:grid-cols-5'>
       <div className=''>
           <img src={logo} alt="" className=' w-60 md:h-[205px] md:pl-14 ml-16 mb-4' />
         </div>
