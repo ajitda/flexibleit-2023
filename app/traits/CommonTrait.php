@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 trait CommonTrait
 {
-    
-
-    
 
     public function setSMTPConfig()
     {
