@@ -98,7 +98,7 @@ const Testimonials = () => {
       </Swiper>
       <div className="mt-8 mb-8 text-center">
       <Link to={`/all-testimonials`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Testimonials</button>
+        <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Testimonials</button>
       </Link>
     </div>
     </div>

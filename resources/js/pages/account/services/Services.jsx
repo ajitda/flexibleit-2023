@@ -126,7 +126,7 @@ const services = () => {
                                 scope="col"
                                 className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                             >
-                                Email
+                                Description
                             </th>
                             <th
                                 scope="col"
@@ -150,6 +150,10 @@ const services = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                       {services && services.map(service=> {
+                        let slicedDescription = service.description.slice(0, 100);
+                        if (service.description.length > 100) {
+                        slicedDescription += "...";
+                        }
                          return (
                          <tr>
                             <td className="py-3 pl-4">
@@ -173,7 +177,7 @@ const services = () => {
                                 {service.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {service.description}
+                                {slicedDescription}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                 {service.thumbnail}

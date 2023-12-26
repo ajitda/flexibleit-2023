@@ -26,6 +26,7 @@ const Portfolios = () => {
  //          setPosts(res.data);
  //         });
     }
+
  
     const handleDelete = (id) => {
      {if(window.confirm('Are you sure to delete this record?'))
@@ -143,7 +144,7 @@ const Portfolios = () => {
                                 scope="col"
                                 className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                             >
-                                Email
+                                Description
                             </th>
                             <th
                                 scope="col"
@@ -168,6 +169,10 @@ const Portfolios = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                       {portfolios && portfolios.map(portfolio=> {
+                        let slicedDescription = portfolio.description.slice(0, 100);
+                        if (portfolio.description.length > 100) {
+                        slicedDescription += "...";
+                        }
                          return (
                          <tr>
                             <td className="py-3 pl-4">
@@ -191,7 +196,7 @@ const Portfolios = () => {
                                 {portfolio.title}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {portfolio.description}
+                                {slicedDescription}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                 {portfolio.thumbnail}

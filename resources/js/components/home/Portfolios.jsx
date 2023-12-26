@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 const Portfolios = () => {
   const [portfolios, setPortfolios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(()=>{
      getPortfolios();
@@ -19,14 +20,24 @@ const Portfolios = () => {
        .then(data => {
         console.log('portfolios res :', data)
         setPortfolios(data.data);
-       });
+        setLoading(false);
+       })
+       .catch(error => {
+        console.error('Error fetching portfolios:', error);
+        setLoading(false); // Set loading to false in case of an error
+      });
   }
 
   const featuredPortfolios = portfolios.filter((portfolio) => portfolio.featured === 1 )
 
   return (
     <>
-   
+   {loading ? (
+        <div className="text-center py-24">
+          <h2 className={`${styles.heading2} mb-1`}>Loading...</h2>
+        </div>
+      ) : (
+        <>
     <div className='text-center py-24'>
       <h2 className={`${styles.heading2} mb-1`}>Lets Meet Our Projects</h2>
       <p className={`${styles.paragraph} max-w-xl mx-auto`}>Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents.</p>
@@ -44,10 +55,11 @@ const Portfolios = () => {
     </div>
       <div className='text-center'>
         <Link to={`/all-portfolios`}>
-          <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
+          <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
         </Link>
       </div>
-    
+      </>
+      )}
     </>
   )
 }

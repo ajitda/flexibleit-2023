@@ -38,7 +38,7 @@ export default function AllServices() {
         <div className='p-20 grid md:grid-cols-3 grid-cols-1 gap-5'>
         {services?.map(feature=>{
             return (
-                <div key={feature.id}>
+                <div key={feature.id} className=' bg-gray-200 rounded-md md:p-12 p-5'>
                     <Link to={`/services/${feature.id}`}>
                         <Service service={feature} />
                     </Link>

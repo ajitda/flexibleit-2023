@@ -41,7 +41,7 @@ const Blogs = () => {
       </Masonry>
       <div className="mt-8 text-center">
       <Link to={`/all-blogs`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Blogs</button>
+        <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Blogs</button>
       </Link>
     </div>
     </>

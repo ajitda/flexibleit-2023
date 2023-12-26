@@ -91,7 +91,9 @@ export default function PortfolioDetails() {
            
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className='text-center text-3xl mb-10'>
+          <h1>Loading...</h1>
+        </div>
       )}
 
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>

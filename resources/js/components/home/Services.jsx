@@ -41,7 +41,7 @@ const Services = () => {
     </div>
     <div className="mt-8 mb-8 text-center">
       <Link to={`/all-services`}>
-        <button className="bg-cyan-500 text-white inline-block px-8 py-5 rounded-md">View All Services</button>
+        <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Services</button>
       </Link>
     </div>
     </>
