@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Models\Media;
+use App\Models\Portfolio;
+use App\Models\Portfolio_service;
+use App\Models\PortfolioService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -27,6 +30,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $input = $request->all();
         $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $service = Service::create($input);
@@ -36,9 +40,37 @@ class ServiceController extends Controller
         if (!empty($input['categoryIds'])) {
             $service->categories()->attach($input['categoryIds']);
         }
+        //check if $input[portfolio_ids] exists
+        if (isset($input['portfolio_ids']) && is_array($input['portfolio_ids'])) {
+            // Loop through each portfolio ID and associate it with the service
+            foreach ($input['portfolio_ids'] as $portfolioId) {
+                // You may want to check if the portfolio ID exists before attaching
+                $portfolio = Portfolio::find($portfolioId);
+                if ($portfolio) {
+                    $service->portfolios()->attach($portfolioId);
+                }
+            }
+        }
         // return response()->json($post);
-        return $this->sendResponse($service);
+        return $this->sendResponse([$service, $input]);
     }
+
+    // public function portfolio_services_store(Request $request) 
+    // {
+    //     $input = $request->all();
+    //     // dd($input);
+    //     $input['user_id'] = auth()->user()->id;
+    //     if (!empty($input[0]['portfolio_id']) && !empty($input[0]['service_id'])) {
+    //         $portfolio_service = Portfolio_service::create([
+    //             'portfolio_id' => $input[0]['portfolio_id'],
+    //             'service_id' => $input[0]['service_id'],
+    //         ]);
+    
+    //         return $this->sendResponse($portfolio_service);
+    //     }
+    
+    //     return $this->sendError('Invalid data provided', [], 400);
+    // }
 
     /**
      * Display the specified resource.
@@ -52,9 +84,9 @@ class ServiceController extends Controller
 
     public function showService($id) {
         $service = Service::find($id);
-    
+        
         if ($service) {
-            // If a portfolio with the specified ID is found, return it
+            // If a service with the specified ID is found, return it
             return $this->sendResponse($service);
         } else {
             // If no portfolio with the specified ID is found, return an error or appropriate response
@@ -84,7 +116,18 @@ class ServiceController extends Controller
             $service->categories()->sync($input['categoryIds']);
         }
         // return response()->json($post);
-        return $this->sendResponse($service);
+        if (isset($input['portfolio_ids']) && is_array($input['portfolio_ids'])) {
+            // Loop through each portfolio ID and associate it with the service
+            foreach ($input['portfolio_ids'] as $portfolioId) {
+                // You may want to check if the portfolio ID exists before attaching
+                $portfolio = Portfolio::find($portfolioId);
+                if ($portfolio) {
+                    $service->portfolios()->attach($portfolioId);
+                }
+            }
+        }
+        // return response()->json($post);
+        return $this->sendResponse([$service, $input]);
     }
 
     /**

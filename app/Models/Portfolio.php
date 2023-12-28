@@ -43,4 +43,8 @@ class Portfolio extends Model
     {
         return $this->morphToMany(Category::class, 'categoryable');
     }
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'portfolio_services');
+    }
 }

@@ -4,7 +4,6 @@ import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
-
 const ServiceEdit = () => {
     const {user} = useAuth({middleware: "auth"})
     let { id } = useParams();
@@ -15,9 +14,24 @@ const ServiceEdit = () => {
     const [slug, setSlug] = useState();
     const [featured, setFeatured] = useState(0);
     const [categoryIds, setCategoryIds] = useState();
+    const [portfolios, setPortfolios] = useState([]);
+    const [selectedPortfolios, setSelectedPortfolios] = useState([]);
     const navigate = useNavigate();
 
     const [service, setService]= useState()
+    
+    useEffect(() => {
+      getPortfolios();
+    }, [])
+    
+    const getPortfolios = () => {
+      // Fetch portfolios data
+      axios.get('/api/portfolios').then((res) => {
+          setPortfolios(res.data.data);
+          console.log('portfolios', res.data)
+      });
+  };
+
 
     useEffect(()=>{
         const cslug = title ? slugify(title) : '';
@@ -51,6 +65,13 @@ const ServiceEdit = () => {
     //       });
      }
 
+     const handlePortfolioSelection = (e) => {
+      const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+      setSelectedPortfolios(selectedOptions);
+  };
+
+  // console.log('selected ids', selectedPortfolios)
+
     const handleSubmit = async(e) => {
         e.preventDefault();
         console.log('title', title);
@@ -71,13 +92,19 @@ const ServiceEdit = () => {
            ServiceData.media = uploads ;
          }
 
+        //  console.log('selected ids', selectedPortfolios)
+
+         if (selectedPortfolios.length > 0) {
+          console.log('selected ids', selectedPortfolios)
+         ServiceData.portfolio_ids = selectedPortfolios;
+        }
 
         axios.put(`/api/services/${id}`, ServiceData)
-            .then(res => {
-                console.log('data', res.data)
-                navigate('/account/services')
-            });
-        }
+        .then(res => {
+            console.log('data', res.data)
+            navigate('/account/services')
+        });
+      }
 
   return (
     <div className='max-w-6xl mx-auto'>
@@ -134,10 +161,31 @@ const ServiceEdit = () => {
     </div>
     </div>
 
+    <div className='flex flex-wrap mb-4'>
+        <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>
+            Select Portfolios
+        </label>
+        {portfolios && portfolios.length > 0 ? (
+            <select
+                multiple
+                className='block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                value={selectedPortfolios}
+                onChange={handlePortfolioSelection}
+            >
+                {portfolios.map((portfolio) => (
+                    <option key={portfolio.id} value={portfolio.id}>
+                        {portfolio.id}. {portfolio.title}
+                    </option>
+                ))}
+            </select>
+        ) : (
+            <p>No portfolios available</p>
+        )}
+    </div>
 
     <div className='flex flex-wrap mb-4'>
-          <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
-        </div>
+      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+    </div>
     <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
     <button><a href="/account/services">Back</a></button>
 </form>

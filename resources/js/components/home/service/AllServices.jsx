@@ -35,10 +35,10 @@ export default function AllServices() {
             <h2 className={`${styles.heading2} mb-1`}>All Services</h2>
         </div>
 
-        <div className='p-20 grid md:grid-cols-3 grid-cols-1 gap-5'>
+        <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
         {services?.map(feature=>{
             return (
-                <div key={feature.id} className=' bg-gray-200 rounded-md md:p-12 p-5'>
+                <div key={feature.id} className=''>
                     <Link to={`/services/${feature.id}`}>
                         <Service service={feature} />
                     </Link>
