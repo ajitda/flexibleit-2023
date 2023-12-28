@@ -152,8 +152,8 @@ const services = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                       {services && services.map(service=> {
-                        let slicedDescription = service.description.slice(0, 100);
-                        if (service.description.length > 100) {
+                        let slicedDescription = service.description.slice(0, 30);
+                        if (service.description.length > 30) {
                         slicedDescription += "...";
                         }
                          return (

@@ -78,7 +78,7 @@ const PortfolioEdit = () => {
     }
 
   return (
-    <div className='max-w-6xl mx-auto'>
+    <div className='max-w-6xl md:mx-auto mx-5'>
       <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
         <div className="flex flex-wrap -mx-3 mb-6">
@@ -130,7 +130,7 @@ const PortfolioEdit = () => {
         </div>
       </div>
 
-      <div className='flex flex-wrap'>
+      <div className='flex flex-wrap md:ml-0 ml-12 mb-5'>
         <ImageUpload value={media} onChange={(m) => setMedia(m)} />
       </div>
         

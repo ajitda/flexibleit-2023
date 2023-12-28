@@ -29,6 +29,7 @@
         "react-icons": "^4.7.1",
         "react-responsive-masonry": "^2.1.7",
         "react-router-dom": "^6.8.1",
+        "react-select": "^5.8.0",
         "react-slider-swiper": "^2.0.6",
         "react-stickynode": "^4.1.0",
         "react-waypoint": "^10.3.0",

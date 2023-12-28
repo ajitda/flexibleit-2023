@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
+import Select from 'react-select';
 import { useAuth } from '../../../hooks/auth';
 const ServiceEdit = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -107,8 +108,8 @@ const ServiceEdit = () => {
       }
 
   return (
-    <div className='max-w-6xl mx-auto'>
-      <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
+    <div className='max-w-6xl md:mx-auto mx-5'>
+      <h1 className='text-xl mb-5 font-medium'>Edit Service</h1>
     <form className="w-full max-w-lg" onSubmit={handleSubmit}>
     <div className="flex flex-wrap -mx-3 mb-6">
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -140,7 +141,7 @@ const ServiceEdit = () => {
             <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" value={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
             <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
         </div>
-        <div className='flex flex-wrap mb-4'>
+        <div className='flex flex-wrap mb-4 md:ml-0 ml-14 mt-2'>
           <ImageUpload value={media} onChange={(m) => setMedia(m)} />
         </div>
     <div className='mb-5 ml-20'>
@@ -166,18 +167,23 @@ const ServiceEdit = () => {
             Select Portfolios
         </label>
         {portfolios && portfolios.length > 0 ? (
-            <select
-                multiple
-                className='block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
-                value={selectedPortfolios}
-                onChange={handlePortfolioSelection}
-            >
-                {portfolios.map((portfolio) => (
-                    <option key={portfolio.id} value={portfolio.id}>
-                        {portfolio.id}. {portfolio.title}
-                    </option>
-                ))}
-            </select>
+             <Select
+             isMulti // Enable multi-select
+             options={portfolios.map((portfolio) => ({
+               value: portfolio.id,
+               label: `${portfolio.title}`,
+             }))}
+             value={selectedPortfolios.map((portfolioId) => ({
+              value: portfolioId,
+              label: portfolios.find((p) => p.id === portfolioId)?.title || '',
+            }))}
+            onChange={(selectedOptions) => {
+              setSelectedPortfolios(
+                selectedOptions ? selectedOptions.map((option) => option.value) : []
+              );
+             }}
+             className=' w-full'
+           />
         ) : (
             <p>No portfolios available</p>
         )}
