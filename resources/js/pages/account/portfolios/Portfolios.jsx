@@ -46,9 +46,8 @@ const Portfolios = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 ml-16 pl-2">
+        <div className="flex justify-between py-3 md:pl-2 md:ml-16 ml-2">
             <div className="relative max-w-xs">
-                
             <h2 className={`${styles.heading2} text-left mb-1`}>Portfolios</h2>
                 <label htmlFor="hs-table-search" className="sr-only">
                     Search
@@ -108,7 +107,7 @@ const Portfolios = () => {
             </div>
         </div>
 
-        <div className="p-1.5 w-full inline-block align-middle">
+        <div className="p-1.5 md:w-full inline-block align-middle">
             <div className="overflow-hidden border rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -169,9 +168,11 @@ const Portfolios = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                       {portfolios && portfolios.map(portfolio=> {
-                        let slicedDescription = portfolio.description.slice(0, 100);
-                        if (portfolio.description.length > 100) {
+                        let slicedDescription = portfolio.description.slice(0, 30);
+                        let slicedTitle = portfolio.title.slice(0, 30);
+                        if (portfolio.description.length > 30, portfolio.title.length > 30) {
                         slicedDescription += "...";
+                        slicedTitle += "...";
                         }
                          return (
                          <tr>
@@ -193,7 +194,7 @@ const Portfolios = () => {
                                 {portfolio.id}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {portfolio.title}
+                                {slicedTitle}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                 {slicedDescription}

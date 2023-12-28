@@ -8,7 +8,6 @@ export default function ServiceDetails() {
 
     const { id } = useParams();
     const [service, setService] = useState(null);
-    const [showDropdown, setShowDropdown] = useState(false);
 
     useEffect(() => {
         getServiceDetails(id); // Pass id as an argument
@@ -25,9 +24,7 @@ export default function ServiceDetails() {
     }
     console.log('services:',service)
 
-    const toggleDropdown = () =>{
-      setShowDropdown(!showDropdown);
-    }
+    
 
   return (
     <div>
@@ -53,38 +50,11 @@ export default function ServiceDetails() {
               <p className="font-medium">Short description:</p>
               <p className={`${styles.paragraph} md:pr-28`}>{service.description}</p>
             </div>
-            <div className="flex mt-4">
-              <div>
+            <div className="mt-4">
                 <Link to={`/contact-us`}>
                   <button className="bg-black text-white inline-block px-4 py-2 rounded-md">Contact us</button>
                 </Link>
-              </div>
-              <div className='ml-5'>
-                <button onClick={toggleDropdown} className='text-white bg-blue-700 hover:bg-blue-800 inline-block px-4 py-2 rounded-md'>
-                  <div className='flex'>
-                    <div>
-                      Portfolios
-                    </div>
-                    <div>
-                      <svg class="w-2.5 h-2.5 my-2 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                      </svg>
-                    </div>
-                  </div>
-                  </button>
-                {showDropdown && (
-                    <div className="absolute bg-white mt-2 p-2 rounded-md shadow-md">
-                        <Link to="/contact-option-1" className="block py-2">
-                            Contact Option 1
-                        </Link>
-                        <Link to="/contact-option-2" className="block py-2">
-                            Contact Option 2
-                        </Link>
-                    </div>
-                )}
-              </div>
-              
-          </div>
+            </div>
           </div>
         </div>
       ) : (

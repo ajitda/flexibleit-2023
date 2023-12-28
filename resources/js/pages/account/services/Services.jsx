@@ -30,10 +30,12 @@ const services = () => {
   }
   return (
     <>
-    <LinkButton/>
+    <div className='mx-1'>
+        <LinkButton/>
+    </div>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-    <div className="flex justify-between py-3 pl-2 ml-16">
+    <div className="flex justify-between py-3 md:pl-2 md:ml-16 ml-2">
             <div className="relative max-w-xs">
                 <h2 className={`${styles.heading2} text-left mb-1`}>Services</h2>
                 <label htmlFor="hs-table-search" className="sr-only">
@@ -46,7 +48,7 @@ const services = () => {
                     className="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                     placeholder="Search..."
                 />
-                <div className="absolute inset-y-0 left-0 flex items-center mt-20 pl-4 pointer-events-none">
+                <div className="absolute inset-y-0 left-0 flex items-center md:mt-20 mt-16 pl-4 pointer-events-none">
                     <svg
                         className="h-3.5 w-3.5 text-gray-400"
                         xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +92,7 @@ const services = () => {
             </div>
         </div>
 
-        <div className="p-1.5 w-full inline-block align-middle">
+        <div className="p-1.5 md:w-full inline-block align-middle">
             <div className="overflow-hidden border rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -150,8 +152,8 @@ const services = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                       {services && services.map(service=> {
-                        let slicedDescription = service.description.slice(0, 100);
-                        if (service.description.length > 100) {
+                        let slicedDescription = service.description.slice(0, 30);
+                        if (service.description.length > 30) {
                         slicedDescription += "...";
                         }
                          return (

@@ -33,6 +33,8 @@ Route::get('/posts', [PostController::class, 'index']);
 
 Route::get('/services/{id}', [ServiceController::class, 'showService']);
 
+Route::post('/portfolio-services', [ServiceController::class, 'store']);
+
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::post('/posts', [PostController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function () {
