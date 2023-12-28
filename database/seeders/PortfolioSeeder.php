@@ -66,7 +66,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'nextshop-a-ecommerce-template-with-next-js-for-your-online-shop',
                 // 'image' => 'https://flexibleit.devsbrain.com/storage/products/large/5745855.png',
                 'user_id' => 1,
-                'featured' => 1,
+                'featured' => 0,
             ],
             [
                 'title' => 'Lightning App - a story management system',
@@ -89,7 +89,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'online-cv-a-template-for-your-online-profile',
                 // 'image' => 'https://flexibleit.devsbrain.com/storage/products/large/8422505.png',
                 'user_id' => 1,
-                'featured' => 1,
+                'featured' => 0,
             ],
             [
                 'title' => 'Aprova PSD Template',
@@ -98,7 +98,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'aprova-psd-template',
                 // 'image' => 'https://flexibleit.devsbrain.com/storage/products/large/3522942.png',
                 'user_id' => 1,
-                'featured' => 1,
+                'featured' => 0,
             ],
             [
                 'title' => 'Connect Me - a chat app template with react js.',
@@ -122,7 +122,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'miracbd-e-commerce-website',
                 // 'image' => 'https://flexibleit.devsbrain.com/storage/products/large/2795326.png',
                 'user_id' => 1,
-                'featured' => 1,
+                'featured' => 0,
             ],
             [
                 'title' => 'FlexiblePOS with Inventory',
@@ -159,7 +159,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'resume-template',
                 // 'image' => 'https://flexibleit.devsbrain.com/storage/products/large/4188676.png',
                 'user_id' => 1,
-                'featured' => 1,
+                'featured' => 0,
             ],
             [
                 'title' => 'Simple Task Management System',
