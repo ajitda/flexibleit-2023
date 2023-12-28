@@ -6,15 +6,15 @@ import Footer from '../Footer';
 
 export default function ServiceDetails() {
 
-    const { id } = useParams();
+    const { slug } = useParams();
     const [service, setService] = useState(null);
 
     useEffect(() => {
-        getServiceDetails(id); // Pass id as an argument
-    }, [id]); // Include id in the dependency array
+        getServiceDetails(slug); // Pass id as an argument
+    }, [slug]); // Include id in the dependency array
 
-    const getServiceDetails = (id) => {
-        fetch(`/api/services/${id}`)
+    const getServiceDetails = (slug) => {
+        fetch(`/api/devsbrain/services/${slug}`)
         .then(response => response.json())
         .then(data => {
             if (data.data) {

@@ -9,17 +9,17 @@ import {
 } from "@material-tailwind/react";
 
 export default function PortfolioDetails() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [portfolio, setPortfolio] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
-    getPortfolioDetails(id);
-  }, [id]);
+    getPortfolioDetails(slug);
+  }, [slug]);
 
-  const getPortfolioDetails = (id) => {
-    fetch(`/api/portfolios/${id}`)
+  const getPortfolioDetails = (slug) => {
+    fetch(`/api/devsbrain/portfolios/${slug}`)
       .then(response => response.json())
       .then(data => {
         if (data.data) {

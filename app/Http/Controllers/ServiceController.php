@@ -82,8 +82,8 @@ class ServiceController extends Controller
         return $this->sendResponse($service);
     }
 
-    public function showService($id) {
-        $service = Service::find($id);
+    public function showService($slug) {
+        $service = Service::where('slug', $slug)->firstOrFail();
         
         if ($service) {
             // If a service with the specified ID is found, return it

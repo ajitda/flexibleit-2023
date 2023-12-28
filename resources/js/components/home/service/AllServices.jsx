@@ -39,7 +39,7 @@ export default function AllServices() {
         {services?.map(feature=>{
             return (
                 <div key={feature.id} className=''>
-                    <Link to={`/services/${feature.id}`}>
+                    <Link to={`/services/${feature.slug}`}>
                         <Service service={feature} />
                     </Link>
                 </div>

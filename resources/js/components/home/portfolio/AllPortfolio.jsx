@@ -38,7 +38,7 @@ export default function AllPortfolio() {
       <div className="md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5">
         {portfolios?.map((portfolio) => (
           <div key={portfolio.id}>
-            <Link to={`/portfolios/${portfolio.id}`}>
+            <Link to={`/portfolios/${portfolio.slug}`}>
              <Portfolio portfolio={portfolio} />
             </Link>
           </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
+use App\Models\MetaData;
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
@@ -32,8 +33,20 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
+        // dd($input);
         $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $portfolio = Portfolio::create($input);
+
+        // Save meta data if present in the request
+    if (!empty($input['meta_name']) && !empty($input['meta_value'])) {
+        $metaData = new MetaData([
+            'meta_name' => $input['meta_name'],
+            'meta_value' => $input['meta_value'],
+        ]);
+
+        $portfolio->metaData()->save($metaData);
+    }
+
         //adding media from request
         $media = Media::getFromRequest($request);
         if ($media) $portfolio->media()->saveMany($media);
@@ -54,8 +67,8 @@ class PortfolioController extends Controller
         return $this->sendResponse($portfolio);
     }
     
-    public function showPortfolio($id) {
-        $portfolio = Portfolio::find($id);
+    public function showPortfolio($slug) {
+        $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
     
         if ($portfolio) {
             // If a portfolio with the specified ID is found, return it

@@ -45,4 +45,8 @@ class Service extends Model
     {
         return $this->belongsToMany(Portfolio::class, 'portfolio_services');
     }
+    public function metaData()
+    {
+        return $this->morphMany(MetaData::class, 'metaable');
+    }
 }

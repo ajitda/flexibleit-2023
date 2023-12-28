@@ -47,7 +47,7 @@ const Portfolios = () => {
     <div className="grid md:grid-cols-3 grid-cols-1 gap-5 -mt-14 mb-8">
       {featuredPortfolios.map((portfolio) => (
         <div key={portfolio.id}>
-          <Link to={`/portfolios/${portfolio.id}`}>
+          <Link to={`/portfolios/${portfolio.slug}`}>
           <Portfolio portfolio={portfolio} />
           </Link>
         </div>

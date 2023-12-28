@@ -10,6 +10,8 @@ const PortfolioCreate = () => {
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [featured, setFeatured] = useState(0);
+    const [metaName, setMetaName] = useState(0);
+    const [metaValue, setmetaValue] = useState(0);
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
     const [categoryIds, setCategoryIds] = useState();
@@ -26,7 +28,7 @@ const PortfolioCreate = () => {
        console.log('description', description);
        console.log('slug', slug);
        //call the api
-       const portfolioData = { title: title, description: description, slug, featured: featured, categoryIds };
+       const portfolioData = { title: title, description: description, slug, featured: featured, categoryIds, meta_name: metaName, meta_value: metaValue };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -51,96 +53,119 @@ const PortfolioCreate = () => {
 
   return (
     <div className='max-w-6xl mx-auto'>
-    <h1 className='text-xl mb-5 font-medium'>Create Portfoio</h1>
-    <form className="w-full max-w-lg" onSubmit={handleSubmit}>
-   <div className="flex flex-wrap -mx-3 mb-6">
-     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-         Title
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setTitle(e.target.value)}/>
-       {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
-     </div>
-     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-         Slug
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e)=>setSlug(e.target.value)}/>
-       {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
-     </div>
-     {/* <div className="w-full md:w-1/2 px-3">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-         Last Name
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"/>
-     </div> */}
-   </div>
-
-   <div className="flex flex-wrap -mx-3 mb-6">
-     <div className="w-full px-3">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-         description
-       </label>
-       <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" onChange={(e)=>setDescription(e.target.value)} ></textarea>
-       <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-     </div>
-   </div>
-
-    <div className='flex flex-wrap mb-4'>
-      <ImageUpload value={media} onChange={(m) => setMedia(m)} />
-    </div>
-
-    <div className='mb-5'>
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
-        Featured
-      </label>
-      <div className="flex items-center">
-        <input
-          type="checkbox"
-          className="form-checkbox h-5 w-5 text-gray-600"
-          id="featured"
-          name="featured"
-          checked={featured === 1}
-          onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
-        />
-        <label className="ml-2 text-gray-700">Yes</label>
+    <form className="md:w-full mx-2" onSubmit={handleSubmit}>
+      <div className='grid grid-cols-2 gap-4'>
+        <div>
+          <h1 className='text-xl mb-5 font-medium'>Create Portfoio</h1>
+        </div>
+        <div className='col-end-5 col-span-2'>
+          <button className='p-2 text-white bg-blue-500 inline-block rounded-md'>Submit</button>
+          <button className='ml-2'><a href="/account/portfolios">Back</a></button>
+        </div>
       </div>
+    <div className="md:flex -mx-3 mb-6">
+      <div className='md:w-1/2'>
+        <div className="w-full px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Title
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setTitle(e.target.value)}/>
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
+        <div className="w-full px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Slug
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e)=>setSlug(e.target.value)}/>
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
+        <div className="flex flex-wrap mb-6">
+            <div className="w-full px-3">
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                description
+              </label>
+              <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" onChange={(e)=>setDescription(e.target.value)} ></textarea>
+              <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+            </div>
+          </div>
+          <div className='flex flex-wrap px-3 mb-4'>
+            <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+          </div>
+      </div>
+      <div>
+        <div className="md:pl-40 mb-6 md:mb-0 ml-5">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Meta Name
+          </label>
+          <input className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='meta_name' onChange={(e)=>setMetaName(e.target.value)}/>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Meta Value
+          </label>
+          <input className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='meta_value' onChange={(e)=>setmetaValue(e.target.value)}/>
+        </div>
+      </div>
+      {/* <div className="w-full md:w-1/2 px-3">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+          Last Name
+        </label>
+        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"/>
+      </div> */}
     </div>
 
-    <div className='flex flex-wrap mb-4'>
-      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
-    </div>
-   {/* <div className="flex flex-wrap -mx-3 mb-2">
-     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-         City
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque"/>
-     </div>
-     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-         State
-       </label>
-       <div className="relative">
-         <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-           <option>New Mexico</option>
-           <option>Missouri</option>
-           <option>Texas</option>
-         </select>
-         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-           <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-         </div>
-       </div>
-     </div>
-     <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-         Zip
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210"/>
-     </div>
-   </div> */}
-   <button className='p-2 text-white text-lg bg-blue-500 inline-block rounded-xl'>Submit</button>
-   <button className='ml-2'><a href="/account/portfolios">Back</a></button>
+    
+
+      <div className='flex flex-wrap mb-4 ml-2'>
+        <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+      </div>
+
+      <div className='mb-5 ml-5'>
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+          Featured
+        </label>
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            className="form-checkbox h-5 w-5 text-gray-600"
+            id="featured"
+            name="featured"
+            checked={featured === 1}
+            onChange={(e) => setFeatured(e.target.checked ? 1 : 0)}
+          />
+          <label className="ml-2 text-gray-700">Yes</label>
+        </div>
+      </div>
+
+      
+    {/* <div className="flex flex-wrap -mx-3 mb-2">
+      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+          City
+        </label>
+        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque"/>
+      </div>
+      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+          State
+        </label>
+        <div className="relative">
+          <select className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <option>New Mexico</option>
+            <option>Missouri</option>
+            <option>Texas</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+          Zip
+        </label>
+        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210"/>
+      </div>
+    </div> */}
+   
  </form>
   </div>
   )

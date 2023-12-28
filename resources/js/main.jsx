@@ -79,10 +79,10 @@ const router = createBrowserRouter([
   {path: "/all-services",
   element: <AllServices />
 },
-{path: "/services/:id",
+{path: "/services/:slug",
     element: <ServiceDetails />
  },
-  {path: "/portfolios/:id",
+  {path: "/portfolios/:slug",
    element: <PortfolioDetails />
  },
   {path: "/all-portfolios",
