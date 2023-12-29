@@ -15,11 +15,11 @@ const Home = () => {
             <Hero />
          </div>
       </div>
-      {/* <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+      <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
          <div className={`${styles.boxWidth}`}>
             <Products />
          </div>
-      </div> */}
+      </div>
       <div className={` ${styles.paddingX} ${styles.flexCenter} bg-[#fffaf6]`}>
          <div className={`${styles.boxWidth}`}>
             <Services />
