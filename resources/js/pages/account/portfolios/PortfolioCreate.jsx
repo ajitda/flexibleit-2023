@@ -4,18 +4,18 @@ import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const PortfolioCreate = () => {
     const {user} = useAuth({middleware: "auth"})
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
     const [featured, setFeatured] = useState(0);
-    const [metaName, setMetaName] = useState(0);
-    const [metaValue, setmetaValue] = useState(0);
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
     const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
+    const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
 
     useEffect(()=>{
       const cslug = title ? slugify(title) : '';
@@ -27,8 +27,17 @@ const PortfolioCreate = () => {
        console.log('title', title);
        console.log('description', description);
        console.log('slug', slug);
+
+       const metaArray = [];
+        metaFields.forEach((field) => {
+          // Only add fields where both metaName and metaValue are present
+          if (field.metaName && field.metaValue) {
+            metaArray.push({ meta_name: field.metaName, meta_value: field.metaValue });
+          }
+        });
+
        //call the api
-       const portfolioData = { title: title, description: description, slug, featured: featured, categoryIds, meta_name: metaName, meta_value: metaValue };
+       const portfolioData = { title: title, description: description, slug, featured: featured, categoryIds, meta: metaArray, };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -51,6 +60,16 @@ const PortfolioCreate = () => {
   
     }
 
+    const handleAddMetaField = () => {
+      setMetaFields([...metaFields, { metaName: '', metaValue: '' }]);
+    };
+    
+    const handleRemoveMetaField = (index) => {
+      const updatedMetaFields = [...metaFields];
+      updatedMetaFields.splice(index, 1);
+      setMetaFields(updatedMetaFields);
+    };
+
   return (
     <div className='max-w-6xl mx-auto'>
     <form className="md:w-full mx-2" onSubmit={handleSubmit}>
@@ -59,8 +78,8 @@ const PortfolioCreate = () => {
           <h1 className='text-xl mb-5 font-medium'>Create Portfoio</h1>
         </div>
         <div className='col-end-5 col-span-2'>
-          <button className='p-2 text-white bg-blue-500 inline-block rounded-md'>Submit</button>
-          <button className='ml-2'><a href="/account/portfolios">Back</a></button>
+          <button className=''><a href="/account/portfolios">Back</a></button>
+          <button className='p-2 ml-2 text-white bg-blue-500 inline-block rounded-md'>Submit</button>
         </div>
       </div>
     <div className="md:flex -mx-3 mb-6">
@@ -93,15 +112,41 @@ const PortfolioCreate = () => {
           </div>
       </div>
       <div>
-        <div className="md:pl-40 mb-6 md:mb-0 ml-5">
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            Meta Name
-          </label>
-          <input className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='meta_name' onChange={(e)=>setMetaName(e.target.value)}/>
-          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-            Meta Value
-          </label>
-          <input className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='meta_value' onChange={(e)=>setmetaValue(e.target.value)}/>
+        <div className="md:pl-10 mb-6 md:mb-0 ml-3 md:mt-5">
+          {metaFields.map((field, index) => (
+            <div key={index} className="md:flex items-center mb-3 gap-5">
+                <input
+                  type="text"
+                  placeholder="Meta Name"
+                  value={field.metaName}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaName = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <input
+                  type="text"
+                  placeholder="Meta Value"
+                  value={field.metaValue}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaValue = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+              {index === 0 && (
+                <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
+              )}
+              {index > 0 && (
+                <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
+              )}
+            </div>
+          ))}
+          <div>
+          </div>
         </div>
       </div>
       {/* <div className="w-full md:w-1/2 px-3">

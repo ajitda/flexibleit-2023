@@ -55,7 +55,7 @@ const Portfolios = () => {
     </div>
       <div className='text-center'>
         <Link to={`/all-portfolios`}>
-          <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Portfolios</button>
+          <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Projects</button>
         </Link>
       </div>
       </>

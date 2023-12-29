@@ -5,7 +5,7 @@ const Portfolio = ({portfolio}) => {
    const {thumbnail, title, description } = portfolio;
 
    let slicedTitle = title.slice(0, 25);
-   let slicedDescription = description.slice(0, 35);
+   let slicedDescription = description.slice(0, 30);
    if (description.length > 35, title.length > 10) {
    slicedDescription += "...";
    slicedTitle += "..";

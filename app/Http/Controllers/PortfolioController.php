@@ -38,13 +38,15 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::create($input);
 
         // Save meta data if present in the request
-    if (!empty($input['meta_name']) && !empty($input['meta_value'])) {
-        $metaData = new MetaData([
-            'meta_name' => $input['meta_name'],
-            'meta_value' => $input['meta_value'],
-        ]);
-
-        $portfolio->metaData()->save($metaData);
+    if (!empty($input['meta']) && is_array($input['meta'])) {
+        foreach ($input['meta'] as $meta) {
+            $metaData = new MetaData([
+                'meta_name' => $meta['meta_name'],
+                'meta_value' => $meta['meta_value'],
+            ]);
+            
+            $portfolio->metaData()->save($metaData);
+        }
     }
 
         //adding media from request

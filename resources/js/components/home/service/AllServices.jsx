@@ -31,8 +31,9 @@ export default function AllServices() {
           </div>
         </div>
         
-        <div className='text-center -mb-10'>
-            <h2 className={`${styles.heading2} mb-1`}>All Services</h2>
+        <div className='text-center md:-mb-10'>
+            <h2 className={`${styles.heading2} mb-1`}>Services we can help you with</h2>
+            <p className={`${styles.paragraph} px-12`}>We are providing best quality web design and development services for you. We are commited to get you best output.</p>
         </div>
 
         <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use App\Models\Media;
+use App\Models\MetaData;
 use App\Models\Portfolio;
 use App\Models\Portfolio_service;
 use App\Models\PortfolioService;
@@ -30,29 +31,33 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $input = $request->all();
+        // dd($input);
         $input['user_id'] = auth()->user()->id; //set login user id in the slug
         $service = Service::create($input);
+
+        // Save meta data if present in the request
+        if (!empty($input['meta']) && is_array($input['meta'])) {
+            foreach ($input['meta'] as $meta) {
+                $metaData = new MetaData([
+                    'meta_name' => $meta['meta_name'],
+                    'meta_value' => $meta['meta_value'],
+                ]);
+                
+                $service->metaData()->save($metaData);
+            }
+        }
+        
         //adding media from request
         $media = Media::getFromRequest($request);
         if ($media) $service->media()->saveMany($media);
         if (!empty($input['categoryIds'])) {
             $service->categories()->attach($input['categoryIds']);
         }
-        //check if $input[portfolio_ids] exists
-        if (isset($input['portfolio_ids']) && is_array($input['portfolio_ids'])) {
-            // Loop through each portfolio ID and associate it with the service
-            foreach ($input['portfolio_ids'] as $portfolioId) {
-                // You may want to check if the portfolio ID exists before attaching
-                $portfolio = Portfolio::find($portfolioId);
-                if ($portfolio) {
-                    $service->portfolios()->attach($portfolioId);
-                }
-            }
-        }
+        
+
         // return response()->json($post);
-        return $this->sendResponse([$service, $input]);
+        return $this->sendResponse($service);
     }
 
     // public function portfolio_services_store(Request $request) 

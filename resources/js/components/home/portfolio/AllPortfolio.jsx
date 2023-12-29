@@ -31,8 +31,9 @@ export default function AllPortfolio() {
           </div>
       </div>
       
-      <div className='text-center -mb-10'>
-        <h2 className={`${styles.heading2} mb-1`}>All Portfolios</h2>
+      <div className='text-center md:-mb-16 -mb-8'>
+        <h2 className={`${styles.heading2} mb-1`}>All Projects</h2>
+        <p className={`${styles.paragraph} md:px-20 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
       </div>
       
       <div className="md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5">

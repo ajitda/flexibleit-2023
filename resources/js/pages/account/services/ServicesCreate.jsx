@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import CategoryInput from '../../../components/CategoryInput';
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const ServicesCreate = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -15,6 +16,7 @@ const ServicesCreate = () => {
     const [featured, setFeatured] = useState(0);
     const [categoryIds, setCategoryIds] = useState();
     const navigate = useNavigate();
+    const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
 
     useEffect(()=>{
       const cslug = title ? slugify(title) : '';
@@ -27,8 +29,17 @@ const ServicesCreate = () => {
        console.log('description', description);
        console.log('slug', slug);
        console.log('featured', featured);
+
+       const metaArray = [];
+        metaFields.forEach((field) => {
+          // Only add fields where both metaName and metaValue are present
+          if (field.metaName && field.metaValue) {
+            metaArray.push({ meta_name: field.metaName, meta_value: field.metaValue });
+          }
+        });
+
        //call the api
-       const serviceData = { title: title, description: description, slug: slug, featured:featured, categoryIds };
+       const serviceData = { title: title, description: description, slug: slug, featured:featured, categoryIds, meta: metaArray, };
       if (media.length > 0) {
        const uploads = await uploadFiles(media);
          if ( uploads === false ) return false;
@@ -50,25 +61,96 @@ const ServicesCreate = () => {
      //      });
   
     }
+
+    const handleAddMetaField = () => {
+      setMetaFields([...metaFields, { metaName: '', metaValue: '' }]);
+    };
+    
+    const handleRemoveMetaField = (index) => {
+      const updatedMetaFields = [...metaFields];
+      updatedMetaFields.splice(index, 1);
+      setMetaFields(updatedMetaFields);
+    };
+
   return (
     <div className='max-w-6xl mx-auto'>
-      <h1 className='text-xl mb-5 font-medium'>Create Service</h1>
-    <form className="w-full max-w-lg" onSubmit={handleSubmit}>
-    <div className="flex flex-wrap -mx-3 mb-6">
-      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-          Title
-        </label>
-        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setTitle(e.target.value)}/>
-        {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+    <form className="md:w-full mx-2" onSubmit={handleSubmit}>
+      <div className='grid grid-cols-2 gap-4'>
+          <div>
+            <h1 className='text-xl mb-5 font-medium'>Create Service</h1>
+          </div>
+          <div className='col-end-5 col-span-2'>
+            <button className=''><a href="/account/services">Back</a></button>
+            <button className='p-2 ml-2 text-white bg-blue-500 inline-block rounded-md'>Submit</button>
+          </div>
+        </div>
+        <div className="md:flex -mx-3 mb-6">
+      <div className='md:w-1/2'>
+        <div className="w-full px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Title
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='title' onChange={(e)=>setTitle(e.target.value)}/>
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
+        <div className="w-full px-3 mb-6 md:mb-0">
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Slug
+          </label>
+          <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e)=>setSlug(e.target.value)}/>
+          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
+        </div>
+        <div className="flex flex-wrap mb-6">
+            <div className="w-full px-3">
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                description
+              </label>
+              <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" onChange={(e)=>setDescription(e.target.value)} ></textarea>
+              <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+            </div>
+          </div>
+          <div className='flex flex-wrap px-3 mb-4'>
+            <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
+          </div>
       </div>
-      <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-       <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-         Slug
-       </label>
-       <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" name='slug' value={slug} onChange={(e)=>setSlug(e.target.value)}/>
-       {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
-     </div>
+      <div>
+        <div className="md:pl-10 mb-6 md:mb-0 ml-3 md:mt-5">
+          {metaFields.map((field, index) => (
+            <div key={index} className="md:flex items-center mb-3 gap-5">
+                <input
+                  type="text"
+                  placeholder="Meta Name"
+                  value={field.metaName}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaName = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <input
+                  type="text"
+                  placeholder="Meta Value"
+                  value={field.metaValue}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaValue = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+              {index === 0 && (
+                <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
+              )}
+              {index > 0 && (
+                <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
+              )}
+            </div>
+          ))}
+          <div>
+          </div>
+        </div>
+      </div>
       {/* <div className="w-full md:w-1/2 px-3">
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
           Last Name
@@ -76,15 +158,6 @@ const ServicesCreate = () => {
         <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe"/>
       </div> */}
     </div>
-    <div className="flex flex-wrap -mx-3 mb-6">
-      <div className="w-full px-3">
-        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-          description
-        </label>
-        <textarea className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" onChange={(e)=>setDescription(e.target.value)} ></textarea>
-        <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-      </div>
-    </div> 
     <div className='flex flex-wrap mb-4'>
       <ImageUpload value={media} onChange={(m) => setMedia(m)} />
     </div>
@@ -106,13 +179,6 @@ const ServicesCreate = () => {
       </div>
     </div>
 
-    <div className='flex flex-wrap mb-4'>
-      <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
-    </div>
-    <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>
-    <Link to='/account/categories'>
-    <button>Back</button>
-    </Link>
   </form>
   </div>
   );

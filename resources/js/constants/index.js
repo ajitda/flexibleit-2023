@@ -15,7 +15,7 @@ export const navLinks = [
   },
   {
     id: "/all-portfolios",
-    title: "Portfolios",
+    title: "Projects",
     path: "/all-portfolios",
   },
   {
@@ -412,7 +412,7 @@ export const menuItems = [
       },
       {
         path: '/all-portfolios',
-        label: 'All Portfolios',
+        label: 'All Projects',
       },
       {
         path: '/all-testimonials',
