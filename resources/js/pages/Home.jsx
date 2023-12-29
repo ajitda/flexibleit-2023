@@ -1,4 +1,5 @@
 import { Blogs, Clients, Cta, Footer, Hero, Navbar, Portfolios, Services, Testimonials } from "../components";
+import Products from "../components/home/Products";
 import styles from "../style";
 
 const Home = () => {
@@ -14,7 +15,11 @@ const Home = () => {
             <Hero />
          </div>
       </div>
-
+      {/* <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
+         <div className={`${styles.boxWidth}`}>
+            <Products />
+         </div>
+      </div> */}
       <div className={` ${styles.paddingX} ${styles.flexCenter} bg-[#fffaf6]`}>
          <div className={`${styles.boxWidth}`}>
             <Services />

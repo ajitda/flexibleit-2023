@@ -71,13 +71,25 @@ class PortfolioController extends Controller
     
     public function showPortfolio($slug) {
         $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
+
+        // dd($portfolio);
     
         if ($portfolio) {
-            // If a portfolio with the specified ID is found, return it
-            return $this->sendResponse($portfolio);
+        // Fetch the ID of the portfolio
+        // $portfolioId = $portfolio->id;
+
+        // Fetch meta data associated with this portfolio using the portfolio ID
+        $portfolio->load("metaData");
+        
+            // 'portfolio' => $portfolio,
+            // 'metaData' => $metaData,
+
+        // Return the combined data as a response
+        return $this->sendResponse($portfolio);
+
         } else {
-            // If no portfolio with the specified ID is found, return an error or appropriate response
-            return $this->sendError('Portfolio not found', [], 404);
+            // If no portfolio with the specified slug is found, return an error or appropriate response
+            return $this->sendError('Portfolio not found');
         }
     }
 

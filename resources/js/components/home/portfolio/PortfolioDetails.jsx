@@ -7,6 +7,7 @@ import {
   Dialog,
   DialogBody,
 } from "@material-tailwind/react";
+import { FaEye, FaInbox } from 'react-icons/fa';
 
 export default function PortfolioDetails() {
   const { slug } = useParams();
@@ -27,6 +28,8 @@ export default function PortfolioDetails() {
         }
       });
   }
+
+  console.log('portfolio', portfolio);
 
   const openModal = (media) => {
     setSelectedImg(media.thumbnail);
@@ -80,10 +83,40 @@ export default function PortfolioDetails() {
             <p className=' font-medium'>Short description:</p>
             <p className={`${styles.paragraph} md:pr-28`}>{portfolio.description}</p>
           </div>
-          <div className=" mt-4">
+          <div className="flex mt-4">
             <Link to={`/contact-us`}>
-              <button className="bg-black text-white inline-block px-4 py-2 rounded-md">Contact us</button>
+              <button className="bg-black text-white inline-block px-4 py-2 rounded-md">
+                <div className='flex'>
+                  <div>Contact us</div>
+                  <div className='ml-2 mt-1'><FaInbox /></div>
+                </div>
+              </button>
+              
             </Link>
+            <div>
+            {portfolio.meta_data && portfolio.meta_data.length > 0 && (
+              <div className='pl-2'>
+                <ul>
+                  {portfolio.meta_data.map((metaItem, index) => {
+                    if (metaItem.meta_name === 'link') {
+                      return (
+                        <div key={index} className=' bg-sky-500 text-white inline-block px-4 py-2 rounded-md'>
+                          <a href={metaItem.meta_value}>
+                            <div className='flex'>
+                              <div>Visit Now</div>
+                              <div className='ml-2 mt-1'><FaEye /></div>
+                            </div>
+                          </a>
+                        </div>
+                      );
+                    } else {
+                      return null; // Or any other default content if needed
+                    }
+                  })}
+                </ul>
+              </div>
+            )}
+            </div>
           </div>
             
           </div>
