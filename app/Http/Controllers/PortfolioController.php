@@ -73,19 +73,30 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
 
         // dd($portfolio);
+        // $title = $portfolio->title;
+        // $description = $portfolio->description;
+        // $canonicalURL = 'https://devsbrain.com/portfolios/' . $portfolio->slug;
+
+        // $image = null;
+        // if (!empty($portfolio->image)) {
+        //     $image = asset($portfolio->image);
+        // } elseif (!empty($portfolio->media[0])) {
+        //     $image = asset($portfolio->media[0]->url);
+        // } else {
+        //     $image = asset('images/default-image.jpg');
+        // }
+
+        // // Create an array with the necessary post details
+        // $seometa = [
+        //     'caption' => $title,
+        //     'description' => $description,
+        //     'image' => $image,
+        //     'canonical' => $canonicalURL,
+        // ];
     
         if ($portfolio) {
-        // Fetch the ID of the portfolio
-        // $portfolioId = $portfolio->id;
-
-        // Fetch meta data associated with this portfolio using the portfolio ID
-        $portfolio->load("metaData");
-        
-            // 'portfolio' => $portfolio,
-            // 'metaData' => $metaData,
-
-        // Return the combined data as a response
-        return $this->sendResponse($portfolio);
+            $portfolio->load("metaData");
+            return $this->sendResponse($portfolio);
 
         } else {
             // If no portfolio with the specified slug is found, return an error or appropriate response

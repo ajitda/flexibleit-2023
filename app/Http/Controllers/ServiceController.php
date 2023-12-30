@@ -91,6 +91,7 @@ class ServiceController extends Controller
         $service = Service::where('slug', $slug)->firstOrFail();
         
         if ($service) {
+            $service->load("portfolios");
             // If a service with the specified ID is found, return it
             return $this->sendResponse($service);
         } else {

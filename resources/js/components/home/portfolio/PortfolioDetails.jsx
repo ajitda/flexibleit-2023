@@ -8,16 +8,35 @@ import {
   DialogBody,
 } from "@material-tailwind/react";
 import { FaEye, FaInbox } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
 
 export default function PortfolioDetails() {
   const { slug } = useParams();
   const [portfolio, setPortfolio] = useState(null);
   const [selectedImg, setSelectedImg] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [metaTags, setMetaTags] = useState({
+    title: 'Default Title',
+    description: 'Default Description',
+    image: 'Default Image URL',
+    url:  'https://devsbrain.com/',
+  });
 
   useEffect(() => {
     getPortfolioDetails(slug);
   }, [slug]);
+
+  const updateMetaTags = (portfolioData) => {
+    if (portfolioData) {
+      const updatedMetaTags = {
+        title: portfolioData.title,
+        description: portfolioData.description,
+        image: portfolioData.thumbnail,
+        url: window.location.href,
+      };
+      setMetaTags(updatedMetaTags);
+    }
+  };
 
   const getPortfolioDetails = (slug) => {
     fetch(`/api/devsbrain/portfolios/${slug}`)
@@ -25,11 +44,10 @@ export default function PortfolioDetails() {
       .then(data => {
         if (data.data) {
           setPortfolio(data.data);
+          updateMetaTags(data.data);
         }
       });
   }
-
-  console.log('portfolio', portfolio);
 
   const openModal = (media) => {
     setSelectedImg(media.thumbnail);
@@ -43,6 +61,21 @@ export default function PortfolioDetails() {
 
   return (
     <div>
+      <Helmet>
+        <meta name="title" content={metaTags.title} />
+        <meta name="description" content={metaTags.description} />
+        <meta property="og:title" content={metaTags.title} />
+        <meta property="og:description" content={metaTags.description} />
+        <meta property="og:image" content={metaTags.image} />
+        <meta property="og:url" content={metaTags.url} />
+         {/* Twitter meta tags */}
+         <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={metaTags.title} />
+        <meta name="twitter:description" content={metaTags.description} />
+        <meta name="twitter:image" content={metaTags.image} />
+        {/* Canonical URL */}
+        <link rel="canonical" href={window.location.href} />
+      </Helmet>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />

@@ -35,6 +35,11 @@ Route::get('/devsbrain/services/{slug}', [ServiceController::class, 'showService
 
 Route::post('/portfolio-services', [ServiceController::class, 'store']);
 
+Route::post('/contacts-users', [ContactController::class, 'ContactStore']);
+
+Route::get('/All-contacts', [ContactController::class, 'showContacts']);
+
+
 // Route::get('/posts', [PostController::class, 'index']);
 // Route::post('/posts', [PostController::class, 'store']);
 Route::middleware('auth:sanctum')->group(function () {

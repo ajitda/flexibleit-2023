@@ -21,8 +21,8 @@ import PortfolioEdit from "./pages/account/portfolios/PortfolioEdit";
 import Testomonials from "./pages/account/testomonials/Testomonials";
 import TestomonialCreate from "./pages/account/testomonials/TestomonialCreate";
 import TestomonialEdit from "./pages/account/testomonials/TestomonialEdit";
-import Contacts from "./pages/account/contacts/Contacts";
-import ContactView from "./pages/account/contacts/ContactView";
+import Contacts from "./pages/account/contacts/AllContacts";
+import ContactView from "./pages/account/contacts/ContactCreate";
 import AllBlogs from "./components/home/blog/AllBlogs";
 import BlogDetails from "./components/home/blog/BlogDetails";
 import AllServices from "./components/home/service/AllServices";
@@ -34,6 +34,8 @@ import Privacy from "./components/privacy";
 import About from "./components/About";
 import EmailExtractor from "./components/tools/EmailExtractor";
 import ImageTwichEmoteResizer from "./components/tools/ImageTwichEmoteResizer";
+import ContactCreate from "./pages/account/contacts/ContactCreate";
+import AllContacts from "./pages/account/contacts/AllContacts";
 
 
 
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
  {
   path: "/account/blogs/:id/edit",
   element: <BlogEdit />,
+},
+{
+  path: "/account/contacts",
+  element: <AllContacts />,
+},
+{
+  path: "/account/contact/create",
+  element: <ContactCreate />,
 },
     {path: "/account/categories", element: <Categories />},
     {path: "/account/categories/create", element: <CategoryCreate />},

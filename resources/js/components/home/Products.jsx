@@ -4,7 +4,7 @@ import styles from '../../style';
 export default function Products() {
   return (
     <div>
-        <h1 className={`${styles.heading2} text-center md:mb-8 mb-2`}>Use our products to make easier your Business</h1>
+        <h1 className={`${styles.heading2} text-center md:mb-8 mb-2 leading-10`}>Use our products to make easier your Business</h1>
         <div className='grid md:grid-cols-2 gap-4'>
             <div className='bg-slate-200 text-center'>
                 <img src='/img/gallery/4.png' alt="" className='mb-5' />

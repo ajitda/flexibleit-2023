@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
+use App\Models\ContactsUsers;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -41,6 +42,14 @@ class ContactController extends Controller
         return $this->sendResponse($contact);
     }
 
+    public function ContactStore(Request $request)
+    {
+        $input = $request->all();
+        // dd($input);
+        $contact = ContactsUsers::create($input);
+        return $this->sendResponse($contact);
+    }
+
     /**
      * Display the specified resource.
      */
@@ -48,6 +57,13 @@ class ContactController extends Controller
     {
         // return response()->json($post);
         $contact->load('contacts');
+        return $this->sendResponse($contact);
+    }
+
+    public function showContacts()
+    {
+        // return response()->json($post);
+        $contact = ContactsUsers::latest()->get();;
         return $this->sendResponse($contact);
     }
 
