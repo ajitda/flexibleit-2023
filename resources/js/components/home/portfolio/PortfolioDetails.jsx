@@ -9,10 +9,12 @@ import {
 } from "@material-tailwind/react";
 import { FaEye, FaInbox } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
+import Service from '../Service';
 
 export default function PortfolioDetails() {
   const { slug } = useParams();
   const [portfolio, setPortfolio] = useState(null);
+  const [services, setServices] = useState();
   const [selectedImg, setSelectedImg] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [metaTags, setMetaTags] = useState({
@@ -44,6 +46,7 @@ export default function PortfolioDetails() {
       .then(data => {
         if (data.data) {
           setPortfolio(data.data);
+          setServices(data.data.services);
           updateMetaTags(data.data);
         }
       });
@@ -161,6 +164,18 @@ export default function PortfolioDetails() {
           <h1>Loading...</h1>
         </div>
       )}
+        {/* <h1 className={`${styles.heading2} text-center`}>Services</h1> */}
+      <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
+          {services?.map(feature=>{
+            return (
+                <div key={feature.id} className=''>
+                    <Link to={`/services/${feature.slug}`}>
+                        <Service service={feature} />
+                    </Link>
+                </div>
+            )
+          })}
+      </div>
 
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>

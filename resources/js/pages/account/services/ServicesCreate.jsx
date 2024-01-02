@@ -6,6 +6,7 @@ import { slugify, uploadFiles } from '../../../helpers/helpers';
 import ImageUpload from '../../../components/UI/ImageUpload';
 import CategoryInput from '../../../components/CategoryInput';
 import { FaMinus, FaPlus } from "react-icons/fa";
+import Select from 'react-select';
 
 const ServicesCreate = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -15,6 +16,8 @@ const ServicesCreate = () => {
     const [slug, setSlug] = useState();
     const [featured, setFeatured] = useState(0);
     const [categoryIds, setCategoryIds] = useState();
+    const [portfolios, setPortfolios] = useState([]);
+    const [selectedPortfolios, setSelectedPortfolios] = useState([]);
     const navigate = useNavigate();
     const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
 
@@ -22,6 +25,18 @@ const ServicesCreate = () => {
       const cslug = title ? slugify(title) : '';
       setSlug(cslug);
      }, [title]);
+
+     useEffect(() => {
+      getPortfolios();
+    }, [])
+    
+    const getPortfolios = () => {
+      // Fetch portfolios data
+      axios.get('/api/portfolios').then((res) => {
+          setPortfolios(res.data.data);
+          console.log('portfolios', res.data)
+      });
+  };
  
     const handleSubmit = async(e) => {
        e.preventDefault();
@@ -45,6 +60,12 @@ const ServicesCreate = () => {
          if ( uploads === false ) return false;
          serviceData.media = uploads ;
        }
+
+       if (selectedPortfolios.length > 0) {
+        console.log('selected ids', selectedPortfolios)
+       serviceData.portfolio_ids = selectedPortfolios;
+      }
+
        axios.post('/api/services', serviceData).then(res => {
          console.log('data',res.data)
          navigate('/account/services')
@@ -150,6 +171,32 @@ const ServicesCreate = () => {
           <div>
           </div>
         </div>
+        <div className='flex flex-wrap mb-4 ml-14'>
+          <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'>
+              Select Portfolios
+          </label>
+          {portfolios && portfolios.length > 0 ? (
+              <Select
+              isMulti // Enable multi-select
+              options={portfolios.map((portfolio) => ({
+                value: portfolio.id,
+                label: `${portfolio.title}`,
+              }))}
+              value={selectedPortfolios.map((portfolioId) => ({
+                value: portfolioId,
+                label: portfolios.find((p) => p.id === portfolioId)?.title || '',
+              }))}
+              onChange={(selectedOptions) => {
+                setSelectedPortfolios(
+                  selectedOptions ? selectedOptions.map((option) => option.value) : []
+                );
+              }}
+              className=' w-full'
+            />
+          ) : (
+              <p>No portfolios available</p>
+          )}
+      </div>
       </div>
       {/* <div className="w-full md:w-1/2 px-3">
         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">

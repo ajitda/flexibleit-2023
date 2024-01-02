@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaMinus, FaPlus } from "react-icons/fa";
-import ImageUpload from '../../../components/UI/ImageUpload';
-import { uploadFiles } from '../../../helpers/helpers';
 
-const ContactCreate = () => {
+const ContactEdit = () => {
     const {user} = useAuth({middleware: "auth"})
     let { id } = useParams();
 
@@ -13,10 +11,32 @@ const ContactCreate = () => {
     const [email, setEmail] = useState();
     const [address, setAddress] = useState();
     const [phone, setPhone] = useState();
-    const [media, setMedia] = useState([]);
+    const [contacts, setContacts] = useState([]);
     const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        getContact();
+     }, []);
+
+     const getContact = () => {
+        axios.get(`/api/contacts-users/${id}`).then(res => {
+            console.log('data',res.data)
+            const resdata = res.data.data
+            setContacts(resdata);
+            setName(resdata.name);
+            setEmail(resdata.email);
+            setAddress(resdata.address);
+            setPhone(resdata.phone);
+
+            // Fetch meta data and set up metaFields state
+            const metaFieldsData = resdata.meta_data.map((meta) => ({
+                metaName: meta.meta_name,
+                metaValue: meta.meta_value,
+            }));
+            setMetaFields(metaFieldsData);
+        });
+    }
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -41,13 +61,8 @@ const ContactCreate = () => {
 
         const contactsData = { name: name, email: email, address: address, phone: phone, meta: metaArray };
 
-        if (media.length > 0) {
-          const uploads = await uploadFiles(media);
-            if ( uploads === false ) return false;
-            contactsData.media = uploads ;
-          }
 
-        axios.post(`/api/contacts-users`, contactsData)
+        axios.post(`/api/contacts-users/${id}`, contactsData)
             .then(res => {
                 console.log('data', res.data)
                 navigate('/account/contacts')
@@ -69,7 +84,7 @@ const ContactCreate = () => {
       <form className="md:w-full mx-2" onSubmit={handleSubmit}>
       <div className='grid grid-cols-2 gap-4'>
           <div>
-            <h1 className='text-xl mb-5 font-medium'>Create Contact</h1>
+            <h1 className='text-xl mb-5 font-medium'>Edit Contact</h1>
           </div>
           <div className='col-end-5 col-span-2'>
             <button className=''><a href="/account/contacts">Back</a></button>
@@ -102,46 +117,60 @@ const ContactCreate = () => {
                 <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="phone" value={phone} name='phone' onChange={(e) => setPhone(e.target.value)} />
             </div>
         </div>
-
-        <div className='flex flex-wrap mb-4 ml-2'>
-          <ImageUpload value={media} onChange={(m) => setMedia(m)} />
-        </div>
-
         <div className="md:ml-0 ml-1">
-          {metaFields.map((field, index) => (
-            <div key={index} className="md:flex items-center mb-3 gap-5">
-                <input
-                  type="text"
-                  placeholder="Meta Name"
-                  value={field.metaName}
-                  onChange={(e) => {
-                    const updatedFields = [...metaFields];
-                    updatedFields[index].metaName = e.target.value;
-                    setMetaFields(updatedFields);
-                  }}
-                  className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                />
-                <input
-                  type="text"
-                  placeholder="Meta Value"
-                  value={field.metaValue}
-                  onChange={(e) => {
-                    const updatedFields = [...metaFields];
-                    updatedFields[index].metaValue = e.target.value;
-                    setMetaFields(updatedFields);
-                  }}
-                  className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                />
-              {index === 0 && (
-                <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
-              )}
-              {index > 0 && (
-                <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
-              )}
+            {metaFields.map((field, index) => (
+                <div key={index} className="md:flex items-center mb-3 gap-5">
+                    <input
+                        type="text"
+                        placeholder="Meta Name"
+                        value={field.metaName}
+                        onChange={(e) => {
+                            const updatedFields = [...metaFields];
+                            updatedFields[index].metaName = e.target.value;
+                            setMetaFields(updatedFields);
+                        }}
+                        className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Meta Value"
+                        value={field.metaValue}
+                        onChange={(e) => {
+                            const updatedFields = [...metaFields];
+                            updatedFields[index].metaValue = e.target.value;
+                            setMetaFields(updatedFields);
+                        }}
+                        className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    />
+                    {index === 0 && (
+                        <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
+                    )}
+                    {index > 0 && (
+                        <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
+                    )}
+                </div>
+            ))}
+            {/* Display an empty field for meta data if no value is present */}
+            {metaFields.length === 0 && (
+                <div className="md:flex items-center mb-3 gap-5">
+                    <input
+                        type="text"
+                        placeholder="Meta Name"
+                        value=""
+                        onChange={(e) => setMetaFields([{ metaName: e.target.value, metaValue: '' }])}
+                        className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Meta Value"
+                        value=""
+                        onChange={(e) => setMetaFields([{ metaName: '', metaValue: e.target.value }])}
+                        className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    />
+                </div>
+            )}
+            <div>
             </div>
-          ))}
-          <div>
-          </div>
         </div>
     
     </form>
@@ -149,4 +178,4 @@ const ContactCreate = () => {
   )
 }
 
-export default ContactCreate;
+export default ContactEdit;

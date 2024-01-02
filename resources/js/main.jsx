@@ -36,6 +36,7 @@ import EmailExtractor from "./components/tools/EmailExtractor";
 import ImageTwichEmoteResizer from "./components/tools/ImageTwichEmoteResizer";
 import ContactCreate from "./pages/account/contacts/ContactCreate";
 import AllContacts from "./pages/account/contacts/AllContacts";
+import ContactEdit from "./pages/account/contacts/ContactEdit";
 
 
 
@@ -61,8 +62,12 @@ const router = createBrowserRouter([
   element: <AllContacts />,
 },
 {
-  path: "/account/contact/create",
+  path: "/account/contacts/create",
   element: <ContactCreate />,
+},
+{
+  path: "/account/contacts/:id/edit",
+  element: <ContactEdit />,
 },
     {path: "/account/categories", element: <Categories />},
     {path: "/account/categories/create", element: <CategoryCreate />},

@@ -16,6 +16,7 @@ const ServiceEdit = () => {
     const [featured, setFeatured] = useState(0);
     const [categoryIds, setCategoryIds] = useState();
     const [portfolios, setPortfolios] = useState([]);
+    const [prevPortfolios, setPrevPortfolios] = useState([]);
     const [selectedPortfolios, setSelectedPortfolios] = useState([]);
     const navigate = useNavigate();
 
@@ -31,6 +32,15 @@ const ServiceEdit = () => {
           setPortfolios(res.data.data);
           console.log('portfolios', res.data)
       });
+  };
+
+  useEffect(() => {
+    setInitialSelectedPortfolios();
+  }, [prevPortfolios]);
+
+  // Function to set initial selected portfolios from prevPortfolios
+  const setInitialSelectedPortfolios = () => {
+    setSelectedPortfolios(prevPortfolios.map((portfolio) => portfolio.id));
   };
 
 
@@ -53,8 +63,10 @@ const ServiceEdit = () => {
            setSlug(resdata.slug);
            setMedia(resdata.media);
            setFeatured(resdata.featured);
+           setPrevPortfolios(resdata.portfolios);
            setCategoryIds(resdata.categories.map(cat=>cat.id));
      });
+     console.log('prevPortfolios', prevPortfolios);
 
     //     fetch(`/api/posts/${id}`)
     //       .then(response => response.json())

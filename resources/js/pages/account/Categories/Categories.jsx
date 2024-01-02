@@ -43,7 +43,7 @@ const Categories = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 pl-2 ml-16">
+        <div className="flex justify-between py-3 md:ml-28 pl-2">
             <div className="relative max-w-xs">
                 <h2 className={`${styles.heading2} text-left mb-1`}>Categories</h2>
                 <label htmlFor="hs-table-search" className="sr-only">
@@ -101,7 +101,7 @@ const Categories = () => {
             </div>
         </div>
 
-        <div className="p-1.5 w-full inline-block align-middle">
+        <div className="p-1.5 md:w-full inline-block align-middle">
             <div className="overflow-hidden border rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">

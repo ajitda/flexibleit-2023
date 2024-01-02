@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\ContactsUsers;
+use App\Models\Media;
+use App\Models\MetaData;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -47,6 +49,21 @@ class ContactController extends Controller
         $input = $request->all();
         // dd($input);
         $contact = ContactsUsers::create($input);
+
+        if (!empty($input['meta']) && is_array($input['meta'])) {
+            foreach ($input['meta'] as $meta) {
+                $metaData = new MetaData([
+                    'meta_name' => $meta['meta_name'],
+                    'meta_value' => $meta['meta_value'],
+                ]);
+                
+                $contact->metaData()->save($metaData);
+            }
+        }
+
+        $media = Media::getFromRequest($request);
+        if ($media) $contact->media()->saveMany($media);
+
         return $this->sendResponse($contact);
     }
 
@@ -63,7 +80,8 @@ class ContactController extends Controller
     public function showContacts()
     {
         // return response()->json($post);
-        $contact = ContactsUsers::latest()->get();;
+        $contact = ContactsUsers::latest()->get();
+        $contact->load("media");
         return $this->sendResponse($contact);
     }
 
@@ -72,7 +90,12 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // return response()->json($post);
+        $contact = ContactsUsers::findOrFail($id);
+
+        $contact->load("metaData");
+        
+        return $this->sendResponse($contact);
     }
 
     /**
@@ -80,7 +103,13 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // 
+        $input = $request->all();
+        // dd($input);
+        $contactObj = new ContactsUsers();
+        $contact = $contactObj->saveData($input, $id);
+        if ($contact) {
+            return $this->sendResponse($contact);
+        }
     }
 
     /**

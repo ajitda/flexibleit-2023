@@ -47,6 +47,19 @@ class ServiceController extends Controller
                 $service->metaData()->save($metaData);
             }
         }
+
+        // Loop through each portfolio ID and associate it with the service
+        if (isset($input['portfolio_ids']) && is_array($input['portfolio_ids'])) {
+            foreach ($input['portfolio_ids'] as $portfolioId) {
+                // Check if the portfolio is already attached
+                if (!$service->portfolios()->find($portfolioId)) {
+                    $portfolio = Portfolio::find($portfolioId);
+                    if ($portfolio) {
+                        $service->portfolios()->attach($portfolioId);
+                    }
+                }
+            }
+        }
         
         //adding media from request
         $media = Media::getFromRequest($request);
@@ -82,8 +95,9 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
+        // dd($service);
         // return response()->json($post);
-        $service->load('categories');
+        $service->load('categories','portfolios');
         return $this->sendResponse($service);
     }
 
@@ -114,6 +128,7 @@ class ServiceController extends Controller
     public function update(Request $request, string $id)
     {
         $input = $request->all();
+        // dd($input);
         $serviceObj = new Service();
         $service = $serviceObj->saveData($input, $id);
         $media = Media::getFromRequest($request);
@@ -122,13 +137,15 @@ class ServiceController extends Controller
             $service->categories()->sync($input['categoryIds']);
         }
         // return response()->json($post);
+        // Loop through each portfolio ID and associate it with the service
         if (isset($input['portfolio_ids']) && is_array($input['portfolio_ids'])) {
-            // Loop through each portfolio ID and associate it with the service
             foreach ($input['portfolio_ids'] as $portfolioId) {
-                // You may want to check if the portfolio ID exists before attaching
-                $portfolio = Portfolio::find($portfolioId);
-                if ($portfolio) {
-                    $service->portfolios()->attach($portfolioId);
+                // Check if the portfolio is already attached
+                if (!$service->portfolios()->find($portfolioId)) {
+                    $portfolio = Portfolio::find($portfolioId);
+                    if ($portfolio) {
+                        $service->portfolios()->attach($portfolioId);
+                    }
                 }
             }
         }

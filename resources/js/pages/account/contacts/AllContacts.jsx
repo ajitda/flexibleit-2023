@@ -21,7 +21,7 @@ const AllContacts = () => {
     }
     const handleDelete = (id) =>{
       {if(window.confirm('Are you sure to delete this record?'))
-      axios.delete(`/api/contacts/${id}`)
+      axios.delete(`/api/contacts-user/${id}`)
       .then(res => {
         console.log(res.data, 'Deleted Successfully.');
         getContacts()
@@ -33,7 +33,7 @@ const AllContacts = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 md:ml-24 pl-2">
+        <div className="flex justify-between py-3 md:ml-28 pl-2">
             <div className="relative max-w-xs">
             <h2 className={`${styles.heading2} text-left mb-1`}>Contacts</h2>
                 <label htmlFor="hs-table-search" className="sr-only">
@@ -63,7 +63,7 @@ const AllContacts = () => {
 
             <div className="flex items-center space-x-2 mt-20">
                 <div className="relative">
-                    <Link to={"/account/contact/create"} className='bg-green-400 py-2 px-6 mr-5 rounded-xl' >Add</Link>
+                    <Link to={"/account/contacts/create"} className='bg-green-400 py-2 px-6 mr-5 rounded-xl' >Add</Link>
                     <button className="relative z-0 inline-flex text-sm rounded-md shadow-sm focus:ring-accent-500 focus:border-accent-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1">
                         <span className="relative inline-flex items-center px-3 py-3 space-x-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-md sm:py-2">
                             <div>
@@ -91,7 +91,7 @@ const AllContacts = () => {
             </div>
         </div>
 
-        <div className="p-1.5 w-full inline-block align-middle">
+        <div className="p-1.5 md:w-full inline-block align-middle">
             <div className="overflow-hidden border rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -143,9 +143,15 @@ const AllContacts = () => {
                             </th>
                             <th
                                 scope="col"
+                                className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
+                            >
+                                Image
+                            </th>
+                            <th
+                                scope="col"
                                 className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                             >
-                                View
+                                Edit
                             </th>
                             <th
                                 scope="col"
@@ -188,12 +194,15 @@ const AllContacts = () => {
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                 {contact.phone}
                             </td>
+                            <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                                {contact.thumbnail}
+                            </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
                                     className="text-green-500 hover:text-green-700"
                                     href={`/account/contacts/${contact.id}/edit`}
                                 >
-                                    View
+                                    Edit
                                 </a>
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">

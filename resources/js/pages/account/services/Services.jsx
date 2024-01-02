@@ -30,12 +30,10 @@ const services = () => {
   }
   return (
     <>
-    <div className='mx-1'>
-        <LinkButton/>
-    </div>
+    <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-    <div className="flex justify-between py-3 md:pl-2 md:ml-16 ml-2">
+    <div className="flex justify-between py-3 md:ml-28 pl-2">
             <div className="relative max-w-xs">
                 <h2 className={`${styles.heading2} text-left mb-1`}>Services</h2>
                 <label htmlFor="hs-table-search" className="sr-only">

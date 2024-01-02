@@ -20,11 +20,11 @@ const Footer = () => {
       <hr />
       <div className='grid grid-cols-2 gap-4'> {/* Added flex and items-end classes */}
         
-        <div className=' pl-16 p-8'>
+        <div className='md:pl-16 md:p-8 p-5'>
           <p>Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
           
         </div>
-        <div className=' p-8 md:ml-80'>
+        <div className='md:p-8 p-5 ml-5 md:ml-80'>
         <a href="/privacy">Terms of use</a>
           <span> | </span>
           <a href="/privacy">Privacy</a>

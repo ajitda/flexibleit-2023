@@ -46,7 +46,7 @@ const Portfolios = () => {
     <LinkButton/>
     <div className="flex flex-col">
     <div className="overflow-x-auto">
-        <div className="flex justify-between py-3 md:pl-2 md:ml-16 ml-2">
+        <div className="flex justify-between py-3 md:ml-28 pl-2">
             <div className="relative max-w-xs">
             <h2 className={`${styles.heading2} text-left mb-1`}>Portfolios</h2>
                 <label htmlFor="hs-table-search" className="sr-only">

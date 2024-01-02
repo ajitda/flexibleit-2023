@@ -65,7 +65,7 @@ class PortfolioController extends Controller
     public function show(Portfolio $portfolio)
     {
         // return response()->json($post);
-        $portfolio->load('categories');
+        $portfolio->load('categories', 'metaData');
         return $this->sendResponse($portfolio);
     }
     
@@ -96,6 +96,7 @@ class PortfolioController extends Controller
     
         if ($portfolio) {
             $portfolio->load("metaData");
+            $portfolio->load("services");
             return $this->sendResponse($portfolio);
 
         } else {
@@ -120,8 +121,27 @@ class PortfolioController extends Controller
     public function update(Request $request, string $id)
     {
         $input = $request->all();
+        // dd($input);
         $portfolioObj = new Portfolio();
         $portfolio = $portfolioObj->saveData($input, $id);
+
+        // Save meta data if present in the request and not already associated with the portfolio
+        if (!empty($input['meta']) && is_array($input['meta'])) {
+            foreach ($input['meta'] as $meta) {
+                // Check if the meta data already exists for the portfolio
+                $existingMetaData = $portfolio->metaData()->where('meta_name', $meta['meta_name'])->where('meta_value', $meta['meta_value'])->first();
+
+                if (!$existingMetaData) {
+                    $metaData = new MetaData([
+                        'meta_name' => $meta['meta_name'],
+                        'meta_value' => $meta['meta_value'],
+                    ]);
+                    
+                    $portfolio->metaData()->save($metaData);
+                }
+            }
+        }
+
         $media = Media::getFromRequest($request);
         if ($media) $portfolio->media()->saveMany($media);
         if (!empty($input['categoryIds'])) {

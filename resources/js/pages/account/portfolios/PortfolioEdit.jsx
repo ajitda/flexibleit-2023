@@ -4,6 +4,7 @@ import CategoryInput from '../../../components/CategoryInput';
 import ImageUpload from '../../../components/UI/ImageUpload'
 import { slugify, uploadFiles } from '../../../helpers/helpers';
 import { useAuth } from '../../../hooks/auth';
+import { FaMinus, FaPlus } from "react-icons/fa";
 
 const PortfolioEdit = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -15,6 +16,7 @@ const PortfolioEdit = () => {
     const [media, setMedia] = useState([]);
     const [slug, setSlug] = useState();
     const [categoryIds, setCategoryIds] = useState();
+    const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
     const navigate = useNavigate();
 
     const [portfolio, setPortfolio]= useState()
@@ -30,8 +32,8 @@ const PortfolioEdit = () => {
 
      const getPortfolio = () => {
       axios.get(`/api/portfolios/${id}`).then(res => {
-        console.log('data',res.data)
-        const resdata = res.data.data
+        console.log('data',res.data.data.meta_data)
+        const resdata = res.data.data;
         setPortfolio(resdata);
            setTitle(resdata.title);
            setDescription(resdata.description);
@@ -39,6 +41,13 @@ const PortfolioEdit = () => {
            setMedia(resdata.media);
            setSlug(resdata.slug);
            setCategoryIds(resdata.categories.map(cat=>cat.id));
+
+           // Fetch meta data and set up metaFields state
+          const metaFieldsData = resdata.meta_data.map((meta) => ({
+            metaName: meta.meta_name,
+            metaValue: meta.meta_value,
+          }));
+          setMetaFields(metaFieldsData);
      });
 
     //     fetch(`/api/posts/${id}`)
@@ -62,7 +71,16 @@ const PortfolioEdit = () => {
         //     headers: { 'Content-Type': 'application/json' },
         //     body: JSON.stringify()
         // };
-        const portfoliosData = { title: title, description: description, slug: slug, featured:featured, categoryIds };
+
+        const metaArray = [];
+        metaFields.forEach((field) => {
+          // Only add fields where both metaName and metaValue are present
+          if (field.metaName && field.metaValue) {
+            metaArray.push({ meta_name: field.metaName, meta_value: field.metaValue });
+          }
+        });
+
+        const portfoliosData = { title: title, description: description, slug: slug, featured:featured, categoryIds, meta: metaArray };
         if (media.length > 0) {
          const uploads = await uploadFiles(media);
            if ( uploads === false ) return false;
@@ -77,10 +95,28 @@ const PortfolioEdit = () => {
             });
     }
 
+    const handleAddMetaField = () => {
+      setMetaFields([...metaFields, { metaName: '', metaValue: '' }]);
+    };
+    
+    const handleRemoveMetaField = (index) => {
+      const updatedMetaFields = [...metaFields];
+      updatedMetaFields.splice(index, 1);
+      setMetaFields(updatedMetaFields);
+    };
+
   return (
     <div className='max-w-6xl md:mx-auto mx-5'>
-      <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
     <form className="w-full" onSubmit={handleSubmit}>
+    <div className='grid grid-cols-2 gap-4'>
+        <div>
+          <h1 className='text-xl mb-5 font-medium'>Edit Portfoio</h1>
+        </div>
+        <div className='col-end-5 col-span-2'>
+          <button className=''><a href="/account/portfolios">Back</a></button>
+          <button className='p-2 ml-2 text-white bg-blue-500 inline-block rounded-md'>Submit</button>
+        </div>
+      </div>
         <div className="md:flex -mx-3 mb-6">
           <div className='md:w-1/2'>
             <div className="w-full px-3 mb-6 md:mb-0">
@@ -132,8 +168,45 @@ const PortfolioEdit = () => {
             <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
           </div>
           </div>
-          <div className='md:pt-5 md:pl-96'>
-            
+          <div className='md:pl-10'>
+          <div>
+        <div className="md:pl-10 mb-6 md:mb-0 ml-3 md:mt-5">
+          {metaFields.map((field, index) => (
+            <div key={index} className="md:flex items-center mb-3 gap-5">
+                <input
+                  type="text"
+                  placeholder="Meta Name"
+                  value={field.metaName}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaName = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <input
+                  type="text"
+                  placeholder="Meta Value"
+                  value={field.metaValue}
+                  onChange={(e) => {
+                    const updatedFields = [...metaFields];
+                    updatedFields[index].metaValue = e.target.value;
+                    setMetaFields(updatedFields);
+                  }}
+                  className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+              {index === 0 && (
+                <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
+              )}
+              {index > 0 && (
+                <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
+              )}
+            </div>
+          ))}
+          <div>
+          </div>
+        </div>
+      </div>
           </div>
             
             {/* <div className="w-full md:w-1/2 px-3">
@@ -173,8 +246,7 @@ const PortfolioEdit = () => {
        <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210"/>
      </div>
    </div> */}
-        <button className='p-2 text-white text-lg bg-blue-500 inline-block rounded-md mr-3'>Submit</button>
-            <button><a href="/account/portfolios">Back</a></button>
+        
     </form>
     </div>
   )
