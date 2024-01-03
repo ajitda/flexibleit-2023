@@ -3,22 +3,41 @@ import { useAuth } from '../../../hooks/auth';
 import { Link } from 'react-router-dom';
 import LinkButton from '../LinkButton';
 import styles from '../../../style';
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 const services = () => {
     const {user} = useAuth({middleware: 'auth'})
-    const [services, setServices] = useState();
+    const [services, setServices] = useState([]);
+    const [totalServices, setTotalServices] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage, setPerPage] = useState(5);
+    const [searchTerm, setSearchTerm] = useState('');
   
     useEffect(()=>{
       getServices();
-   }, []);
+   }, [perPage, currentPage]);
   
    const getServices = () => {
-    axios.get('/api/services').then(res => {
+    axios.get(`/api/services?per_page=${perPage}&page=${currentPage}&search=${searchTerm}`).then(res => {
         console.log('data',res.data)
+        const resdata = res.data.data;
         // navigate('/account/blogs')
-        setServices(res.data.data);
+        setServices(resdata.data);
+        setTotalServices(resdata.total);
      });
     }
+
+    const handleSearchTerm = e => {
+        setCurrentPage(1);
+        setSearchTerm(e.target.value);
+    };
+    const handleSearch = e => {
+        if (e.key === 'Enter') {
+            setCurrentPage(1);
+            getServices();
+        }
+    };
+
     const handleDelete = (id) =>{
       {if(window.confirm('Are you sure to delete this record?'))
       axios.delete(`/api/services/${id}`)
@@ -28,6 +47,21 @@ const services = () => {
       })
     }
   }
+
+  const totalPages = Math.ceil(totalServices / perPage);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+        }
+    };
+
   return (
     <>
     <LinkButton/>
@@ -43,6 +77,9 @@ const services = () => {
                     type="text"
                     name="hs-table-search"
                     id="hs-table-search"
+                    value={searchTerm}
+                    onChange={handleSearchTerm}
+                    onKeyUp={handleSearch}
                     className="block w-full p-3 pl-10 text-sm border-gray-200 rounded-md focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400"
                     placeholder="Search..."
                 />
@@ -180,7 +217,7 @@ const services = () => {
                                 {slicedDescription}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {service.thumbnail}
+                                <img src={service.thumbnail} className='w-20' alt="" />
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a
@@ -207,6 +244,26 @@ const services = () => {
                 </table>
             </div>
         </div>
+    </div>
+    <div className="flex justify-end mt-2 mr-4">
+        
+        <button
+        onClick={handlePrevPage}
+        disabled={currentPage === 1}
+        className="mr-2 px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
+        >
+            <SlArrowLeft />
+        </button>
+            <p className="mr-3 text-gray-600 my-auto">
+                {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, totalServices)} of {totalServices}
+            </p>
+        <button
+        onClick={handleNextPage}
+        disabled={currentPage === totalPages}
+        className="px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
+        >
+            <SlArrowRight />
+        </button>
     </div>
 </div>
 </>

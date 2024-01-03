@@ -165,6 +165,9 @@ const PortfolioEdit = () => {
           </div>
             
           <div className='flex flex-wrap mb-4'>
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+              Category
+            </label>
             <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
           </div>
           </div>

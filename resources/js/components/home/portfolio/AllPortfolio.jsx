@@ -6,11 +6,15 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import styles from '../../../style';
 import { Helmet } from 'react-helmet';
+import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 export default function AllPortfolio() {
 
     const [portfolios, setPortfolios] = useState();
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [perPage, setPerPage] = useState(6);
+    const [totalPortfolios, setTotalPortfolios] = useState(0);
     const [metaTags, setMetaTags] = useState({
       title: 'Visit our completed ecommcerce projects and contact for yours',
       description: 'Are you looking to make your business more easier and easily manageable. We can provide your custom automation software or ecommerce website for making your business easier. We anlyze your business and can give you a nice solution',
@@ -19,14 +23,16 @@ export default function AllPortfolio() {
 
   useEffect(()=>{
     getAllPortfolios();
- }, []);
+ }, [perPage, currentPage]);
 
  const getAllPortfolios = () => {
-    fetch('/api/portfolios')
+    fetch(`/api/portfolios?per_page=${perPage}&page=${currentPage}`)
       .then(response => response.json())
       .then(data => {
        console.log('All portfolios res :', data)
-       setPortfolios(data.data);
+       const resdata = data.data;
+       setPortfolios(resdata.data);
+       setTotalPortfolios(resdata.total);
        setLoading(false);
       })
       .catch(error => {
@@ -34,6 +40,22 @@ export default function AllPortfolio() {
         setLoading(false);
       });
  }
+
+ const totalPages = Math.ceil(totalPortfolios / perPage);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1);
+        setLoading(true);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+        setLoading(true);
+        }
+    };
 
   return (
     <div>
@@ -68,7 +90,8 @@ export default function AllPortfolio() {
           <h1>Loading...</h1>
         </div>
       ) : (
-        <div className="md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5">
+        <div className="">
+          <div className='md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
           {portfolios?.map((portfolio) => (
             <div key={portfolio.id}>
               <Link to={`/portfolios/${portfolio.slug}`}>
@@ -76,6 +99,26 @@ export default function AllPortfolio() {
               </Link>
             </div>
           ))}
+          </div>
+          <div className="flex justify-end md:mr-24 mr-32 pb-16">
+              <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className="mr-2 px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
+              >
+                  <SlArrowLeft />
+              </button>
+                  <p className="mr-3 text-gray-600 my-auto">
+                    {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, totalPortfolios)} of {totalPortfolios}
+                  </p>
+              <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
+              >
+                  <SlArrowRight />
+              </button>
+          </div>
         </div>
       )}
 

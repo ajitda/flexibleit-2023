@@ -15,11 +15,12 @@ const Portfolios = () => {
   }, []);
 
   const getPortfolios = () => {
-     fetch('/api/portfolios')
+     fetch('/api/allportfolios')
        .then(response => response.json())
        .then(data => {
         console.log('portfolios res :', data)
-        setPortfolios(data.data);
+        const resdata =  data.data;
+        setPortfolios(resdata);
         setLoading(false);
        })
        .catch(error => {

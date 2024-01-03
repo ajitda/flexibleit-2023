@@ -77,10 +77,24 @@ class ContactController extends Controller
         return $this->sendResponse($contact);
     }
 
-    public function showContacts()
+    public function showContacts(Request $request)
     {
         // return response()->json($post);
-        $contact = ContactsUsers::latest()->get();
+        $perPage = $request->input('per_page', 5);
+        $search = $request->input('search');
+        // dd($search);
+        $query = ContactsUsers::latest();
+
+        // If a search term is provided, apply search filters
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $contact = $query->paginate($perPage);
         $contact->load("media");
         return $this->sendResponse($contact);
     }
@@ -107,7 +121,25 @@ class ContactController extends Controller
         // dd($input);
         $contactObj = new ContactsUsers();
         $contact = $contactObj->saveData($input, $id);
+
         if ($contact) {
+
+            if (!empty($input['meta']) && is_array($input['meta'])) {
+                foreach ($input['meta'] as $meta) {
+                    // Check if the meta data already exists for the portfolio
+                    $existingMetaData = $contact->metaData()->where('meta_name', $meta['meta_name'])->where('meta_value', $meta['meta_value'])->first();
+    
+                    if (!$existingMetaData) {
+                        $metaData = new MetaData([
+                            'meta_name' => $meta['meta_name'],
+                            'meta_value' => $meta['meta_value'],
+                        ]);
+                        
+                        $contact->metaData()->save($metaData);
+                    }
+                }
+            }
+
             return $this->sendResponse($contact);
         }
     }

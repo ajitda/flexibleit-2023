@@ -12,10 +12,30 @@ class PortfolioController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
+    {
+        $perPage = $request->input('per_page', 5);
+        $search = $request->input('search');
+
+        $query = Portfolio::latest();
+
+        // If a search term is provided, apply search filters
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('description', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $portfolios = $query->paginate($perPage);
+        // return response()->json($posts);
+        return $this->sendResponse($portfolios);
+    }
+
+    public function allPortfolios() 
     {
         $portfolios = Portfolio::latest()->get();
-        // return response()->json($posts);
+
         return $this->sendResponse($portfolios);
     }
 

@@ -188,7 +188,7 @@ const Categories = () => {
                                 {category.description}
                             </td>
                             <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                {category.thumbnail}
+                                <img src={category.thumbnail} className='w-20' alt="" />
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                 <a

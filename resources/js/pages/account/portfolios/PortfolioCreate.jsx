@@ -108,6 +108,9 @@ const PortfolioCreate = () => {
             </div>
           </div>
           <div className='flex flex-wrap px-3 mb-4'>
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+              Category
+            </label>
             <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
           </div>
       </div>

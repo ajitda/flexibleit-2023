@@ -28,7 +28,7 @@ const ServiceEdit = () => {
     
     const getPortfolios = () => {
       // Fetch portfolios data
-      axios.get('/api/portfolios').then((res) => {
+      axios.get('/api/allportfolios').then((res) => {
           setPortfolios(res.data.data);
           console.log('portfolios', res.data)
       });
@@ -202,6 +202,9 @@ const ServiceEdit = () => {
     </div>
 
     <div className='flex flex-wrap mb-4'>
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+        Category
+      </label>
       <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
     </div>
     <button className='p-2 text-white text-lg bg-blue-500 inline-block'>Submit</button>

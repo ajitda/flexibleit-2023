@@ -28,6 +28,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/devsbrain/portfolios/{slug}', [PortfolioController::class, 'showPortfolio']);
 Route::get('/portfolios', [PortfolioController::class, 'index']);
 
+Route::get('/allportfolios', [PortfolioController::class, 'allPortfolios']);
+Route::get('/allservices', [ServiceController::class, 'allServices']);
+
 Route::get('/posts/{id}', [PostController::class, 'showPost']);
 Route::get('/posts', [PostController::class, 'index']);
 

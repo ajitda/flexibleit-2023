@@ -12,11 +12,12 @@ const Services = () => {
   }, []);
 
   const getServices = () => {
-     fetch('/api/services')
+     fetch('/api/allservices')
        .then(response => response.json())
        .then(data => {
         console.log('services res ', data)
-        setServices(data.data);
+        const resdata = data.data;
+        setServices(resdata);
        });
   }
 

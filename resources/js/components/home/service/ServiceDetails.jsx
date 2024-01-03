@@ -77,13 +77,14 @@ export default function ServiceDetails() {
           </Helmet>
         </div>
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Navbar />
-                </div>
+            <div className={`${styles.boxWidth}`}>
+                <Navbar />
             </div>
+        </div>
             
-            {service ? (
-        <div className="grid md:grid-cols-2 grid-cols-1">
+        {service ? (
+        <div className="">
+          <div className='grid md:grid-cols-2 grid-cols-1'>
           <div>
             <div className="p-24">
               <figure className='md:px-40'>
@@ -105,21 +106,29 @@ export default function ServiceDetails() {
             </div>
           </div>
         </div>
+        <div className="">
+          <div className='text-center'>
+            <h1 className={`${styles.paragraph}`}>{service.title}'s Portfolios</h1>
+          </div>
+          <div className='md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
+        {portfolios?.map((portfolio) => (
+          <div key={portfolio.id}>
+            <Link to={`/portfolios/${portfolio.slug}`}>
+            <Portfolio portfolio={portfolio} />
+            </Link>
+          </div>
+      ))}
+      </div>
+    </div>
+    </div>
+        
         
       ) : (
         <div className='text-center text-3xl mb-10'>
           <h1>Loading...</h1>
         </div>
       )}
-      <div className="md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5">
-          {portfolios?.map((portfolio) => (
-            <div key={portfolio.id}>
-              <Link to={`/portfolios/${portfolio.slug}`}>
-              <Portfolio portfolio={portfolio} />
-              </Link>
-            </div>
-          ))}
-        </div>
+      
             
             <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>

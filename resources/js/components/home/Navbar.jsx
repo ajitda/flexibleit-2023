@@ -2,11 +2,14 @@ import { useState } from "react";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
 import { Link } from "react-router-dom";
+import ProfileImg from "../ProfileImg";
+import { useAuth } from "../../hooks/auth";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-
+  const { user } = useAuth({ middleware: 'auth' });
+  // console.log('user', user)
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <Link to={'/'}>
@@ -27,6 +30,10 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+
+      <div>
+        {/* <ProfileImg user={user} /> */}
+      </div>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img

@@ -32,7 +32,7 @@ const ServicesCreate = () => {
     
     const getPortfolios = () => {
       // Fetch portfolios data
-      axios.get('/api/portfolios').then((res) => {
+      axios.get('/api/allportfolios').then((res) => {
           setPortfolios(res.data.data);
           console.log('portfolios', res.data)
       });
@@ -131,6 +131,9 @@ const ServicesCreate = () => {
             </div>
           </div>
           <div className='flex flex-wrap px-3 mb-4'>
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="featured">
+              Category
+            </label>
             <CategoryInput categoryIds={categoryIds} setCategoryIds={setCategoryIds} />
           </div>
       </div>

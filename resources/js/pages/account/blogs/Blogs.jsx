@@ -188,7 +188,8 @@ export default function Blogs() {
                                         {post.description}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                        {post.thumbnail}
+                                        {/* {post.thumbnail} */}
+                                        <img src={post.thumbnail} className="w-20" alt="" />
                                     </td>
                                     <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                         <a

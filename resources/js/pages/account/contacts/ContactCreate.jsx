@@ -15,6 +15,7 @@ const ContactCreate = () => {
     const [phone, setPhone] = useState();
     const [media, setMedia] = useState([]);
     const [metaFields, setMetaFields] = useState([{ metaName: '', metaValue: '' }]);
+    const [selectedType, setSelectedType] = useState('');
     const navigate = useNavigate();
 
 
@@ -22,6 +23,7 @@ const ContactCreate = () => {
         e.preventDefault();
         console.log('name', name);
         console.log('email', email);
+        console.log('type', selectedType);
         console.log('address', address); 
         console.log('phone', phone); 
         //call the api
@@ -39,7 +41,7 @@ const ContactCreate = () => {
           }
         });
 
-        const contactsData = { name: name, email: email, address: address, phone: phone, meta: metaArray };
+        const contactsData = { name: name, email: email, type: selectedType, address: address, phone: phone, meta: metaArray };
 
         if (media.length > 0) {
           const uploads = await uploadFiles(media);
@@ -55,14 +57,18 @@ const ContactCreate = () => {
     }
 
     const handleAddMetaField = () => {
-        setMetaFields([...metaFields, { metaName: '', metaValue: '' }]);
-      };
+      setMetaFields([...metaFields, { metaName: '', metaValue: '' }]);
+    };
       
-      const handleRemoveMetaField = (index) => {
-        const updatedMetaFields = [...metaFields];
-        updatedMetaFields.splice(index, 1);
-        setMetaFields(updatedMetaFields);
-      };
+    const handleRemoveMetaField = (index) => {
+      const updatedMetaFields = [...metaFields];
+      updatedMetaFields.splice(index, 1);
+      setMetaFields(updatedMetaFields);
+    };
+
+    const handleTypeChange = (e) => {
+      setSelectedType(e.target.value);
+    };
 
   return (
     <div className='max-w-6xl mx-auto'>
@@ -100,6 +106,22 @@ const ContactCreate = () => {
                     Phone
                 </label>
                 <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="number" placeholder="phone" value={phone} name='phone' onChange={(e) => setPhone(e.target.value)} />
+            </div>
+            <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-type">
+                    Type
+                </label>
+                <select
+                    id="grid-type"
+                    value={selectedType}
+                    onChange={handleTypeChange}
+                    className="block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                >
+                    <option value="">Select Type</option>
+                    <option value="Student">Student</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Employee">Employee</option>
+                </select>
             </div>
         </div>
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ContactsUsers extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'address', 'phone'];
+    protected $fillable = ['name', 'email', 'address', 'phone', 'type'];
     
     protected $appends = ['thumbnail'];
     

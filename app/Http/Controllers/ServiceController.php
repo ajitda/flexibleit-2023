@@ -12,11 +12,31 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::latest()->get();
+        $perPage = $request->input('per_page', 5);
+        $search = $request->input('search');
+
+        $query = Service::latest();
+
+        // If a search term is provided, apply search filters
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'LIKE', "%{$search}%");
+            });
+        }
+        
+        $services = $query->paginate($perPage);
+
         return $this->sendResponse($services);
         // return response()->json($categories);
+    }
+
+    public function allServices() 
+    {
+        $services = Service::latest()->get();
+        
+        return $this->sendResponse($services);
     }
     /**
      * Show the form for creating a new resource.
