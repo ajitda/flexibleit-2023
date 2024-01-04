@@ -6,8 +6,8 @@ import { Helmet } from "react-helmet";
 const Hero = () => {
 
   const [metaTags, setMetaTags] = useState({
-    title: 'Creativity starts with viewing the whole world differently',
-    description: 'A service agency with customer satisfaction',
+    title: 'Custom Web Design and Development Solutions | DevsBrain',
+    description: 'Are you looking to make your business more easier and easily manageable. We can provide your custom automation software or ecommerce website for making your business easier. We anlyze your business and can give you a nice solution',
     url: window.location.href ,
   });
 

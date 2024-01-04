@@ -432,6 +432,10 @@ export const menuItems = [
         path: '/tools/twitch-emote-resizer',
         label: 'Emote Resizer',
       },
+      {
+        path: '/tools/area-calculator',
+        label: 'Area Calcutalor',
+      },
       // {
       //   path: '#',
       //   label: 'Image Converter',

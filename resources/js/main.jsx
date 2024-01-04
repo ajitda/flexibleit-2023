@@ -37,6 +37,7 @@ import ImageTwichEmoteResizer from "./components/tools/ImageTwichEmoteResizer";
 import ContactCreate from "./pages/account/contacts/ContactCreate";
 import AllContacts from "./pages/account/contacts/AllContacts";
 import ContactEdit from "./pages/account/contacts/ContactEdit";
+import AreaCalculator from "./components/tools/area-calculator/AreaCalculator";
 
 
 
@@ -124,6 +125,9 @@ const router = createBrowserRouter([
  },
  {path: "/tools/twitch-emote-resizer",
     element: <ImageTwichEmoteResizer />
+ },
+ {path: "/tools/area-calculator",
+    element: <AreaCalculator />
  },
 ]);
 

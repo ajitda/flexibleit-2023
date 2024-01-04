@@ -51,12 +51,12 @@ export default function ImageResizer() {
 
   return (
     <div className="image-resizer-container p-4">
-      <div {...getRootProps()} className="dropzone-container border border-dashed border-gray-400 rounded-md md:p-24 text-center">
+      <div {...getRootProps()} className="dropzone-container border border-dashed border-gray-400 rounded-md md:p-24 text-center md:h-0 h-40">
         <input {...getInputProps()} />
         {isDragActive ? (
           <p>Drop the files here ...</p>
         ) : (
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p className='md:mt-0 mt-12'>Drag 'n' drop some files here, or click to select files</p>
         )}
       </div>
       <div className="flex justify-between my-3">

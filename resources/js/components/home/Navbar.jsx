@@ -6,10 +6,17 @@ import ProfileImg from "../ProfileImg";
 import { useAuth } from "../../hooks/auth";
 
 const Navbar = () => {
+
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-  const { user } = useAuth({ middleware: 'auth' });
-  // console.log('user', user)
+
+  // if (user && user.name && typeof user.name === 'string') {
+  //   console.log('user', user)
+  //   const nameArr = user.name.split(' ');
+  //   const characters = nameArr.map((name) => name[0]).join('').toUpperCase();
+  //   const defaultClass = customClass || 'w-11 h-11';
+  // }
+
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
       <Link to={'/'}>
@@ -29,11 +36,12 @@ const Navbar = () => {
             <Link to={nav.path || "/"}>{nav.title}</Link>
           </li>
         ))}
+        <div className="px-5 cursor-pointer">
+          <a href="/account">
+            <ProfileImg />
+          </a>
+        </div>
       </ul>
-
-      <div>
-        {/* <ProfileImg user={user} /> */}
-      </div>
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -60,6 +68,11 @@ const Navbar = () => {
                 <a href={`${nav.id}`}>{nav.title}</a>
               </li>
             ))}
+            <div className="cursor-pointer pt-5">
+              <a href="/account">
+                <ProfileImg />
+              </a>
+            </div>
           </ul>
         </div>
       </div>

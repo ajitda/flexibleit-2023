@@ -108,7 +108,7 @@ export default function ServiceDetails() {
         </div>
         <div className="">
           <div className='text-center'>
-            <h1 className={`${styles.paragraph}`}>{service.title}'s Portfolios</h1>
+            <h1 className='text-xl font-bold md:pt-10'>{service.title}'s Portfolios</h1>
           </div>
           <div className='md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
         {portfolios?.map((portfolio) => (
