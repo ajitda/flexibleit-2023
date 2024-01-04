@@ -7,12 +7,12 @@
     "css": [
       "assets/app-7bdf0ddc.css"
     ],
-    "file": "assets/app-b6596581.js",
+    "file": "assets/app-65b62841.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-ec648ae4.css",
+    "file": "assets/app-dd0dbf61.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }
