@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../../../hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaMinus, FaPlus } from "react-icons/fa";
+import ImageUpload from '../../../components/UI/ImageUpload';
+import { uploadFiles } from '../../../helpers/helpers';
 
 const ContactEdit = () => {
     const {user} = useAuth({middleware: "auth"})
@@ -11,6 +13,7 @@ const ContactEdit = () => {
     const [email, setEmail] = useState();
     const [address, setAddress] = useState();
     const [phone, setPhone] = useState();
+    const [media, setMedia] = useState([]);
     // const [type, setType] = useState();
     const [selectedType, setSelectedType] = useState('');
     const [contacts, setContacts] = useState([]);
@@ -30,6 +33,7 @@ const ContactEdit = () => {
             setEmail(resdata.email);
             setAddress(resdata.address);
             setPhone(resdata.phone);
+            setMedia(resdata.media);
             setSelectedType(resdata.type);
 
             // Fetch meta data and set up metaFields state
@@ -48,6 +52,7 @@ const ContactEdit = () => {
         console.log('address', address); 
         console.log('phone', phone); 
         console.log('type', selectedType); 
+        console.log('media', media);
         //call the api
         // const requestOptions = {
         //     method: 'PUT',
@@ -65,6 +70,11 @@ const ContactEdit = () => {
 
         const contactsData = { name: name, email: email, address: address, phone: phone, type: selectedType, meta: metaArray };
 
+        if (media.length > 0) {
+            const uploads = await uploadFiles(media);
+            if ( uploads === false ) return false;
+            contactsData.media = uploads ;
+        }
 
         axios.post(`/api/contacts-users/${id}`, contactsData)
             .then(res => {
@@ -139,8 +149,12 @@ const ContactEdit = () => {
                     <option value="Intern">Intern</option>
                     <option value="Employee">Employee</option>
                 </select>
+                <div className='flex flex-wrap mt-5'>
+                    <ImageUpload value={media} onChange={(m) => setMedia(m)} />
+                </div>
             </div>
         </div>
+        
         <div className="md:ml-0 ml-1">
             {metaFields.map((field, index) => (
                 <div key={index} className="md:flex items-center mb-3 gap-5">
@@ -166,10 +180,10 @@ const ContactEdit = () => {
                         }}
                         className="appearance-none block w-96 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                     />
-                    {index === 0 && (
+                    {metaFields.length === index + 1 && (
                         <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
                     )}
-                    {index > 0 && (
+                    {metaFields.length > index + 1 && (
                         <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
                     )}
                 </div>

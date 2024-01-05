@@ -40,7 +40,7 @@ const AllContacts = () => {
 
     const handleDelete = (id) =>{
       {if(window.confirm('Are you sure to delete this record?'))
-      axios.delete(`/api/contacts-user/${id}`)
+      axios.delete(`/api/contacts/${id}`)
       .then(res => {
         console.log(res.data, 'Deleted Successfully.');
         getContacts()

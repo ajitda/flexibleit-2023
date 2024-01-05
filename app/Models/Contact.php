@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'email', 'subject', 'message'];
-
+    protected $fillable = ['name', 'email', 'address', 'phone', 'type'];
+    
+    protected $appends = ['thumbnail'];
+    
     public function saveData(array $input, string $id): Contact
     {
         $contact = $this->findOrFail($id);
@@ -17,8 +19,20 @@ class Contact extends Model
         $contact->save();
         return $contact;
     }
-    public function deletePost()
+
+    public function getThumbnailAttribute()
+	{
+		return $this->media->whereNotNull('thumbnail')->pluck('thumbnail')->first();
+	}
+
+    public function media()
+	{
+		return $this->morphMany(Media::class , 'mediable');
+	}
+
+    public function metaData()
     {
-        $this->delete();
+        return $this->morphMany(MetaData::class, 'metaable');
     }
+
 }

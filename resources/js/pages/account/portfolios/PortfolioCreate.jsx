@@ -140,12 +140,12 @@ const PortfolioCreate = () => {
                   }}
                   className="appearance-none block w-30 bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 />
-              {index === 0 && (
-                <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
-              )}
-              {index > 0 && (
+                {metaFields.length === index + 1 && (
+                  <FaPlus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={handleAddMetaField} />
+                )}
+                {metaFields.length > index + 1 && (
                 <FaMinus className='cursor-pointer md:mb-3 md:ml-0 ml-48' onClick={() => handleRemoveMetaField(index)} />
-              )}
+                )}
             </div>
           ))}
           <div>

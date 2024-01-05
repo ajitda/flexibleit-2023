@@ -45,7 +45,6 @@ Route::get('/All-contacts', [ContactController::class, 'showContacts']);
 Route::get('/contacts-users/{id}', [ContactController::class, 'edit']);
 
 Route::post('/contacts-users/{id}', [ContactController::class, 'update']);
-Route::post('/contacts-users/{id}', [ContactController::class, 'update']);
 
 
 // Route::get('/posts', [PostController::class, 'index']);

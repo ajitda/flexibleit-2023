@@ -6,6 +6,7 @@ use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\ContactsUsers;
 use App\Models\Media;
+use App\Models\Message;
 use App\Models\MetaData;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $contacts = Contact::latest()->get();
+        $contacts = Message::latest()->get();
         // return response()->json($posts);
         return $this->sendResponse($contacts);
     }
@@ -29,11 +30,11 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
         $input = $request->validated();
         // $input['user_id'] = auth()->user()->id; //set login user id in the slug
-        $contact = Contact ::create($input);
+        $message = Message ::create($input);
         //adding media from request
         // $media = Media::getFromRequest($request);
         // if ($media) $testomonial->media()->saveMany($media);
@@ -41,14 +42,14 @@ class ContactController extends Controller
         //     $portfolio->categories()->attach($input['categoryIds']);
         // }
         // return response()->json($post);
-        return $this->sendResponse($contact);
+        return $this->sendResponse($message);
     }
 
     public function ContactStore(Request $request)
     {
         $input = $request->all();
         // dd($input);
-        $contact = ContactsUsers::create($input);
+        $contact = Contact::create($input);
 
         if (!empty($input['meta']) && is_array($input['meta'])) {
             foreach ($input['meta'] as $meta) {
@@ -70,11 +71,11 @@ class ContactController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contact $contact)
+    public function show(Message $message)
     {
         // return response()->json($post);
-        $contact->load('contacts');
-        return $this->sendResponse($contact);
+        $message->load('messages');
+        return $this->sendResponse($message);
     }
 
     public function showContacts(Request $request)
@@ -83,7 +84,7 @@ class ContactController extends Controller
         $perPage = $request->input('per_page', 5);
         $search = $request->input('search');
         // dd($search);
-        $query = ContactsUsers::latest();
+        $query = Contact::latest();
 
         // If a search term is provided, apply search filters
         if ($search) {
@@ -105,7 +106,7 @@ class ContactController extends Controller
     public function edit(string $id)
     {
         // return response()->json($post);
-        $contact = ContactsUsers::findOrFail($id);
+        $contact = Contact::findOrFail($id);
 
         $contact->load("metaData");
         
@@ -119,8 +120,10 @@ class ContactController extends Controller
     {
         $input = $request->all();
         // dd($input);
-        $contactObj = new ContactsUsers();
+        $contactObj = new Contact();
         $contact = $contactObj->saveData($input, $id);
+        $media = Media::getFromRequest($request);
+        if ($media) $contact->media()->saveMany($media);
 
         if ($contact) {
 
