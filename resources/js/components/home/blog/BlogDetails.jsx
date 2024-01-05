@@ -35,21 +35,21 @@ console.log('post:',post)
             
             {post ? (
             <div>
-                <h2 className={`${styles.heading2} text-center`}>{post.title}'s Blog</h2>
+                <h2 className={`${styles.heading2} text-center pt-10`}>{post.title}'s Blog</h2>
                     
-                <div className="grid grid-cols-2 mb-14 mt-10">
+                <div className="grid md:grid-cols-2 mb-14 mt-10">
                 <div>
-                    <div id="product" className="p-8 ml-96">
+                    <div id="product" className="md:p-24 p-5">
                     <figure>
                         <img className="rounded-lg" src={post.thumbnail} alt="" />
                     </figure>
                     </div>
                 </div>
-                <div className="mt-5">
-                    <h2 className={styles.heading2}>{post.title}</h2>
+                <div className="md:pt-20 p-5 mb-12">
+                    <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2>
                     <div>
                     <p className="font-medium">Short description:</p>
-                    <p className={styles.paragraph}>{post.description}</p>
+                    <p className={`${styles.paragraph} md:pr-20`}>{post.description}</p>
                     </div>
                 </div>
                 </div>

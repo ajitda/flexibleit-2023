@@ -38,6 +38,7 @@ import ContactCreate from "./pages/account/contacts/ContactCreate";
 import AllContacts from "./pages/account/contacts/AllContacts";
 import ContactEdit from "./pages/account/contacts/ContactEdit";
 import AreaCalculator from "./components/tools/area-calculator/AreaCalculator";
+import ImgConverter from "./components/tools/image-converter/ImgConverter";
 
 
 
@@ -120,7 +121,7 @@ const router = createBrowserRouter([
     element: <About />
  },
  //tools route
- {path: "/tools/email",
+ {path: "/tools/email-extractor",
     element: <EmailExtractor />
  },
  {path: "/tools/twitch-emote-resizer",
@@ -128,6 +129,9 @@ const router = createBrowserRouter([
  },
  {path: "/tools/area-calculator",
     element: <AreaCalculator />
+ },
+ {path: "/tools/image-converter",
+    element: <ImgConverter />
  },
 ]);
 

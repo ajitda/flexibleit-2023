@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmailExtractorController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ServiceController;
@@ -45,6 +46,8 @@ Route::get('/All-contacts', [ContactController::class, 'showContacts']);
 Route::get('/contacts-users/{id}', [ContactController::class, 'edit']);
 
 Route::post('/contacts-users/{id}', [ContactController::class, 'update']);
+
+Route::post('/tools/email-extractor', [EmailExtractorController::class, 'extractEmail']);
 
 
 // Route::get('/posts', [PostController::class, 'index']);

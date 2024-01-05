@@ -436,6 +436,18 @@ export const menuItems = [
         path: '/tools/area-calculator',
         label: 'Area Calcutalor',
       },
+      {
+        path: '/tools/email-extractor',
+        label: 'Email Extractor',
+      },
+      // {
+      //   path: 'https://qr.devsbrain.com/',
+      //   label: 'QR Generator',
+      // },
+      {
+        path: '/tools/image-converter',
+        label: 'Image Converter',
+      },
       // {
       //   path: '#',
       //   label: 'Image Converter',

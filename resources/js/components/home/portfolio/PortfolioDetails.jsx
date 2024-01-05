@@ -88,27 +88,26 @@ export default function PortfolioDetails() {
       {portfolio ? (
         <div className='grid md:grid-cols-2 grid-cols-1'>
           <div>
-          
-          <div id="product" className=" md:p-24 p-5">
-            <figure>
-              <img className="rounded" src={portfolio.thumbnail} alt="" />
-            </figure>
-            {portfolio.media && portfolio.media.length > 0 ? (
-              <div className="flex md:mr-96 mt-5 mb-5">
-                {portfolio.media.map((image, index) => (
-                  <img
-                    key={index}
-                    className="w-28 rounded mr-4 cursor-pointer"
-                    src={image.thumbnail}
-                    alt=""
-                    onClick={() => openModal(image)}
-                  />
-                ))}
-              </div>
-            ) : (
-              <p>No images available.</p>
-            )}
-          </div>
+            <div id="product" className=" md:p-24 p-5">
+              <figure>
+                <img className="rounded" src={portfolio.thumbnail} alt="" />
+              </figure>
+              {portfolio.media && portfolio.media.length > 0 ? (
+                <div className="flex md:mr-96 mt-5 mb-5">
+                  {portfolio.media.map((image, index) => (
+                    <img
+                      key={index}
+                      className="w-28 rounded mr-4 cursor-pointer"
+                      src={image.thumbnail}
+                      alt=""
+                      onClick={() => openModal(image)}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p>No images available.</p>
+              )}
+            </div>
           </div>
           <div className='md:pt-24 p-5 mb-12'>
           <h2 className="">{portfolio.title}</h2>

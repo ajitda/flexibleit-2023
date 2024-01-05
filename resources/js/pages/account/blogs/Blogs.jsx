@@ -137,7 +137,7 @@ export default function Blogs() {
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase "
                                     >
-                                        Email
+                                        Description
                                     </th>
                                     <th
                                         scope="col"
@@ -162,6 +162,13 @@ export default function Blogs() {
                             </thead>
                             <tbody className="divide-y divide-gray-200">
                               {posts && posts.map(post=> {
+                                let slicedDescription = post.description.slice(0, 30);
+                                let slicedTitle = post.title.slice(0, 30);
+                                console.log('first', slicedTitle)
+                                if (post.description.length > 30, post.title.length > 30) {
+                                slicedDescription += "...";
+                                slicedTitle += "...";
+                                }
                                  return (
                                  <tr>
                                     <td className="py-3 pl-4">
@@ -182,10 +189,10 @@ export default function Blogs() {
                                         {post.id}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                        {post.title}
+                                        {slicedTitle}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                                        {post.description}
+                                        {slicedDescription}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                                         {/* {post.thumbnail} */}
