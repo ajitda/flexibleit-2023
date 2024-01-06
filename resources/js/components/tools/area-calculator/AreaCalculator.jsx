@@ -49,9 +49,9 @@ function AreaCalculator() {
         </div>
     </div>
     <div class="mb-3">
-    <h1 class='text-5xl font-semibold mb-8 text-center pt-10'>Area calculator to calculate area</h1>
+    <h1 class={`${styles.heading2} text-5xl font-semibold mb-8 text-center pt-10`}>Area calculator to calculate area</h1>
     <div class="grid place-items-center">
-        <div class="w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mb-7">
+        <div class={`${styles.paragraph} w-full md:w-2/3 lg:w-1/2 xl:w-1/3 mb-7`}>
             <p class="text-center">In many aspects we need to calculate area. You can easily calculate the area. Here is the simple process.</p>
             <ul class="list-disc ml-9 my-5">
                 <li>Give the sizes of 4 sides in feet.</li>
@@ -61,12 +61,12 @@ function AreaCalculator() {
     </div>
 
     <div>
-        <div class='container mb-8'>
+        <div class='container md:mb-8 mb-14'>
             <form onSubmit={handleSubmit}>
-                <div class="row">
-                    <label class="md:pl-80 pl-7">Shape:</label>
+                <div class="row md:pl-80 pl-7 xl:pl-[570px]">
+                    <label class="">Shape:</label>
                     <div className='grid grid-cols-2'>
-                        <div class="form-group md:pl-80 pl-7">
+                        <div class="form-group">
                                 <select class='form-control border-2 border-sky-500 w-40 h-12' value={shape} onChange={(e) => setShape(e.target.value)} >
                                     <option value="triangle">Triangle</option>
                                     <option value="quadrilateral">Quadrilateral</option>
@@ -76,7 +76,7 @@ function AreaCalculator() {
                 </div>
 
                 <div className='row mt-5'>
-                    <div className='grid md:grid-cols-4 grid-cols-2 md:pl-80 pl-7'>       
+                    <div className='grid md:grid-cols-4 grid-cols-2 md:pl-80 xl:pl-[30rem] pl-7'>       
                         <div class="">
                             <div class="form-group">
                                 <label class="block">
@@ -117,7 +117,7 @@ function AreaCalculator() {
                     </div>
                 </div>
                 <div className='row mt-5'>
-                    <div className='md:pl-80 pl-7'>
+                    <div className='md:pl-80 xl:pl-[36rem] pl-7'>
                         <button class='bg-secondary text-white inline-block px-2 py-3 rounded-md' type="submit">Calculate Area</button>
                     </div>
                 </div>
@@ -125,18 +125,18 @@ function AreaCalculator() {
 
             <p></p>
 
-            <div className='row mt-5 md:pb-14'>
-                <div class=''>
+            <div className='row mt-5 md:pb-14 md:pl-80 px-5'>
+                <div class='border-2'>
                     {areas?.map((ar, ind)=>(
                         <div key={'ind-'+ind} class='card border-e5'>
                             <div class="card-body">
                                 <div className='flex'>
-                                    <div className='md:pl-80 pl-20'>
+                                    <div className='p-5'>
                                         Sides: A={ar.sideA}ft, B={ar.sideB}ft, C={ar.sideC}ft, {ar.sideD ? <>D={ar.sideD}ft</> : ''} <br/>
                                         Area: {ar.area}sqft
                                     </div>
-                                    <div className=''>
-                                        <span onClick={()=>deleteArea(ind)} className='absolute cursor-pointer text-red-600 text-2xl md:right-96 right-20'>x</span>
+                                    <div className='p-5'>
+                                        <span onClick={()=>deleteArea(ind)} className='absolute cursor-pointer text-red-600 text-2xl md:right-48 xl:right-60 right-20'>x</span>
                                     </div>
                                 </div>
                                 

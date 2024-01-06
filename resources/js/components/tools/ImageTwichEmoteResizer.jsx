@@ -14,12 +14,12 @@ export default function ImageTwichEmoteResizer() {
          </div>
         <div className="container mb-3 p-10">
             <div className='row'>
-                <h1 className="text-center text-5xl font-semibold mb-8 md:ml-36">Image Resizer tool to reduce twitch emotes</h1>
-                <div className="row">
+                <h1 className={`${styles.heading2} text-center mb-8 md:ml-20`}>Image Resizer tool to reduce twitch emotes</h1>
+                <div className="row mb-10">
                     <div className="md:flex">
                         <div className='md:flex-none md:w-36'></div>
-                        <div className='md:m-auto md:flex-initial md:w-7/12'>
-                            <p className="text-center mb-5">
+                        <div className={`${styles.paragraph} md:m-auto md:flex-initial md:w-7/12`}>
+                            <p className='text-center mb-5'>
                                 By utilizing our cutting-edge Image Resizer tool, it is now achievable to effortlessly reduce the size of your twitch emotes.
                                 With our user-friendly resizer tool, resizing your twitch images has never been easier or more convenient.
                                 Just by uploading your emotes, our tool enables you to view a myriad of diverse image sizes in just a few clicks.
@@ -44,11 +44,11 @@ export default function ImageTwichEmoteResizer() {
                 <div className='md:ml-52'>
                     <ImageResizer />
                 </div>
-                <p className="text-center mb-5 mt-8 md:ml-32">
-                    If you have any question or face any problem or if you have any feature request? Please <a href="/contact">Contact Us</a>
-                </p>
             </div>
         </div>
+        <p className="text-center mb-5 mt-8 md:ml-32 px-7">
+            If you have any question or face any problem or if you have any feature request? Please <a href="/contact">Contact Us</a>
+        </p>
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
                 <Footer />

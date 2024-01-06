@@ -29,9 +29,9 @@ export default function EmailExtractor() {
     <div className="">
         <h1 className={`${styles.heading2} text-center`}>Email Extractor</h1>
         <div className="flex justify-center">
-            <div className={`${styles.paragraph} w-1/2`}>
+            <div className={`${styles.paragraph} md:w-1/2 w-96 pl-5`}>
                 <p>Extract email from any strings/text online. It's free forever. Flexible Email extractor helps you to extract email from any string/text. The process are:</p>
-                <ul className="list-disc ml-5 pl-5 pt-5">
+                <ul className="list-disc md:ml-5 pl-5 pt-5">
                     <li>Copy your string with emails</li>
                     <li>Paste the string in the textarea input and click submit</li>
                     <li>Exclude emails that you don't want (optional)</li>
@@ -41,7 +41,7 @@ export default function EmailExtractor() {
         </div>
     </div>
     <div className="flex justify-center mt-2">
-        <div className=" w-1/2">
+        <div className=" md:w-1/2 w-10/12">
             <div className="card mb-5">
                 <div className={`${styles.paragraph} card-header bg-slate-100 p-2 pl-7`}>Add your text</div>
                 <div className="card-body p-0">
