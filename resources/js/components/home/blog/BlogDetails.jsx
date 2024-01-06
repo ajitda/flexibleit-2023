@@ -4,6 +4,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useParams } from 'react-router-dom';
 import Masonry from 'react-responsive-masonry';
+import { Helmet } from 'react-helmet';
 
 export default function BlogDetails() {
 
@@ -25,45 +26,114 @@ export default function BlogDetails() {
     }
 console.log('post:',post)
 
+const shareOnFacebook = () => {
+    // Replace URL with the URL you want to share
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
+    window.open(url, '_blank');
+  };
+
+  const shareOnTwitter = () => {
+    // Replace text and URL with the content you want to share
+    const text = encodeURIComponent(post.title);
+    const url = encodeURIComponent(window.location.href);
+    const shareUrl = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+    window.open(shareUrl, '_blank');
+  };
+
+  const shareOnWhatsApp = () => {
+    // Replace text and URL with the content you want to share
+    const text = encodeURIComponent(post.title);
+    const url = encodeURIComponent(window.location.href);
+    const shareUrl = `https://api.whatsapp.com/send?text=${text} ${url}`;
+    window.open(shareUrl, '_blank');
+  };
+
   return (
     <div>
-            <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-                <div className={`${styles.boxWidth}`}>
-                    <Navbar />
-                </div>
+        {post ? (
+        <>
+          <div>
+            <Helmet>
+              <meta name="title" content={post.title} />
+              <meta name="description" content={post.description} />
+              <meta property="og:title" content={post.title} />
+              <meta property="og:description" content={post.description} />
+              <meta property="og:image" content={post.image} />
+              <meta property="og:url" content={post.url} />
+              {/* Twitter meta tags */}
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:title" content={post.title} />
+              <meta name="twitter:description" content={post.description} />
+              <meta name="twitter:image" content={post.image} />
+              {/* Canonical URL */}
+              <link rel="canonical" href={window.location.href} />
+            </Helmet>
+          </div>
+          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+            <div className={`${styles.boxWidth}`}>
+              <Navbar />
             </div>
-            
-            {post ? (
-            <div>
-                <h2 className={`${styles.heading2} text-center pt-10`}>{post.title}'s Blog</h2>
+          </div>
+            <div className='container'>
+                <div className='row'>
+                    <div className='pt-10 xl:pl-80 md:pl-56'>
+                        <h2 className={`${styles.heading2}`}>{post.title}</h2>
+                        <div className='flex'>
+                            <button className='flex bg-blue-500 py-3 px-4' onClick={shareOnFacebook}>
+                                <img src="/img/icons/facebook.png" alt="facebook" className='p-1' />
+                                <div className='pl-2 text-white'>
+                                    Share to Facebook
+                                </div>
+                            </button>
+                            <button className='flex bg-sky-500 py-3 px-4 ml-2' onClick={shareOnTwitter}>
+                                <img src="/img/icons/twitter-2.png" alt="facebook" className='p-1 w-7' />
+                                <div className='pl-2 text-white'>
+                                    Share to Twitter
+                                </div>
+                            </button>
+                            <button className='flex bg-green-500 py-3 px-4 ml-2' onClick={shareOnWhatsApp}>
+                                <img src="/img/icons/wtsapp.png" alt="facebook" className='p-1 w-7' />
+                                <div className='pl-2 text-white'>
+                                    Share to Whatsapp
+                                </div>
+                            </button>
+                        </div>
+                        
+                    </div>
+                    <div className='grid grid-cols-6 mb-14 mt-20 ml-5'>
+                        <div className="col-start-2 col-span-4">
+                            <div>
+                                <div id="product" className="">
+                                <figure>
+                                    <img className="rounded-lg" src={post.thumbnail} alt="" />
+                                </figure>
+                                </div>
+                            </div>
+                            <div className="mb-12">
+                                {/* <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2> */}
+                                <div className=' bg-slate-100 p-6'>
+                                <p className="font-medium">Description:</p>
+                                <p className={`${styles.paragraph} md:pr-20`}>{post.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     
-                <div className="grid md:grid-cols-2 mb-14 mt-10">
-                <div>
-                    <div id="product" className="md:p-24 p-5">
-                    <figure>
-                        <img className="rounded-lg" src={post.thumbnail} alt="" />
-                    </figure>
-                    </div>
-                </div>
-                <div className="md:pt-20 p-5 mb-12">
-                    <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2>
-                    <div>
-                    <p className="font-medium">Short description:</p>
-                    <p className={`${styles.paragraph} md:pr-20`}>{post.description}</p>
-                    </div>
-                </div>
-                </div>
+                
             </div>
-            ) : (
-                <p>Loading...</p>
-            )}
       
             
             <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Footer />
                 </div>
-            </div>                                                        
+            </div> 
+            </>
+
+            ) : (
+            <p>Loading...</p>
+            )}                                                       
         </div>
   );
 }

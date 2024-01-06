@@ -16,13 +16,19 @@ function AreaCalculator() {
     event.preventDefault();
     const oldareas = areas;
     if (shape === 'quadrilateral'){
-      const s = (parseFloat(sideA) + parseFloat(sideB) + parseFloat(sideC) + parseFloat(sideD)) / 2;
-      const area = Math.sqrt((s - parseFloat(sideA)) * (s - parseFloat(sideB)) * (s - parseFloat(sideC)) * (s - parseFloat(sideD)));
-      setAreas([{sideA, sideB, sideC, sideD, area: area.toFixed(2)}, ...oldareas]);
+        const s = (parseFloat(sideA) + parseFloat(sideB) + parseFloat(sideC) + parseFloat(sideD)) / 2;
+        const area = Math.sqrt(
+          (s - parseFloat(sideA)) * (s - parseFloat(sideB)) * (s - parseFloat(sideC)) * (s - parseFloat(sideD))
+        );
+    
+        setAreas((prevAreas) => [
+          { sideA, sideB, sideC, sideD, area: area.toFixed(2) },
+          ...prevAreas,
+        ]);
    } else {
-      const s = (parseFloat(sideA) + parseFloat(sideB) + parseFloat(sideC) ) / 2;
-      const area = Math.sqrt(s*(s - parseFloat(sideA)) * (s - parseFloat(sideB)) * (s - parseFloat(sideC)));
-      setAreas([{sideA, sideB, sideC, area: area.toFixed(2)}, ...oldareas]);
+        const s = (parseFloat(sideA) + parseFloat(sideB) + parseFloat(sideC)) / 2;
+        const area = Math.sqrt(s * (s - parseFloat(sideA)) * (s - parseFloat(sideB)) * (s - parseFloat(sideC)));
+        setAreas([{ sideA, sideB, sideC, area: area.toFixed(2) }, ...areas]);
     }
     
     
@@ -81,7 +87,7 @@ function AreaCalculator() {
                             <div class="form-group">
                                 <label class="block">
                                     Side A (feet):
-                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12' value={sideA} onChange={(e) => setSideA(e.target.value)} />
+                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12 p-2' value={sideA} onChange={(e) => setSideA(e.target.value)} />
                                 </label>
                             </div>
                         </div>
@@ -90,7 +96,7 @@ function AreaCalculator() {
                             <div class="form-group">
                                 <label class="block">
                                     Side B (feet):
-                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12' value={sideB} onChange={(e) => setSideB(e.target.value)} />
+                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12 p-2' value={sideB} onChange={(e) => setSideB(e.target.value)} />
                                 </label>
                             </div>
                         </div>
@@ -99,7 +105,7 @@ function AreaCalculator() {
                             <div class="form-group">
                                 <label class="block">
                                     Side C (feet):
-                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12' value={sideC} onChange={(e) => setSideC(e.target.value)} />
+                                    <input type="number" class='form-control border-2 border-sky-500 w-40 h-12 p-2' value={sideC} onChange={(e) => setSideC(e.target.value)} />
                                 </label>
                             </div>
                         </div>
@@ -109,7 +115,7 @@ function AreaCalculator() {
                                 <div class="form-group">
                                     <label class="block">
                                         Side D (feet):
-                                        <input type="number" class='form-control border-2 border-sky-500 w-40 h-12' value={sideD} onChange={(e) => setSideD(e.target.value)} />
+                                        <input type="number" class='form-control border-2 border-sky-500 w-40 h-12 p-2' value={sideD} onChange={(e) => setSideD(e.target.value)} />
                                     </label>
                                 </div>
                             </div>
@@ -133,7 +139,7 @@ function AreaCalculator() {
                                 <div className='flex'>
                                     <div className='p-5'>
                                         Sides: A={ar.sideA}ft, B={ar.sideB}ft, C={ar.sideC}ft, {ar.sideD ? <>D={ar.sideD}ft</> : ''} <br/>
-                                        Area: {ar.area}sqft
+                                        Area: {isNaN(ar.area) ? 'Invalid input' : ar.area} sqft
                                     </div>
                                     <div className='p-5'>
                                         <span onClick={()=>deleteArea(ind)} className='absolute cursor-pointer text-red-600 text-2xl md:right-48 xl:right-60 right-20'>x</span>

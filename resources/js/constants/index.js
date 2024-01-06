@@ -18,11 +18,11 @@ export const navLinks = [
     title: "Projects",
     path: "/all-portfolios",
   },
-  {
-    id: "/all-testimonials",
-    title: "Clients",
-    path: "/all-testimonials"
-  },
+  // {
+  //   id: "/all-testimonials",
+  //   title: "Clients",
+  //   path: "/all-testimonials"
+  // },
   {
     id: "/contact-us",
     title: "Contact Us",

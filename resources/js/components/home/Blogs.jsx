@@ -32,7 +32,7 @@ const Blogs = () => {
     </div>
       <Masonry>
           {featuredBlogs.map((post) => (
-            <div key={post.id}>
+            <div key={post.id} className='mr-5'>
               <Link to={`/posts/${post.id}`}>
                 <BlogPost key={post.id} post={post} />
               </Link>

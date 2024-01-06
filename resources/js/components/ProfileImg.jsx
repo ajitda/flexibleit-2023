@@ -13,7 +13,7 @@ export default function ProfileImg({ class: customClass }) {
         const defaultClass = customClass || 'w-10 h-10';
 
         return (
-            <div className={`flex justify-center items-center bg-sky-400 text-white rounded-full ${defaultClass}`}>
+            <div className={`flex justify-center items-center bg-secondary text-white rounded-full ${defaultClass}`}>
                 {characters}
             </div>
         );

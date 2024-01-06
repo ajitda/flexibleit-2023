@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { close, logo, menu } from "../../assets";
 import { navLinks } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ProfileImg from "../ProfileImg";
 import { useAuth } from "../../hooks/auth";
 
 const Navbar = () => {
 
-  const [active, setActive] = useState("Home");
+  // const [active, isActive] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  const location = useLocation();
+
+  const isActive = (path) => {
+    return location.pathname === path ? 'text-blue-500' : 'text-primary';
+  };
+  const isActiveSs = (path) => {
+    return location.pathname === path ? 'text-blue-500' : ' text-white';
+  };
 
   // if (user && user.name && typeof user.name === 'string') {
   //   console.log('user', user)
@@ -28,9 +37,7 @@ const Navbar = () => {
           <li
             key={nav.id}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${
-              active === nav.title ? "text-secondary" : "text-primary"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
+            isActive(nav.path)} ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`} 
           >
             {/* <a href={`#${nav.id}`}>{nav.title}</a> */}
             <Link to={nav.path || "/"}>{nav.title}</Link>
@@ -61,9 +68,7 @@ const Navbar = () => {
               <li
                 key={nav.id}
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-white" : "text-dimWhite"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
+                  isActiveSs(nav.path)} ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
               >
                 <a href={`${nav.id}`}>{nav.title}</a>
               </li>
