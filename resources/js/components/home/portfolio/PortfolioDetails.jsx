@@ -63,7 +63,7 @@ export default function PortfolioDetails() {
   }
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
       <Helmet>
         <meta name="title" content={metaTags.title} />
         <meta name="description" content={metaTags.description} />

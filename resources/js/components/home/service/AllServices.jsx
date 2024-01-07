@@ -32,7 +32,7 @@ export default function AllServices() {
     }
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
         <div>
             <Helmet>
             <meta name="title" content={metaTags.title} />

@@ -58,7 +58,7 @@ export default function AllPortfolio() {
     };
 
   return (
-    <div>
+    <div className=' w-full overflow-hidden font-b612'>
       <div>
         <Helmet>
           <meta name="title" content={metaTags.title} />
@@ -100,7 +100,7 @@ export default function AllPortfolio() {
             </div>
           ))}
           </div>
-          <div className="flex justify-end md:mr-24 mr-32 pb-16">
+          <div className="flex justify-center pb-16">
               <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
@@ -108,7 +108,7 @@ export default function AllPortfolio() {
               >
                   <SlArrowLeft />
               </button>
-                  <p className="mr-3 text-gray-600 my-auto">
+                  <p className="md:mx-36 mx-20 text-gray-600 my-auto">
                     {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, totalPortfolios)} of {totalPortfolios}
                   </p>
               <button

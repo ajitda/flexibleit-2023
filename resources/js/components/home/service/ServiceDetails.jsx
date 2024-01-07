@@ -58,7 +58,7 @@ export default function ServiceDetails() {
     
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
         <div>
           <Helmet>
             <meta name="title" content={metaTags.title} />

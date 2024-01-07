@@ -49,7 +49,7 @@ const shareOnFacebook = () => {
   };
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
         {post ? (
         <>
           <div>
@@ -76,7 +76,7 @@ const shareOnFacebook = () => {
           </div>
             <div className='container'>
                 <div className='row'>
-                    <div className='pt-10 xl:pl-80 md:pl-56'>
+                    <div className='pt-10 xl:pl-80 md:pl-56 pl-5'>
                         <h2 className={`${styles.heading2}`}>{post.title}</h2>
                         <div className='flex'>
                             <button className='flex bg-blue-500 py-3 px-4' onClick={shareOnFacebook}>
@@ -100,7 +100,7 @@ const shareOnFacebook = () => {
                         </div>
                         
                     </div>
-                    <div className='grid grid-cols-6 mb-14 mt-20 ml-5'>
+                    <div className='md:grid grid-cols-6 mb-14 mt-20 md:ml-5'>
                         <div className="col-start-2 col-span-4">
                             <div>
                                 <div id="product" className="">

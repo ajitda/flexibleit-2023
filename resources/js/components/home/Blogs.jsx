@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { blogs } from '../../constants'
 import styles from '../../style'
-import Masonry from 'react-responsive-masonry'
 import BlogPost from './BlogPost'
 import { Link } from 'react-router-dom'
 
@@ -25,20 +24,20 @@ const Blogs = () => {
 
   return (
     <>
-      <div className='text-center py-10'>
+      <div className='text-center py-20'>
     <h2 className={`${styles.heading2} mb-1 text-3xl font-bold`}>Popular blog post we update everyday</h2>
     <p className={`${styles.paragraph} max-w-xl mx-auto text-base font-normal`}>Focus only on the meaning, we take care of the design. As soon as the meeting end you can export in one click.</p>
     
     </div>
-      <Masonry>
-          {featuredBlogs.map((post) => (
-            <div key={post.id} className='mr-5'>
-              <Link to={`/posts/${post.id}`}>
-                <BlogPost key={post.id} post={post} />
-              </Link>
-            </div>
-          ))}
-      </Masonry>
+      <div className='grid md:grid-cols-3 grid-cols-1 gap-5 mb-8'>
+            {featuredBlogs.map((post) => (
+              <div key={post.id} className=''>
+                <Link to={`/posts/${post.id}`}>
+                  <BlogPost key={post.id} post={post} />
+                </Link>
+              </div>
+            ))}
+      </div>
       <div className="mt-8 text-center">
       <Link to={`/all-blogs`}>
         <button className="bg-secondary text-white inline-block px-8 py-5 rounded-md">View All Blogs</button>

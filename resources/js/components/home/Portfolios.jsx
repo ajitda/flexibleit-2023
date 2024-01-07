@@ -39,7 +39,7 @@ const Portfolios = () => {
         </div>
       ) : (
         <>
-    <div className='text-center py-24'>
+    <div className='text-center py-28'>
       <h2 className={`${styles.heading2} mb-1`}>Lets Meet Our Projects</h2>
       <p className={`${styles.paragraph} max-w-xl mx-auto`}>Build an incredible workplace and grow your business with Gusto’s all-in-one platform with amazing contents.</p>
     

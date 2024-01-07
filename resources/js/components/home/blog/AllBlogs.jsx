@@ -24,7 +24,7 @@ export default function AllBlogs() {
   }
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Navbar />
