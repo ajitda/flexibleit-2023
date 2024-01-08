@@ -11,7 +11,7 @@ export const useAuth = ({middleware} = {}) => {
             .get('/api/user')
             .then(res => res.data)
             .catch(error => {
-                console.log('get user error ', error)
+                // console.log('get user error ', error)
                 if (error.response.status !== 409 ) throw error
                 navigate('/login')
             }),
