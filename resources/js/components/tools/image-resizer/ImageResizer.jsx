@@ -1,53 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { readFile } from './file-helpers';
 import { useDropzone } from 'react-dropzone';
 
 export default function ImageResizer() {
+  const [resizedImage, setResizedImage] = useState(null);
+  const [width, setWidth] = useState();
+  const [height, setHeight] = useState();
+  const [customSize, setCustomSize] = useState(false);
+  const [imgType, setImgType] = useState();
+  const [mainImage, setMainImage] = useState(null);
+  const fileInputRef = useRef(null);
 
-    const [resizedImage, setResizedImage] = useState(null);
-    const [width, setWidth] = useState();
-    const [height, setHeight] = useState();
-    const [customSize, setCustomSize] = useState(false);
-    const [imgType, setImgType] = useState();
+  const getFileName = (file) => {
+    const fileNameArr = file.name.split('.');
+    const extn = imgType ? imgType : fileNameArr[fileNameArr.length - 1];
+    return fileNameArr[0] + '_resized.' + extn;
+  };
 
-    const getFileName = (file) => {
-        const fileNameArr = file.name.split('.');
-        console.log(fileNameArr);
-        const extn = imgType ? imgType : fileNameArr[fileNameArr.length - 1];
-        return fileNameArr[0]+'_resized.'+extn;
-      if (file.type.includes('png')) return 'png';
-      if (file.type.includes('jpg') || type.includes('jpeg')) return 'jpg';
-    }
-  
-    const onDrop = async (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      console.log(file);
-      const dataURL = await readFile(file);
-      const image = new Image();
-      image.src = dataURL;
-  
-      image.onload = () => {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const fwidth = width ? width : image.naturalWidth/2;
-        const fheight = height ? height : image.naturalHeight/2;
-        canvas.width = fwidth;
-        canvas.height = fheight;
-        context.drawImage(image, 0, 0, fwidth, fheight);
-        const resizedDataURL = canvas.toDataURL(file.type);
-        const byteString = atob(resizedDataURL.split(',')[1]);
-        const ab = new ArrayBuffer(byteString.length);
-        const ia = new Uint8Array(ab);
-        for (let i = 0; i < byteString.length; i += 1) {
-          ia[i] = byteString.charCodeAt(i);
-        }
-        const resizedBlob = new Blob([ab], { type: file.type });
-        const size = resizedBlob.size / 1024 ;
-        setResizedImage({ dataURL: resizedDataURL, ratio: fwidth+' x '+fheight, name: getFileName(file), size });
-      };
+  const resizeImage = async (file) => {
+    const dataURL = await readFile(file);
+    const image = new Image();
+    image.src = dataURL;
+
+    image.onload = () => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      const fwidth = width ? width : image.naturalWidth / 2;
+      const fheight = height ? height : image.naturalHeight / 2;
+      canvas.width = fwidth;
+      canvas.height = fheight;
+      context.drawImage(image, 0, 0, fwidth, fheight);
+      const resizedDataURL = canvas.toDataURL(file.type);
+      const byteString = atob(resizedDataURL.split(',')[1]);
+      const ab = new ArrayBuffer(byteString.length);
+      const ia = new Uint8Array(ab);
+      for (let i = 0; i < byteString.length; i += 1) {
+        ia[i] = byteString.charCodeAt(i);
+      }
+      const resizedBlob = new Blob([ab], { type: file.type });
+      const size = resizedBlob.size / 1024;
+      setResizedImage({
+        dataURL: resizedDataURL,
+        ratio: fwidth + ' x ' + fheight,
+        name: getFileName(file),
+        size,
+      });
     };
-  
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  };
+
+  const handleDrop = (acceptedFiles) => {
+    const file = acceptedFiles[0];
+    fileInputRef.current = file;
+    setMainImage(URL.createObjectURL(file));
+  };
+
+  const handleSubmit = () => {
+    const file = fileInputRef.current;
+    if (file) {
+      resizeImage(file);
+    } else {
+      console.log('Please upload an image.');
+    }
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop: handleDrop });
 
   return (
     <div className="image-resizer-container p-4">
@@ -56,28 +72,40 @@ export default function ImageResizer() {
         {isDragActive ? (
           <p>Drop the files here ...</p>
         ) : (
-          <p className='md:mt-0 mt-12'>Drag 'n' drop some files here, or click to select files</p>
+          <p className="md:mt-0 mt-12">Drag 'n' drop some files here, or click to select files</p>
         )}
       </div>
+      
+      {mainImage && (
+        <div className="main-image flex justify-center">
+          <img src={mainImage} alt="Main Image" className="my-4 rounded-md shadow-md w-96" />
+        </div>
+      )}
+
       <div className="flex justify-between my-3">
         <div>
           {customSize ? (
             <div className="controls-container">
-              <label>Set Custom <span className='font-medium'>Width:</span></label>
+              <label>Set Custom <span className="font-medium">Width:</span></label>
               <input
                 type="number"
                 value={width}
                 onChange={(e) => setWidth(e.target.value)}
                 className="border border-gray-300 rounded-md p-1 ml-1 mb-3"
               />
-              <div className='lg:pl-20'>
-                <label className='font-medium'>Height:</label>
+              <div className="lg:pl-20">
+                <label className="font-medium">Height:</label>
                 <input
                   type="number"
                   value={height}
                   onChange={(e) => setHeight(e.target.value)}
                   className="border border-gray-300 rounded-md p-1 ml-1"
                 />
+              </div>
+              <div className='mt-2 pl-64'>
+                <button onClick={handleSubmit} className="bg-blue-500 text-white py-2 px-3 rounded-md hover:bg-blue-600">
+                  Resize
+                </button>
               </div>
             </div>
           ) : (
@@ -86,9 +114,12 @@ export default function ImageResizer() {
             </a>
           )}
         </div>
-        <div  className='md:ml-28'>
+        <div className="md:ml-28">
           Image type
-          <select onChange={(e) => setImgType(e.target.value)} className="border border-gray-300 rounded-md p-1 md:ml-1">
+          <select
+            onChange={(e) => setImgType(e.target.value)}
+            className="border border-gray-300 rounded-md p-1 md:ml-1"
+          >
             <option value="">default</option>
             <option value="jpg">jpg</option>
             <option value="png">png</option>
@@ -97,13 +128,21 @@ export default function ImageResizer() {
         </div>
       </div>
 
+      
+
       {resizedImage && (
         <div className="resized-image">
-          <img src={resizedImage.dataURL} alt="Resized Image" className="my-4 rounded-md shadow-md" />
+          <div className='flex justify-center'>
+            <img src={resizedImage.dataURL} alt="Resized Image" className="my-4 rounded-md shadow-md" />
+          </div>
           <div className="flex justify-between items-center">
             <p>{resizedImage.size.toFixed(2)}KB</p>
             <p>Size: {resizedImage.ratio}</p>
-            <a href={resizedImage.dataURL} download={resizedImage.name} className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600">
+            <a
+              href={resizedImage.dataURL}
+              download={resizedImage.name}
+              className="bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600"
+            >
               Download
             </a>
           </div>
