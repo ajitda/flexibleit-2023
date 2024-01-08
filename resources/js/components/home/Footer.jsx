@@ -20,8 +20,9 @@ const Footer = () => {
       <hr />
       <div className='grid grid-cols-2 gap-4'> {/* Added flex and items-end classes */}
         
-        <div className='md:pl-16 md:p-8 p-5'>
-          <p className='flex'><p className='text-2xl mr-1'>&copy;</p> Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
+        <div className='flex md:pl-16 md:p-8 p-5'>
+        <p className='text-md mr-1'>&copy;</p>
+          <p className='flex'>Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
           
         </div>
         <div className='md:p-8 p-5 ml-5 md:ml-80'>

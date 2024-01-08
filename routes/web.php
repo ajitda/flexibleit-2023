@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteMapController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,8 @@ Auth::routes();
 // Route::get('/blogs', function () {
 //     return view('blog');
 // });
+Route::get('sitemap.xml',[SiteMapController::class,'index']);
+
 Route::group([ 'prefix' => 'account', 'middleware'=>'auth'], function () {
     Route::get('/', function () {
         return view('home');

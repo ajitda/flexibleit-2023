@@ -142,7 +142,7 @@ function AreaCalculator() {
                                         Area: {isNaN(ar.area) ? 'Invalid input' : ar.area} sqft
                                     </div>
                                     <div className='p-5'>
-                                        <span onClick={()=>deleteArea(ind)} className='absolute cursor-pointer text-red-600 text-2xl md:right-48 xl:right-60 right-20'>x</span>
+                                        <span onClick={()=>deleteArea(ind)} className='absolute cursor-pointer text-red-600 text-2xl md:right-56 xl:right-60 right-20'>x</span>
                                     </div>
                                 </div>
                                 
