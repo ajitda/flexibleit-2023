@@ -79,7 +79,7 @@ export default function EmailExtractor() {
             <div className="w-1/3 pl-5">
                 <div className="card mb-5">
                     <div className="card-header bg-slate-100 p-2 pl-7">Extracted Email</div>
-                    <div className="card-body border-2 h-14">
+                    <div className="card-body border-2 h-14 pl-7">
                         {result.map(email => <div key={email}>{email}</div>)}
                     </div>
                 </div>
