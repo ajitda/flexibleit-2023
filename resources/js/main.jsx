@@ -40,8 +40,7 @@ import ContactEdit from "./pages/account/contacts/ContactEdit";
 import AreaCalculator from "./components/tools/area-calculator/AreaCalculator";
 import ImgConverter from "./components/tools/image-converter/ImgConverter";
 import { initGA, logPageView } from "./components/anlytics";
-
-
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const router = createBrowserRouter([
   {
@@ -158,6 +157,10 @@ if (document.getElementById('root')) {
    ReactDOM.createRoot(document.getElementById("root")).render(
       <React.StrictMode>
         <RouterProvider router={router} onUpdate={logPageView} />
+        <MessengerCustomerChat
+          pageId="603932489658295"
+          appId="163141110946892"
+        />
       </React.StrictMode>
     );
 }
