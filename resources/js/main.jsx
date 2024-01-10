@@ -39,6 +39,7 @@ import AllContacts from "./pages/account/contacts/AllContacts";
 import ContactEdit from "./pages/account/contacts/ContactEdit";
 import AreaCalculator from "./components/tools/area-calculator/AreaCalculator";
 import ImgConverter from "./components/tools/image-converter/ImgConverter";
+import { initGA, logPageView } from "./components/anlytics";
 
 
 
@@ -135,6 +136,11 @@ const router = createBrowserRouter([
  },
 ]);
 
+// Initialize Google Analytics
+initGA();
+logPageView(); // Log initial pageview
+
+
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
 //     <RouterProvider router={router} />
@@ -151,7 +157,7 @@ if (document.getElementById('root')) {
    // )
    ReactDOM.createRoot(document.getElementById("root")).render(
       <React.StrictMode>
-        <RouterProvider router={router} />
+        <RouterProvider router={router} onUpdate={logPageView} />
       </React.StrictMode>
     );
 }
