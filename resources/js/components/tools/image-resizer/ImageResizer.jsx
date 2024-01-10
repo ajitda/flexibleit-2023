@@ -99,11 +99,11 @@ export default function ImageResizer() {
         {isDragActive ? (
           <p>Drop the files here ...</p>
         ) : (
-          <p className="md:mt-0 mt-12">Drag 'n' drop some files here, or click to select files</p>
+          <p className="md:mt-0 mt-12 mx-2">Drag 'n' drop some files here, or click to select files</p>
         )}
       </div>
 
-      <div className="main-images grid grid-cols-5 justify-center gap-3">
+      <div className="main-images grid grid-cols-6 justify-center gap-3 mt-5">
         {mainImages.map((image, index) => (
           <img key={index} src={image} alt={`Main Image ${index + 1}`} className="my-4 rounded-md shadow-md w-40" />
         ))}
@@ -129,7 +129,7 @@ export default function ImageResizer() {
                   className="border border-gray-300 rounded-md p-1 ml-1"
                 />
               </div>
-              <div className="mt-2 pl-64">
+              <div className="mt-2 md:pl-64">
                 <button onClick={handleResize} className="bg-blue-500 text-white py-2 px-3 rounded-md hover:bg-blue-600">
                   Resize
                 </button>
@@ -141,7 +141,7 @@ export default function ImageResizer() {
             </a>
           )}
         </div>
-        <div className="md:ml-28">
+        <div className="md:ml-28 ml-2">
           Image type
           <select
             onChange={(e) => setImgType(e.target.value)}
@@ -156,23 +156,27 @@ export default function ImageResizer() {
       </div>
 
       {resizedImages.length > 0 && (
-        <div className="resized-images">
-          {/* {resizedImages.map((image, index) => (
+        <div className="flex justify-center md:mt-10 mt-8 mb-10">
+        <button onClick={handleDownload} className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+          Download Zip
+        </button>
+      </div>
+      )}
+
+      {resizedImages.length > 0 && (
+        <div className="grid md:grid-cols-6 grid-cols-4 gap-3 resized-images">
+          {resizedImages.map((image, index) => (
             <div key={index} className="resized-image">
-              <div className="flex justify-center">
+              <div className="">
                 <img src={image.dataURL} alt={`Resized Image ${index + 1}`} className="my-4 rounded-md shadow-md" />
               </div>
-              <div className="flex justify-between items-center">
+              <div className="">
                 <p>{image.size.toFixed(2)}KB</p>
                 <p>Size: {image.ratio}</p>
               </div>
             </div>
-          ))} */}
-          <div className="flex justify-center md:mt-10">
-            <button onClick={handleDownload} className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-              Download Zip
-            </button>
-          </div>
+          ))}
+          
         </div>
       )}
     </div>

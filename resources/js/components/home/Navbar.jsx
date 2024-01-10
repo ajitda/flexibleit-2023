@@ -19,6 +19,12 @@ const Navbar = () => {
     return location.pathname === path ? 'text-blue-500' : ' text-white';
   };
 
+  const [showToolsDropdown, setShowToolsDropdown] = useState(false);
+
+  const toggleToolsDropdown = () => {
+    setShowToolsDropdown(!showToolsDropdown);
+  };
+
   // if (user && user.name && typeof user.name === 'string') {
   //   console.log('user', user)
   //   const nameArr = user.name.split(' ');
@@ -38,9 +44,44 @@ const Navbar = () => {
             key={nav.id}
             className={`font-poppins font-normal cursor-pointer text-[16px] ${
             isActive(nav.path)} ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`} 
+            // onMouseEnter={() => {
+            //   if (nav.title === "Tools") {
+            //     setShowToolsDropdown(true);
+            //   }
+            // }}
+            // onMouseLeave={() => {
+            //   if (nav.title === "Tools") {
+            //     setShowToolsDropdown(true);
+            //   }
+            // }}
           >
-            {/* <a href={`#${nav.id}`}>{nav.title}</a> */}
-            <Link to={nav.path || "/"}>{nav.title}</Link>
+            {nav.title === "Tools" ? (
+              <div
+                // onMouseEnter={toggleToolsDropdown}
+                onClick={toggleToolsDropdown}
+                className="relative"
+              >
+                <span>{nav.title}</span>
+                {showToolsDropdown && (
+                  <ul className="absolute list-disc top-full left-0 bg-white mt-2 py-2 px-10 shadow-lg rounded-md">
+                    <li className="mb-2">
+                      <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/area-calculator">Area Calcutalor</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/email-extractor">Email Extractor</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/image-converter">Image Converter</Link>
+                    </li>
+                  </ul>
+                )}
+              </div>
+            ) : (
+              <Link to={nav.path || "/"}>{nav.title}</Link>
+            )}
           </li>
         ))}
         <div className="px-5 cursor-pointer">
@@ -70,7 +111,33 @@ const Navbar = () => {
                 className={`font-poppins font-medium cursor-pointer text-[16px] ${
                   isActiveSs(nav.path)} ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
               >
-                <a href={`${nav.id}`}>{nav.title}</a>
+                {nav.title === "Tools" ? (
+              <div
+                // onMouseEnter={toggleToolsDropdown}
+                onClick={toggleToolsDropdown}
+                className="relative"
+              >
+              <span>{nav.title}</span>
+              {showToolsDropdown && (
+                <ul className="absolute list-disc top-full left-0 bg-white text-black mt-2 py-2 px-8 shadow-lg rounded-md">
+                  <li className="mb-2">
+                    <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
+                  </li>
+                  <li className="mb-2">
+                    <Link to="/tools/area-calculator">Area Calcutalor</Link>
+                  </li>
+                  <li className="mb-2">
+                    <Link to="/tools/email-extractor">Email Extractor</Link>
+                  </li>
+                  <li className="mb-2">
+                    <Link to="/tools/image-converter">Image Converter</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
+          ) : (
+            <Link to={nav.path || "/"}>{nav.title}</Link>
+          )}
               </li>
             ))}
             <div className="cursor-pointer pt-5">
