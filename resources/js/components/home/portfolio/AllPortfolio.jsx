@@ -6,11 +6,11 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import styles from '../../../style';
 import { Helmet } from 'react-helmet';
-import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
+import { SlArrowDown, SlArrowLeft, SlArrowRight } from "react-icons/sl";
 
 export default function AllPortfolio() {
 
-    const [portfolios, setPortfolios] = useState();
+    const [portfolios, setPortfolios] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(6);
@@ -31,7 +31,7 @@ export default function AllPortfolio() {
       .then(data => {
        console.log('All portfolios res :', data)
        const resdata = data.data;
-       setPortfolios(resdata.data);
+       setPortfolios([...portfolios, ...resdata.data]);
        setTotalPortfolios(resdata.total);
        setLoading(false);
       })
@@ -41,21 +41,27 @@ export default function AllPortfolio() {
       });
  }
 
- const totalPages = Math.ceil(totalPortfolios / perPage);
+//  const totalPages = Math.ceil(totalPortfolios / perPage);
 
-    const handleNextPage = () => {
-        if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
-        setLoading(true);
-        }
-    };
+//     const handleNextPage = () => {
+//         if (currentPage < totalPages) {
+//         setCurrentPage(currentPage + 1);
+//         setLoading(true);
+//         }
+//     };
 
-    const handlePrevPage = () => {
-        if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
-        setLoading(true);
-        }
-    };
+//     const handlePrevPage = () => {
+//         if (currentPage > 1) {
+//         setCurrentPage(currentPage - 1);
+//         setLoading(true);
+//         }
+//     };
+  const loadMore = () => {
+    if (currentPage < Math.ceil(totalPortfolios / perPage)) {
+      setCurrentPage(currentPage + 1);
+      // setLoading(true);
+    }
+  };
 
   return (
     <div className=' w-full overflow-hidden font-b612'>
@@ -81,9 +87,9 @@ export default function AllPortfolio() {
           </div>
       </div>
       
-      <div className='text-center md:-mb-16 -mb-8'>
+      <div className='text-center md:-mb-16 -mb-8 mt-5'>
         <h2 className={`${styles.heading2} mb-1`}>All Projects</h2>
-        <p className={`${styles.paragraph} md:px-20 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
+        <p className={`${styles.paragraph} md:px-64 px- xl:px-96 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
       </div>
       {loading ? (
         <div className='text-center font-semibold text-3xl py-36'>
@@ -91,7 +97,7 @@ export default function AllPortfolio() {
         </div>
       ) : (
         <div className="">
-          <div className='md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
+          <div className='md:p-20 p-10 mt-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
           {portfolios?.map((portfolio) => (
             <div key={portfolio.id}>
               <Link to={`/portfolios/${portfolio.slug}`}>
@@ -101,23 +107,14 @@ export default function AllPortfolio() {
           ))}
           </div>
           <div className="flex justify-center pb-16">
+            {currentPage < Math.ceil(totalPortfolios / perPage) && (
               <button
-              onClick={handlePrevPage}
-              disabled={currentPage === 1}
-              className="mr-2 px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
+                onClick={loadMore}
+                className='px-3 py-3 bg-gray-200 rounded-md cursor-pointer'
               >
-                  <SlArrowLeft />
+                Load More
               </button>
-                  <p className="md:mx-36 mx-20 text-gray-600 my-auto">
-                    {((currentPage - 1) * perPage) + 1}-{Math.min(currentPage * perPage, totalPortfolios)} of {totalPortfolios}
-                  </p>
-              <button
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-              className="px-3 py-3 bg-gray-200 rounded-md cursor-pointer"
-              >
-                  <SlArrowRight />
-              </button>
+            )}
           </div>
         </div>
       )}

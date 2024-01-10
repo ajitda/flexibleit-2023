@@ -63,7 +63,7 @@ const Navbar = () => {
               >
                 <span>{nav.title}</span>
                 {showToolsDropdown && (
-                  <ul className="absolute list-disc top-full left-0 bg-white mt-2 py-2 px-10 shadow-lg rounded-md">
+                  <ul className="absolute list-disc top-full left-0 bg-white mt-2 pl-10 py-2 w-48 shadow-lg rounded-md">
                     <li className="mb-2">
                       <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
                     </li>
@@ -119,7 +119,7 @@ const Navbar = () => {
               >
               <span>{nav.title}</span>
               {showToolsDropdown && (
-                <ul className="absolute list-disc top-full left-0 bg-white text-black mt-2 py-2 px-8 shadow-lg rounded-md">
+                <ul className="absolute list-disc top-full -right-20 bg-white text-black mt-2 pl-10 py-2 w-48 shadow-lg rounded-md">
                   <li className="mb-2">
                     <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
                   </li>
