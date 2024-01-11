@@ -22,7 +22,7 @@ export default function ProfileImg({ class: customClass }) {
         // return null; // or provide a default representation
         return (
             <div>
-                <div className='ml-2 mb-1 bg-cyan-500 text-white inline-block px-3 py-1 rounded-xl'>
+                <div className='md:ml-2 mb-1 bg-secondary text-white inline-block px-5 py-2 rounded-md'>
                     <a href="/login">
                         Log In
                     </a>

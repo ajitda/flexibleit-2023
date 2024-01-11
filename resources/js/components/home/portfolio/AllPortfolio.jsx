@@ -12,6 +12,7 @@ export default function AllPortfolio() {
 
     const [portfolios, setPortfolios] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingMore, setLoadingMore] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [perPage, setPerPage] = useState(6);
     const [totalPortfolios, setTotalPortfolios] = useState(0);
@@ -26,6 +27,7 @@ export default function AllPortfolio() {
  }, [perPage, currentPage]);
 
  const getAllPortfolios = () => {
+    setLoadingMore(true);
     fetch(`/api/portfolios?per_page=${perPage}&page=${currentPage}`)
       .then(response => response.json())
       .then(data => {
@@ -34,10 +36,12 @@ export default function AllPortfolio() {
        setPortfolios([...portfolios, ...resdata.data]);
        setTotalPortfolios(resdata.total);
        setLoading(false);
+       setLoadingMore(false);
       })
       .catch(error => {
         console.error('Error fetching portfolios:', error);
         setLoading(false);
+        setLoadingMore(false);
       });
  }
 
@@ -59,7 +63,6 @@ export default function AllPortfolio() {
   const loadMore = () => {
     if (currentPage < Math.ceil(totalPortfolios / perPage)) {
       setCurrentPage(currentPage + 1);
-      // setLoading(true);
     }
   };
 
@@ -87,7 +90,7 @@ export default function AllPortfolio() {
           </div>
       </div>
       
-      <div className='text-center md:-mb-16 -mb-8 mt-5'>
+      <div className='text-center md:-mb-16 -mb-8 mt-10'>
         <h2 className={`${styles.heading2} mb-1`}>All Projects</h2>
         <p className={`${styles.paragraph} md:px-64 px- xl:px-96 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
       </div>
@@ -106,6 +109,11 @@ export default function AllPortfolio() {
             </div>
           ))}
           </div>
+          {loadingMore ? (
+            <div className='text-center font-semibold text-3xl py-36'>
+            <h1>Loading More...</h1>
+          </div>
+          ) : (
           <div className="flex justify-center pb-16">
             {currentPage < Math.ceil(totalPortfolios / perPage) && (
               <button
@@ -116,6 +124,7 @@ export default function AllPortfolio() {
               </button>
             )}
           </div>
+          )}
         </div>
       )}
 

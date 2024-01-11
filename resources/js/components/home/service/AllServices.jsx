@@ -55,9 +55,9 @@ export default function AllServices() {
           </div>
         </div>
         
-        <div className='text-center md:-mb-10'>
-            <h2 className={`${styles.heading2} mb-1`}>Services we can help you with</h2>
-            <p className={`${styles.paragraph} px-12`}>We are providing best quality web design and development services for you. We are commited to get you best output.</p>
+        <div className='text-center mt-10'>
+            <h2 className={`${styles.heading2} mb-1 px-20`}>Services we can help you with</h2>
+            <p className={`${styles.paragraph} md:px-96 px-14`}>We are providing best quality web design and development services for you. We are commited to get you best output.</p>
         </div>
         {loading ? (
             <div className='text-center font-semibold text-3xl py-36'>

@@ -86,95 +86,102 @@ export default function PortfolioDetails() {
       </div>
 
       {portfolio ? (
-        <div className='grid md:grid-cols-2 grid-cols-1'>
-          <div>
-            <div id="product" className=" md:p-24 p-5">
-              <figure>
-                <img className="rounded" src={portfolio.thumbnail} alt="" />
-              </figure>
-              {portfolio.media && portfolio.media.length > 0 ? (
-                <div className="flex md:mr-96 mt-5 mb-5">
-                  {portfolio.media.map((image, index) => (
-                    <img
-                      key={index}
-                      className="w-28 rounded mr-4 cursor-pointer"
-                      src={image.thumbnail}
-                      alt=""
-                      onClick={() => openModal(image)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>No images available.</p>
-              )}
-            </div>
-          </div>
-          <div className='md:pt-24 p-5 mb-12'>
-          <h2 className="">{portfolio.title}</h2>
-          <div className=''>
-            <h2 className={`${styles.heading2} `}>{portfolio.title}</h2>
-          </div>
-          <div>
-            <p className=' font-medium'>Short description:</p>
-            <p className={`${styles.paragraph} md:pr-28`}>{portfolio.description}</p>
-          </div>
-          <div className="flex mt-4">
-            <Link to={`/contact-us`}>
-              <button className="bg-black text-white inline-block px-4 py-2 rounded-md">
-                <div className='flex'>
-                  <div>Contact us</div>
-                  <div className='ml-2 mt-1'><FaInbox /></div>
-                </div>
-              </button>
-              
-            </Link>
+        <div>
+          <div className='grid md:grid-cols-2 grid-cols-1'>
             <div>
-            {portfolio.meta_data && portfolio.meta_data.length > 0 && (
-              <div className='pl-2'>
-                <ul>
-                  {portfolio.meta_data.map((metaItem, index) => {
-                    if (metaItem.meta_name === 'link') {
-                      return (
-                        <div key={index} className=' bg-sky-500 text-white inline-block px-4 py-2 rounded-md'>
-                          <a href={metaItem.meta_value}>
-                            <div className='flex'>
-                              <div>Visit Now</div>
-                              <div className='ml-2 mt-1'><FaEye /></div>
-                            </div>
-                          </a>
-                        </div>
-                      );
-                    } else {
-                      return null; // Or any other default content if needed
-                    }
-                  })}
-                </ul>
+              <div id="product" className=" md:p-24 p-5">
+                <figure>
+                  <img className="rounded" src={portfolio.thumbnail} alt="" />
+                </figure>
+                {portfolio.media && portfolio.media.length > 0 ? (
+                  <div className="flex md:mr-96 mt-5 mb-5">
+                    {portfolio.media.map((image, index) => (
+                      <img
+                        key={index}
+                        className="w-28 rounded mr-4 cursor-pointer"
+                        src={image.thumbnail}
+                        alt=""
+                        onClick={() => openModal(image)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <p>No images available.</p>
+                )}
               </div>
-            )}
             </div>
-          </div>
+            <div className='md:pt-24 p-5 mb-12'>
+            <h2 className="">{portfolio.title}</h2>
+            <div className=''>
+              <h2 className={`${styles.heading2} `}>{portfolio.title}</h2>
+            </div>
+            <div>
+              <p className=' font-medium'>Short description:</p>
+              <p className={`${styles.paragraph} md:pr-28`}>{portfolio.description}</p>
+            </div>
+            <div className="flex mt-4">
+              <Link to={`/contact-us`}>
+                <button className="bg-black text-white inline-block px-4 py-2 rounded-md">
+                  <div className='flex'>
+                    <div>Contact us</div>
+                    <div className='ml-2 mt-1'><FaInbox /></div>
+                  </div>
+                </button>
+                
+              </Link>
+              <div>
+              {portfolio.meta_data && portfolio.meta_data.length > 0 && (
+                <div className='pl-2'>
+                  <ul>
+                    {portfolio.meta_data.map((metaItem, index) => {
+                      if (metaItem.meta_name === 'link') {
+                        return (
+                          <div key={index} className=' bg-sky-500 text-white inline-block px-4 py-2 rounded-md'>
+                            <a href={metaItem.meta_value}>
+                              <div className='flex'>
+                                <div>Visit Now</div>
+                                <div className='ml-2 mt-1'><FaEye /></div>
+                              </div>
+                            </a>
+                          </div>
+                        );
+                      } else {
+                        return null; // Or any other default content if needed
+                      }
+                    })}
+                  </ul>
+                </div>
+              )}
+              </div>
+            </div>
+              
+            </div>
+
             
           </div>
-
-           
+          <div>
+          <div className='text-center'>
+            <h1 className='text-xl font-bold md:pt-10'>{portfolio.title}'s Services</h1>
+          </div>
+          <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
+              {services?.map(feature=>{
+                return (
+                    <div key={feature.id} className=''>
+                        <Link to={`/services/${feature.slug}`}>
+                            <Service service={feature} />
+                        </Link>
+                    </div>
+                )
+              })}
+          </div>
+        </div>
         </div>
       ) : (
         <div className='text-center text-3xl mb-10'>
           <h1>Loading...</h1>
         </div>
       )}
-        {/* <h1 className={`${styles.heading2} text-center`}>Services</h1> */}
-      <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
-          {services?.map(feature=>{
-            return (
-                <div key={feature.id} className=''>
-                    <Link to={`/services/${feature.slug}`}>
-                        <Service service={feature} />
-                    </Link>
-                </div>
-            )
-          })}
-      </div>
+      
 
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>

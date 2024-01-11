@@ -6,7 +6,7 @@ import ImageResizer from './image-resizer/ImageResizer';
 
 export default function ImageTwichEmoteResizer() {
   return (
-    <div>
+    <div className='w-full font-b612'>
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
                <Navbar />

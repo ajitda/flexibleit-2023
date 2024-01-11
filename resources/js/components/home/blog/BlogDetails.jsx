@@ -76,25 +76,27 @@ const shareOnFacebook = () => {
           </div>
             <div className='container'>
                 <div className='row'>
-                    <div className='pt-10 xl:pl-80 md:pl-56 pl-5'>
+                    <div className='pt-10 xl:pl-80 md:pl-56 pl-3'>
                         <h2 className={`${styles.heading2}`}>{post.title}</h2>
-                        <div className='flex'>
+                        <p className={`${styles.paragraph} mb-2`}>By DevsBrain</p>
+                        <hr className='xl:mr-72 md:mr-52 mr-4' />
+                        <div className='flex mr-3 mt-5'>
                             <button className='flex bg-blue-500 py-3 px-4' onClick={shareOnFacebook}>
-                                <img src="/img/icons/facebook.png" alt="facebook" className='p-1' />
+                                <img src="/img/icons/facebook.png" alt="facebook" className='' />
                                 <div className='pl-2 text-white'>
-                                    Share to Facebook
+                                    Facebook
                                 </div>
                             </button>
                             <button className='flex bg-sky-500 py-3 px-4 ml-2' onClick={shareOnTwitter}>
-                                <img src="/img/icons/twitter-2.png" alt="facebook" className='p-1 w-7' />
+                                <img src="/img/icons/twitter-2.png" alt="facebook" className='p- w-6' />
                                 <div className='pl-2 text-white'>
-                                    Share to Twitter
+                                    Twitter
                                 </div>
                             </button>
                             <button className='flex bg-green-500 py-3 px-4 ml-2' onClick={shareOnWhatsApp}>
-                                <img src="/img/icons/wtsapp.png" alt="facebook" className='p-1 w-7' />
+                                <img src="/img/icons/wtsapp.png" alt="facebook" className='' />
                                 <div className='pl-2 text-white'>
-                                    Share to Whatsapp
+                                    Whatsapp
                                 </div>
                             </button>
                         </div>
@@ -111,9 +113,9 @@ const shareOnFacebook = () => {
                             </div>
                             <div className="mb-12">
                                 {/* <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2> */}
-                                <div className=' bg-slate-100 p-6'>
+                                <div className='p-2 mt-5'>
                                 <p className="font-medium">Description:</p>
-                                <p className={`${styles.paragraph} md:pr-20`}>{post.description}</p>
+                                <p className={`${styles.paragraph}`}>{post.description}</p>
                                 </div>
                             </div>
                         </div>

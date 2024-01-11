@@ -129,21 +129,21 @@ export default function Privacy() {
       ];
 
   return (
-    <div>
+    <div className='w-full overflow-hidden font-b612'>
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Navbar />
           </div>
         </div>
-        <div className='text-center p-9'>
-            <h3 className="text-4xl">Privacy Policy</h3>
+        <div className='text-center p-12'>
+            <h3 className={`${styles.heading2} `}>Privacy Policy</h3>
         </div>
         <section className="privacy-body-section pb-20">
             <div className="container">
                 <div className="privacy-body card">
                 
                     {privacySections.map((section, index) => (
-                        <div className="single-privacy pl-48" key={index}>
+                        <div className="single-privacy md:pl-48 px-10" key={index}>
                             <h4 style={{ fontWeight: 'bold', marginBottom: '10px' }}>{section.title}</h4>
                             {section.content.map((paragraph, pIndex) => (
                             <p key={pIndex} style={{ marginBottom: '15px' }}>{paragraph}</p>

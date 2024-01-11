@@ -9,7 +9,7 @@ const Footer = () => {
       <hr className='md:mb-2 mb-5' />
       <div className='grid md:grid-cols-5'>
       <div className=''>
-          <img src={logo} alt="" className=' w-60 md:h-[205px] md:pl-14 ml-16 mb-4' />
+          <img src={logo} alt="" className='md:h-[205px] mb-4' />
         </div>
         {menuItems.map(({ id, title, items }) => (
             <div className='md:ml-0 ml-10'>

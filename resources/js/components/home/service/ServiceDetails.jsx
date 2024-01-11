@@ -117,8 +117,8 @@ export default function ServiceDetails() {
             <Portfolio portfolio={portfolio} />
             </Link>
           </div>
-      ))}
-      </div>
+        ))}
+        </div>
     </div>
     </div>
         

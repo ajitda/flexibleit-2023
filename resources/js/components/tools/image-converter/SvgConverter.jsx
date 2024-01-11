@@ -41,7 +41,7 @@ const SvgConverter = () => {
   return (
     <div className="mb-8">
       <h2 className={`${styles.heading2} text-center`}>Convert Image to SVG</h2>
-      <div className="md:max-w-6xl xl:max-w-screen-xl pl-56">
+      <div className="md:max-w-6xl xl:max-w-screen-xl md:pl-56 px-5">
       <div {...getRootProps()} className="border-dashed border-2 border-gray-400 rounded-lg p-8 text-center h-52">
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -59,7 +59,7 @@ const SvgConverter = () => {
       </div>
       <br />
       {imageSrc && (
-        <div className="converter-img mt-2 ml-56">
+        <div className="converter-img mt-2 md:ml-56">
           {/* <canvas style={{display: "none"}} ref={svgcanvasRef} id="canvas"  />
           <img style={{display: "none"}}
               src={imageSrc}
@@ -73,7 +73,7 @@ const SvgConverter = () => {
             /> */}
           {convertedImage && (
             <a
-              className="bg-green-600 hover:bg-green-600 text-white font-bold py-5 px-4 xl:w-1/3 md:w-1/2 rounded block"
+              className="bg-green-600 hover:bg-green-600 text-white font-bold py-5 px-4 xl:w-1/3 md:w-1/2 w-96 md:ml-0 ml-3 rounded block"
               download="converted.svg"
               href={`data:image/svg+xml;utf8,${encodeURIComponent(convertedImage)}`}
             >

@@ -7,6 +7,7 @@ export const navLinks = [
   {
     id: "/",
     title: "Home",
+    path: "/"
   },
   {
     id: "#",
@@ -421,7 +422,7 @@ export const menuItems = [
       },
       {
         path: '/all-testimonials',
-        label: 'Clients',
+        label: 'Testimonials',
       },
       {
         path: '/all-blogs',

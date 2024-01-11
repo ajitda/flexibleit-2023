@@ -145,7 +145,7 @@ export default function ImageResizer() {
           Image type
           <select
             onChange={(e) => setImgType(e.target.value)}
-            className="border border-gray-300 rounded-md p-1 md:ml-1"
+            className="border border-gray-300 rounded-md md:p-1 ml-1"
           >
             <option value="">default</option>
             <option value="jpg">jpg</option>

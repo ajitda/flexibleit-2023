@@ -65,18 +65,19 @@ const Contact = () => {
    // }
 
    return (<>
-      <div className="w-full overflow-hidden font-b612">
+      <div className="font-b612">
          <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
                <Navbar />
             </div>
          </div>
-         <div className="text-center mt-20">
+         <div className="container">
+         <div className="text-center mt-20 md:ml-32 px-5">
             <h2 className=" text-3xl mb-3 font-medium ">Get In Touch</h2>
             <p className=" text-base mb-10">Contact us today to learn more about how we can help your business establish or improve<br/> its online presence.Our team is available to answer any questions you may have and<br/>  provide a free quote for your project.</p>
          </div>
-         <div className="container mx-auto md:grid md:grid-cols-2 grid-cols-1 gap-4 mb-36 md:pt-24">
-         <div className="md:pl-16 pl-2">
+         <div className="mx-auto md:grid md:grid-cols-2 grid-cols-1 gap-4 mb-36 md:pt-24 px-2">
+         <div className="md:pl-40 xl:pl-64 pl-2">
             <h3 className="text-xl font-medium mb-2 flex items-center gap-3"> <MdOutlineMail/> Email Us:</h3>
             <p className="text-base mb-6">Fill out our form and we will contact you within 24 hours.</p>
             <h3 className="text-lg font-medium">Customer Support:</h3>
@@ -91,7 +92,7 @@ const Contact = () => {
                email : flexibleit.net@gmail.com<br/>
                Cell : +971 545639688</p>
          </div>
-         <div className="md:pl-20 pl-2">
+         <div className="md:pl-10 pl-2">
          <form action="" onSubmit={(e)=>{handleSubmit(e)}}>
             <input type="text" name="name" placeholder="Your Name" value={name} className="border border-slate-600 my-3 md:w-full w-96 py-4 pl-2"  onChange={(e)=>{onChangeHandler("name",e.target.value)}} /><br/>
             <input type="text" name="email" placeholder="Your Email" value={email} className="border border-slate-600 my-3 md:w-full w-96 py-4 pl-2"  onChange={(e)=>{ onChangeHandler("email",e.target.value)}} /><br/>
@@ -100,6 +101,7 @@ const Contact = () => {
             <button className=" bg-secondary px-6 py-3 text-stone-50 rounded">Submit</button>
          </form>
          </div>
+      </div>
       </div>
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
          <div className={`${styles.boxWidth}`}>

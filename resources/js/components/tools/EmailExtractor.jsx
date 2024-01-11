@@ -20,14 +20,14 @@ export default function EmailExtractor() {
         }
     }
 
-  return (<>
+  return (<div className='w-full font-b612'>
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
             <Navbar />
         </div>
     </div>
     <div className="">
-        <h1 className={`${styles.heading2} text-center`}>Email Extractor</h1>
+        <h1 className={`${styles.heading2} text-center mt-10 mb-6`}>Email Extractor</h1>
         <div className="flex justify-center">
             <div className={`${styles.paragraph} md:w-1/2 w-96 pl-5`}>
                 <p>Extract email from any strings/text online. It's free forever. Flexible Email extractor helps you to extract email from any string/text. The process are:</p>
@@ -92,5 +92,5 @@ export default function EmailExtractor() {
         </div>
     </div>
 
-    </>)
+    </div>)
 }

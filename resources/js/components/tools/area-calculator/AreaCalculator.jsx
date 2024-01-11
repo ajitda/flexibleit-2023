@@ -48,7 +48,7 @@ function AreaCalculator() {
       setAreas([...newAreas])
   }
 
-  return (<>
+  return (<div className='w-full font-b612'>
     <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
             <Navbar />
@@ -160,7 +160,7 @@ function AreaCalculator() {
             <Footer />
         </div>
     </div>
-    </>);
+    </div>);
 }
 
 export default AreaCalculator;

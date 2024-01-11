@@ -42,7 +42,7 @@ const Navbar = () => {
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
+            className={`font-poppins font-black cursor-pointer text-[16px] ${
             isActive(nav.path)} ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`} 
             // onMouseEnter={() => {
             //   if (nav.title === "Tools") {
@@ -63,9 +63,9 @@ const Navbar = () => {
               >
                 <span>{nav.title}</span>
                 {showToolsDropdown && (
-                  <ul className="absolute list-disc top-full left-0 bg-white mt-2 pl-10 py-2 w-48 shadow-lg rounded-md">
+                  <ul className="absolute font-semibold top-full left-0 bg-white mt-2 pl-5 py-5 w-60 shadow-lg rounded-md">
                     <li className="mb-2">
-                      <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
+                      <Link to="/tools/image-converter">Image Converter</Link>
                     </li>
                     <li className="mb-2">
                       <Link to="/tools/area-calculator">Area Calcutalor</Link>
@@ -74,7 +74,10 @@ const Navbar = () => {
                       <Link to="/tools/email-extractor">Email Extractor</Link>
                     </li>
                     <li className="mb-2">
-                      <Link to="/tools/image-converter">Image Converter</Link>
+                      <Link to="/tools/twitch-emote-resizer">Twitce Emote Resizer</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="https://qr.devsbrain.com/">QR Code Generator</Link>
                     </li>
                   </ul>
                 )}
@@ -119,19 +122,22 @@ const Navbar = () => {
               >
               <span>{nav.title}</span>
               {showToolsDropdown && (
-                <ul className="absolute list-disc top-full -right-20 bg-white text-black mt-2 pl-10 py-2 w-48 shadow-lg rounded-md">
+                <ul className="absolute font-semibold top-full -right-20 bg-white text-black mt-2 pl-4 py-5 w-48 shadow-lg rounded-md">
                   <li className="mb-2">
-                    <Link to="/tools/twitch-emote-resizer">Emote Resizer</Link>
-                  </li>
-                  <li className="mb-2">
-                    <Link to="/tools/area-calculator">Area Calcutalor</Link>
-                  </li>
-                  <li className="mb-2">
-                    <Link to="/tools/email-extractor">Email Extractor</Link>
-                  </li>
-                  <li className="mb-2">
-                    <Link to="/tools/image-converter">Image Converter</Link>
-                  </li>
+                      <Link to="/tools/image-converter">Image Converter</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/area-calculator">Area Calcutalor</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/email-extractor">Email Extractor</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="/tools/twitch-emote-resizer">Twitce Emote Resizer</Link>
+                    </li>
+                    <li className="mb-2">
+                      <Link to="https://qr.devsbrain.com/">QR Code Generator</Link>
+                    </li>
                 </ul>
               )}
             </div>
