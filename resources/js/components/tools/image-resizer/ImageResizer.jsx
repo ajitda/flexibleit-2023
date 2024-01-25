@@ -109,7 +109,7 @@ export default function ImageResizer() {
         ))}
       </div>
 
-      <div className="flex justify-between my-3">
+      <div className="md:flex justify-between my-3">
         <div>
           {customSize ? (
             <div className="controls-container">
@@ -141,11 +141,11 @@ export default function ImageResizer() {
             </a>
           )}
         </div>
-        <div className="md:ml-28 ml-2">
+        <div className="ml-32 md:ml-28 md:mt-0 mt-5">
           Image type
           <select
             onChange={(e) => setImgType(e.target.value)}
-            className="border border-gray-300 rounded-md md:p-1 ml-1"
+            className="border border-gray-300 rounded-md md:p-1 ml-1 mt-2 md:mt-0"
           >
             <option value="">default</option>
             <option value="jpg">jpg</option>

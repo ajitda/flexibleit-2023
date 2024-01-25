@@ -41,7 +41,7 @@ const SvgConverter = () => {
   return (
     <div className="mb-8">
       <h2 className={`${styles.heading2} text-center`}>Convert Image to SVG</h2>
-      <div className="md:max-w-6xl xl:max-w-screen-xl md:pl-56 px-5">
+      <div className=" xl:max-w-screen-xl px-5">
       <div {...getRootProps()} className="border-dashed border-2 border-gray-400 rounded-lg p-8 text-center h-52">
         <input {...getInputProps()} />
         {isDragActive ? (
@@ -54,8 +54,8 @@ const SvgConverter = () => {
         )}
       </div>
       </div>
-      <div className="pl-56">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4" onClick={convertToSvg}>Convert to SVG</button>
+      <div className=" pl-5">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-5 px-6 rounded mt-4" onClick={convertToSvg}>Convert to SVG</button>
       </div>
       <br />
       {imageSrc && (
