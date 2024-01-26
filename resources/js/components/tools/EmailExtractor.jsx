@@ -38,8 +38,8 @@ export default function EmailExtractor() {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center mt-2">
-                <div className=" md:w-1/2 w-10/12">
+            <div className="md:flex justify-center mt-2">
+                <div className=" md:w-1/2">
                     <div className="card mb-5">
                         <div className={`${styles.paragraph} card-header bg-slate-100 p-2 pl-7`}>Add your text</div>
                         <div className="card-body p-0">
@@ -74,7 +74,7 @@ export default function EmailExtractor() {
 
                 </div>
                 {result &&
-                    <div className="w-1/3 pl-5">
+                    <div className="md:w-1/3 md:pl-5">
                         <div className="card mb-5">
                             <div className="card-header bg-slate-100 p-2 pl-7">Extracted Email</div>
                             <div className="card-body border-2 h-14 pl-7">

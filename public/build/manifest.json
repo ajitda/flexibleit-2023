@@ -1,6 +1,6 @@
 {
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-4ab00dd4.js",
+    "file": "assets/index.es-23f18602.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -30,12 +30,12 @@
       "node_modules/dompurify/dist/purify.es.js",
       "node_modules/canvg/lib/index.es.js"
     ],
-    "file": "assets/app-f5d6ddea.js",
+    "file": "assets/app-377adfe7.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-b6bf1fa2.css",
+    "file": "assets/app-41a584cf.css",
     "isEntry": true,
     "src": "resources/sass/app.scss"
   }
