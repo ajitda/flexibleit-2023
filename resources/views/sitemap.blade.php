@@ -12,16 +12,15 @@
       <priority>0.8</priority>
 
    </url>
-   @foreach($services as $service)
    <url>
 
     <loc>{{ url('/') }}/all-services</loc>
-    <lastmod>{{ $service->created_at }}</lastmod>
+    <lastmod>2024-01-26 06:32:32</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 
    </url>
-   @endforeach
+
     @foreach($services as $service)
    <url>
 
@@ -32,16 +31,14 @@
 
    </url>
    @endforeach
-   @foreach($portfolios as $portfolio)
    <url>
 
       <loc>{{ url('/') }}/all-portfolios</loc>
-      <lastmod>{{ $portfolio->created_at }}</lastmod>
+      <lastmod>2024-01-26 06:32:32</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
 
    </url>
-   @endforeach
     @foreach($portfolios as $portfolio)
    <url>
 
@@ -65,7 +62,7 @@
     @foreach($blogs as $blog)
    <url>
 
-      <loc>{{ url('/') }}/blogs/{{ $blog->id }}</loc>
+      <loc>{{ url('/') }}/blogs/{{ $blog->slug }}</loc>
       <lastmod>{{ $blog->created_at }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
