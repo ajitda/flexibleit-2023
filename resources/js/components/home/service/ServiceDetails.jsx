@@ -79,56 +79,56 @@ export default function ServiceDetails() {
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
                 <Navbar />
-            </div>
-        </div>
             
-        {service ? (
-        <div className="">
-          <div className='grid md:grid-cols-2 grid-cols-1'>
-          <div>
-            <div className="p-24">
-              <figure className='md:px-40'>
-                <img className="rounded-lg" src={service.thumbnail} alt="" />
-              </figure>
+              {service ? (
+              <div className="">
+                <div className='grid md:grid-cols-2 grid-cols-1'>
+                <div>
+                  <div className=" p-20">
+                    <figure className=''>
+                      <img className="rounded-lg" src={service.thumbnail} alt="" />
+                    </figure>
+                  </div>
+                </div>
+                <div className="md:pt-24 p-10">
+                <h2 className="">{service.title}</h2>
+                  <h2 className={styles.heading2}>{service.title}</h2>
+                  <div>
+                    <p className="font-medium">Short description:</p>
+                    <p className={`${styles.paragraph} md:pr-28`}>{service.description}</p>
+                  </div>
+                  <div className="mt-4">
+                      <Link to={`/contact-us`}>
+                        <button className="bg-black text-white inline-block px-4 py-2 rounded-md">Contact us</button>
+                      </Link>
+                  </div>
+                </div>
+              </div>
+              <div className="">
+                <div className='text-center'>
+                  <h1 className='text-xl font-bold md:pt-10'>{service.title}'s Portfolios</h1>
+                </div>
+                <div className='my-10 md:my-20 grid md:grid-cols-3 grid-cols-1 gap-5'>
+              {portfolios?.map((portfolio) => (
+                <div key={portfolio.id}>
+                  <Link to={`/portfolios/${portfolio.slug}`}>
+                  <Portfolio portfolio={portfolio} />
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="md:pt-24 p-10">
-          <h2 className="">{service.title}</h2>
-            <h2 className={styles.heading2}>{service.title}</h2>
-            <div>
-              <p className="font-medium">Short description:</p>
-              <p className={`${styles.paragraph} md:pr-28`}>{service.description}</p>
-            </div>
-            <div className="mt-4">
-                <Link to={`/contact-us`}>
-                  <button className="bg-black text-white inline-block px-4 py-2 rounded-md">Contact us</button>
-                </Link>
-            </div>
           </div>
-        </div>
-        <div className="">
-          <div className='text-center'>
-            <h1 className='text-xl font-bold md:pt-10'>{service.title}'s Portfolios</h1>
-          </div>
-          <div className='md:p-20 p-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
-        {portfolios?.map((portfolio) => (
-          <div key={portfolio.id}>
-            <Link to={`/portfolios/${portfolio.slug}`}>
-            <Portfolio portfolio={portfolio} />
-            </Link>
-          </div>
-        ))}
-        </div>
-    </div>
-    </div>
-        
-        
-      ) : (
-        <div className='text-center text-3xl mb-10'>
-          <h1>Loading...</h1>
-        </div>
-      )}
+              
+              
+            ) : (
+              <div className='text-center text-3xl mb-10'>
+                <h1>Loading...</h1>
+              </div>
+            )}
       
+          </div>
+        </div>
             
             <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>

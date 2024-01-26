@@ -87,47 +87,47 @@ export default function AllPortfolio() {
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Navbar />
-          </div>
-      </div>
       
-      <div className='text-center md:-mb-16 -mb-8 mt-10'>
-        <h2 className={`${styles.heading2} mb-1`}>All Projects</h2>
-        <p className={`${styles.paragraph} md:px-64 px- xl:px-96 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
-      </div>
-      {loading ? (
-        <div className='text-center font-semibold text-3xl py-36'>
-          <h1>Loading...</h1>
-        </div>
-      ) : (
-        <div className="">
-          <div className='md:p-20 p-10 mt-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
-          {portfolios?.map((portfolio) => (
-            <div key={portfolio.id}>
-              <Link to={`/portfolios/${portfolio.slug}`}>
-              <Portfolio portfolio={portfolio} />
-              </Link>
+            <div className='text-center md:-mb-16 -mb-8 mt-10'>
+              <h2 className={`${styles.heading2} mb-1`}>All Projects</h2>
+              <p className={`${styles.paragraph} md:px-64 px- xl:px-96 px-12 `}>We have many ready-made projects. Which is perfect for businesses looking for a quick and cost-effective solution. All our projects are built using latest technology, Note: Can be customized as per customer's specific needs.</p>
             </div>
-          ))}
-          </div>
-          {loadingMore ? (
-            <div className='text-center font-semibold text-3xl py-36'>
-            <h1>Loading More...</h1>
-          </div>
-          ) : (
-          <div className="flex justify-center pb-16">
-            {currentPage < Math.ceil(totalPortfolios / perPage) && (
-              <button
-                onClick={loadMore}
-                className='px-3 py-3 bg-gray-200 rounded-md cursor-pointer'
-              >
-                Load More
-              </button>
+            {loading ? (
+              <div className='text-center font-semibold text-3xl py-36'>
+                <h1>Loading...</h1>
+              </div>
+            ) : (
+              <div className="">
+                <div className='my-16 md:mt-32 grid md:grid-cols-3 grid-cols-1 gap-5'>
+                {portfolios?.map((portfolio) => (
+                  <div key={portfolio.id}>
+                    <Link to={`/portfolios/${portfolio.slug}`}>
+                    <Portfolio portfolio={portfolio} />
+                    </Link>
+                  </div>
+                ))}
+                </div>
+                {loadingMore ? (
+                  <div className='text-center font-semibold text-3xl py-36'>
+                  <h1>Loading More...</h1>
+                </div>
+                ) : (
+                <div className="flex justify-center pb-16">
+                  {currentPage < Math.ceil(totalPortfolios / perPage) && (
+                    <button
+                      onClick={loadMore}
+                      className='px-3 py-3 bg-gray-200 rounded-md cursor-pointer'
+                    >
+                      Load More
+                    </button>
+                  )}
+                </div>
+                )}
+              </div>
             )}
+      
           </div>
-          )}
-        </div>
-      )}
-
+      </div>
       <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Footer />

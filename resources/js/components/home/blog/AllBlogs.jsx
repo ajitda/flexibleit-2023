@@ -28,15 +28,12 @@ export default function AllBlogs() {
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Navbar />
-          </div>
-        </div>
         
         <div className='text-center -mb-10'>
             <h2 className={`${styles.heading2} mb-1`}>All Blogs</h2>
         </div>
 
-        <div className='p-20'>
-        <Masonry>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-5 my-20'>
           {posts?.map((post) => (
             <div key={post.id}>
               <Link to={`/posts/${post.id}`}>
@@ -44,9 +41,10 @@ export default function AllBlogs() {
               </Link>
             </div>
           ))}
-        </Masonry>
         </div>
-
+        
+          </div>
+        </div>
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Footer />

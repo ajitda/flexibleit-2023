@@ -52,31 +52,30 @@ export default function AllServices() {
         <div className={`${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Navbar />
-          </div>
-        </div>
         
-        <div className='text-center mt-10'>
-            <h2 className={`${styles.heading2} mb-1 px-20`}>Services we can help you with</h2>
-            <p className={`${styles.paragraph} md:px-96 px-14`}>We are providing best quality web design and development services for you. We are commited to get you best output.</p>
+            <div className='text-center mt-10'>
+                <h2 className={`${styles.heading2} mb-1 px-20`}>Services we can help you with</h2>
+                <p className={`${styles.paragraph} md:px-96 px-14`}>We are providing best quality web design and development services for you. We are commited to get you best output.</p>
+            </div>
+            {loading ? (
+                <div className='text-center font-semibold text-3xl py-36'>
+                    <h1>Loading...</h1>
+                </div>
+            ) : (
+                <div className='grid md:grid-cols-3 grid-cols-1 gap-5 py-28'>
+                    {services?.map(feature=>{
+                        return (
+                            <div key={feature.id} className=''>
+                                <Link to={`/services/${feature.slug}`}>
+                                    <Service service={feature} />
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </div>
+            )}
+            </div>
         </div>
-        {loading ? (
-            <div className='text-center font-semibold text-3xl py-36'>
-                <h1>Loading...</h1>
-            </div>
-        ) : (
-            <div className='md:p-20 px-12 py-10 grid md:grid-cols-3 grid-cols-1 gap-5'>
-                {services?.map(feature=>{
-                    return (
-                        <div key={feature.id} className=''>
-                            <Link to={`/services/${feature.slug}`}>
-                                <Service service={feature} />
-                            </Link>
-                        </div>
-                    )
-                })}
-            </div>
-        )}
-
         <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}>
               <Footer />

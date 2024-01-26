@@ -72,60 +72,57 @@ const shareOnFacebook = () => {
           <div className={`${styles.paddingX} ${styles.flexCenter}`}>
             <div className={`${styles.boxWidth}`}>
               <Navbar />
-            </div>
-          </div>
-            <div className='container'>
-                <div className='row'>
-                    <div className='pt-10 xl:pl-80 md:pl-56 pl-3'>
-                        <h2 className={`${styles.heading2}`}>{post.title}</h2>
-                        <p className={`${styles.paragraph} mb-2`}>By DevsBrain</p>
-                        <hr className='xl:mr-72 md:mr-52 mr-4' />
-                        <div className='flex mr-3 mt-5'>
-                            <button className='flex bg-blue-500 py-3 px-4' onClick={shareOnFacebook}>
-                                <img src="/img/icons/facebook.png" alt="facebook" className='' />
-                                <div className='pl-2 text-white'>
-                                    Facebook
-                                </div>
-                            </button>
-                            <button className='flex bg-sky-500 py-3 px-4 ml-2' onClick={shareOnTwitter}>
-                                <img src="/img/icons/twitter-2.png" alt="facebook" className='p- w-6' />
-                                <div className='pl-2 text-white'>
-                                    Twitter
-                                </div>
-                            </button>
-                            <button className='flex bg-green-500 py-3 px-4 ml-2' onClick={shareOnWhatsApp}>
-                                <img src="/img/icons/wtsapp.png" alt="facebook" className='' />
-                                <div className='pl-2 text-white'>
-                                    Whatsapp
-                                </div>
-                            </button>
-                        </div>
-                        
-                    </div>
-                    <div className='md:grid grid-cols-6 mb-14 mt-20 md:ml-5'>
-                        <div className="col-start-2 col-span-4">
-                            <div>
-                                <div id="product" className="">
-                                <figure>
-                                    <img className="rounded-lg" src={post.thumbnail} alt="" />
-                                </figure>
-                                </div>
+                <div className='container'>
+                    <div className='row'>
+                        <div className='pt-10 md:ml-40'>
+                            <h2 className={`${styles.heading2}`}>{post.title}</h2>
+                            <p className={`${styles.paragraph} mb-2`}>By DevsBrain</p>
+                            <hr className='xl:mr-72 md:mr-52 mr-4' />
+                            <div className='flex mr-3 mt-5'>
+                                <button className='flex bg-blue-500 py-3 px-4' onClick={shareOnFacebook}>
+                                    <img src="/img/icons/facebook.png" alt="facebook" className='' />
+                                    <div className='md:pl-2 text-white'>
+                                        Facebook
+                                    </div>
+                                </button>
+                                <button className='flex bg-sky-500 py-3 px-4 ml-2' onClick={shareOnTwitter}>
+                                    <img src="/img/icons/twitter-2.png" alt="facebook" className='w-6' />
+                                    <div className='md:pl-2 text-white'>
+                                        Twitter
+                                    </div>
+                                </button>
+                                <button className='flex bg-green-500 py-3 px-4 ml-2' onClick={shareOnWhatsApp}>
+                                    <img src="/img/icons/wtsapp.png" alt="facebook" className='' />
+                                    <div className='md:pl-2 text-white'>
+                                        Whatsapp
+                                    </div>
+                                </button>
                             </div>
-                            <div className="mb-12">
-                                {/* <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2> */}
-                                <div className='p-2 mt-5'>
-                                <p className="font-medium">Description:</p>
-                                <p className={`${styles.paragraph}`}>{post.description}</p>
+                            
+                        </div>
+                        <div className='md:w-[53rem] mb-14 mt-20 md:ml-40'>
+                            <div className="">
+                                <div>
+                                    <div id="product" className="">
+                                    <figure>
+                                        <img className="rounded-lg" src={post.thumbnail} alt="" />
+                                    </figure>
+                                    </div>
+                                </div>
+                                <div className="mb-12">
+                                    {/* <h2 className='text-[28px] font-b612 font-bold pb-5'>{post.title}</h2> */}
+                                    <div className='p-2 mt-5'>
+                                    <p className="font-medium">Description:</p>
+                                    <p className={`${styles.paragraph}`}>{post.description}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                    
-                
-            </div>
-      
             
+                </div>
+            </div>
             <div className={` ${styles.paddingX} ${styles.flexCenter}`}>
                 <div className={`${styles.boxWidth}`}>
                     <Footer />
