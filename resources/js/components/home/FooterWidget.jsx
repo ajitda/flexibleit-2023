@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const FooterWidget =  ({title, items}) => {
     return (
-      <div className='px-5 py-4 md:ml-16 ml-20'>
+      <div className='md:px-5 px-1 py-4 md:ml-16 ml-0'>
           <h4 className='text-xl font-bold'>{title}</h4>
           <ul>{items.map(({ path, label, icon }, i) => (
             <li className='flex py-2' key={i}>

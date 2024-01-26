@@ -12,7 +12,7 @@ const Footer = () => {
           <img src={logo} alt="" className='md:h-[205px] mb-4' />
         </div>
         {menuItems.map(({ id, title, items }) => (
-            <div className='md:ml-0 ml-10'>
+            <div className=''>
             <FooterWidget key={id} title={title} items={items} />
             </div>
           ))}
@@ -21,7 +21,7 @@ const Footer = () => {
       <div className='grid grid-cols-2 gap-4'> {/* Added flex and items-end classes */}
         
         <div className='flex md:pl-16 md:p-8 p-5'>
-        <p className='text-md mr-1'>&copy;</p>
+        <p className='text-2xl mr-1'>&copy;</p>
           <p className='flex'>Copyright by {new Date().getFullYear()} DEVSBRAIN</p>
           
         </div>
